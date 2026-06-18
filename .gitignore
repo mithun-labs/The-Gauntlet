@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.env
+*.pem
+*.key
+.claude/
+*.tmp
+*.log
+vetting/.run.lock
