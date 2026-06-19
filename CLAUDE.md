@@ -1296,9 +1296,23 @@ can be systematically mis-calibrated indefinitely with no feedback.
 merges; it never waits for human approval. Detect the environment in the START-OF-RUN GIT
 PROCEDURE:
 
-- **Direct-push** — push completed vetting directly to `main`.
-- **Branch + PR** (e.g. Claude Code on the web) — push each completed EA to the working branch,
-  then auto-merge its PR into `main` (open one if none exists).
+> **PREFER DIRECT-TO-`main` — branches and PRs are a last resort, not a default.** Whenever the
+> environment permits committing to `main` (test once with `git push --dry-run origin HEAD:main`,
+> or simply attempt the direct push), **write directly to `main`**: complete the work, run all
+> required validation checks, commit, `git push origin HEAD:main`, and verify the content is present
+> on `origin/main`. **Do not create feature branches, working branches, or pull requests when a
+> direct push works** — they are unnecessary overhead and leave stale refs to clean up. Use a branch
+> **only** when (a) the environment/workflow *forbids* direct pushes to `main`, or (b) a
+> `recovery-YYYY-MM-DD-HHMM` branch is needed to preserve unresolved work (START-OF-RUN GIT
+> PROCEDURE). If a branch is created for reason (a), it must be **merged, verified on `origin/main`,
+> and then deleted** once its purpose is fulfilled (BRANCH CLEANUP RULE).
+
+- **Direct-push (preferred default)** — push completed vetting directly to `main` (`git push origin
+  HEAD:main`), then verify by slug/content on `origin/main`. No branch, no PR.
+- **Branch + PR (only if direct push is blocked)** — if and only if the environment refuses a direct
+  push to `main`, push each completed EA to a single working branch, then auto-merge it into `main`
+  (open a PR only if the workflow requires one), verify on `origin/main`, and **delete the working
+  branch** afterward.
 
 Invariant: **a completed, manually validated EA is on `main` before the next EA begins.** Never strand
 completed vetting on a working branch. Do not create daily branches or extra feature branches; the
