@@ -1316,6 +1316,31 @@ only other branches are `recovery-YYYY-MM-DD-HHMM` (start-of-run recovery only).
   PROCEDURE) and hand off to the operator. **Never bypass, force, or skip the process** to push
   work through, and never proceed to the next EA on stale or unverified state.
 
+### BRANCH CLEANUP RULE (mandatory — keep the repository clean)
+
+`main` is the single source of truth; **no stale or abandoned branches may accumulate over time.**
+
+- **Once all completed work has been validated, merged into `main`, and verified present on
+  `origin/main`, delete the corresponding working branch — both locally and remotely (if it was
+  pushed).** A working branch that has been fully merged has served its purpose and must not be
+  retained.
+- **Do the deletion only AFTER the `origin/main` content verification passes** (grep the
+  slug/content on `origin/main`, not SHA equality). Never delete a branch whose work is not yet
+  confirmed on `main` — that would strand or lose the work, violating HARD RULE 14.
+- **Exception — branches to KEEP:** `recovery-YYYY-MM-DD-HHMM` branches created to preserve
+  unresolved/unfinished work or to investigate an issue. These are retained until the operator
+  resolves them; do not auto-delete a recovery branch.
+- Cleanup commands (only after verification on `origin/main`):
+  ```bash
+  git checkout main                                  # never delete the branch you are on
+  git branch -d <working-branch>                     # local; -d (not -D) so an unmerged branch is refused
+  git push origin --delete <working-branch>          # remote, if it was pushed
+  git remote prune origin                            # drop stale remote-tracking refs
+  ```
+  Use `git branch -d` (lowercase) deliberately: it **refuses** to delete a branch that is not fully
+  merged into `main`, which is a final safety check that the work really landed. If `-d` refuses,
+  treat it as a STOP-and-report signal — do **not** force with `-D`.
+
 ---
 
 ## PER-EA EXECUTION & SAVE WORKFLOW + PERSISTENCE (MANDATORY)
@@ -1445,6 +1470,7 @@ Always complete and persist the current EA before stopping. Never stop mid-EA.
 - [ ] Rankings reference only `Deployable`/`Watchlist` EAs via `[[slug]]`, sorted within buckets.
 - [ ] Source URLs preserved with retrieval date + affiliate flag.
 - [ ] Every completed EA pushed and auto-merged to `main`, each verified by slug on `origin/main`.
+- [ ] Working branch deleted (local + remote) after merge verified on `origin/main` — only recovery branches retained (BRANCH CLEANUP RULE); no stale branches left behind.
 - [ ] `vetting/.run.lock` removed.
 
 ---
