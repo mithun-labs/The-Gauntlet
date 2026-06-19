@@ -130,13 +130,26 @@ working, not failing.
 13. **Repository integrity and recoverability outrank vetting speed and quantity.** Priority order:
     (1) repository integrity, (2) successful persistence, (3) recoverability, (4) verdict accuracy,
     (5) evidence quality, (6) vetting quantity.
-14. **All completed, validated work goes directly to `main` — never stranded.** Once an EA (or a
-    rulebook refresh or run output) has passed the MANUAL VALIDATION CHECKLIST, it must be
-    committed, pushed, and **verified present on `origin/main`** before the next EA begins.
-    Completed work must **not** remain on a feature branch, working branch, or unmerged pull
-    request. If a **merge conflict, synchronization issue, or validation failure** occurs, **STOP
-    and report it — never bypass the process** to force the work through (see BRANCHING MODEL and
-    PER-EA EXECUTION & SAVE WORKFLOW).
+14. **All completed, validated work MUST land on `origin/main` before any new work begins — this is
+    the highest-priority persistence rule and takes precedence over vetting additional EAs,
+    refreshing rulebooks, or any further research.** Once an EA (or a rulebook refresh or run
+    output) has passed the MANUAL VALIDATION CHECKLIST, it must be committed, pushed, and
+    **verified present on `origin/main` (grep the slug/content on `origin/main`, not a feature
+    branch)** before anything else proceeds.
+    - **Completed work must NEVER remain on a feature branch, working branch, recovery branch, or
+      unmerged pull request.** Any completed, validated change that has not been successfully merged
+      into `main` is, by definition, **incomplete work**.
+    - **If a change is complete but not yet on `origin/main`, the agent MUST stop and resolve the
+      synchronization, merge, or validation issue before doing anything else.** Do not vet another
+      EA, refresh a rulebook, or research further while completed work sits off `main`.
+    - This rule **overrides** any session/task instruction that would pin completed work to a
+      non-`main` branch: such instructions may govern *where intermediate commits are pushed*, but
+      the work is not "done" until it is verified on `origin/main`. If a sandbox genuinely forbids
+      writing to `main`, that is a **blocker to STOP and report**, not a license to leave completed
+      work stranded.
+    - If a **merge conflict, synchronization issue, or validation failure** occurs, **STOP and
+      report it — never bypass, force, or skip the process** to push work through (see BRANCHING
+      MODEL and PER-EA EXECUTION & SAVE WORKFLOW).
 
 ---
 
