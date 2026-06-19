@@ -424,12 +424,24 @@ Build the queue from these, most-discussed / newest first; add each as a `pendin
   support failures, and suspicious review bursts.
 - **YouTube** — "best prop firm EA", "EA passed [firm]", "EA settings", "EA backtest" — for leads
   and visible behavior only, never as standalone performance proof.
+- **forexcracked.com (and other cracked / "nulled" EA sites)** — a **cracked/nulled-EA
+  distribution site, NOT an evidence source.** An EA appearing here signals only that it is popular
+  or paid enough to have been pirated — **never** quality, legality, or performance. **Permitted
+  for two narrow uses only:** (1) **discovery** — confirming an EA exists / is in circulation; (2)
+  **negative signals** — user comments reporting failures, scams, or marketing mismatches. It must
+  **never** contribute positive performance evidence and **cannot raise an EA's evidence tier.**
+  **Caveat:** cracked builds are routinely tampered with or bundled with malware, so any
+  performance or behavior claim originating there is **doubly unreliable** (it may not even be the
+  real EA). Rank it **at or below the weakest community tier (treat as Tier 4); never list it as a
+  trusted source.**
 - **Primary prop-firm sites** — fetch live rules for FundedNext / The Funded Trader / Funding Pips
   before judging legality.
 
-Treat "top 10 EA" listicles, discount-code videos, Telegram funnels, and broker/prop referral pages
-as advertising. They can add leads to the queue, but they are affiliate or vendor-adjacent evidence
-unless independence is clear.
+Treat "top 10 EA" listicles, discount-code videos, Telegram funnels, broker/prop referral pages,
+and cracked/"nulled" EA sites (e.g. forexcracked.com) as advertising or worse. They can add leads to
+the queue, but they are affiliate, vendor-adjacent, or pirated-distribution leads — never
+independent evidence — unless independence is clear; a cracked site is never positive evidence and
+never raises a tier.
 
 ### B. Per-EA search sequence (run these; replace `<EA>`)
 
