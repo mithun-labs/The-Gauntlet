@@ -48,6 +48,8 @@ Major/cross FX pairs (12), Asian session only. No gold/indices.
 - **Funding Pips — Conditional (rulebook v1).** Mechanism legal, but a fully-automated **third-party commercial** EA is barred on standard evaluations (trade/risk-manager only) → Conditional/effectively Prohibited on standard programs.
 - **The 5%ers — Conditional (rulebook v1).** EAs allowed but **"rollover exploitation" is explicitly prohibited** and traders must control the EA's internal logic (hostile to closed-source commercial). A rollover-window night scalper sits uncomfortably close to that line → Conditional (leaning restrictive).
 - **The Funded Trader — Conditional (rulebook v1).** Commercial pre-programmed EAs restricted / must have unique non-masked parameters → Conditional.
+- **(Reference — non-gating) Alpha Capital Group — Prohibited (rulebook v1).** Requires .MQ5 source-code submission + written pre-approval; a closed-source commercial EA cannot comply.
+- **(Reference — non-gating) Goat Funded Trader — Prohibited (rulebook v1).** Bans off-the-shelf / commercial challenge-passing EAs (stricter reading of conflicting sources).
 
 ## Rule-Violation Flags
 - **~30% verified max DD** dwarfs every primary firm's ~10% max-overall-DD and 5% daily-DD limits at the settings that produced the record (DD-definition mismatch caveat applies, but a 30% gap dwarfs reconciliation). A lower-risk "prop preset" exists but its own verified DD/return over ≥6 months is not inspectable.
