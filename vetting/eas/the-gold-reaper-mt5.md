@@ -46,6 +46,8 @@ source_count = 3 fetched (MQL5 vendor listing; NYCServers review; MQL5 top-list 
 - **The Funded Trader — Conditional (rulebook v1).** Primary terms bar abusive/HFT automation (this is H1 breakout, not HFT) but independent guidance indicates commercially-available pre-programmed automated EAs are restricted / must have unique non-masked parameters → Conditional (depends on UNCONFIRMED commercial-EA detail).
 - **FundedNext — Conditional (rulebook v1, SECONDARY/UNCONFIRMED).** EAs reported allowed on MT5 and breakout is not a banned mechanism, but the entire FundedNext rulebook is UNCONFIRMED (primary site 503 this run) → Conditional.
 - **The 5%ers — Conditional (rulebook v1, added 2026-06-19).** EAs are allowed and breakout-with-SL is not a banned mechanism, but The 5%ers' standards bar "shared third-party EA strategies" and require the trader to "understand/control the internal logic" — hostile to a closed-source, off-the-shelf commercial EA. Mechanism legal; product type contested → Conditional. (Added because The 5%ers became a PRIMARY firm in CLAUDE.md v2.2; original vetting predates it.)
+- **(Reference — non-gating) Alpha Capital Group — Prohibited (rulebook v1).** Requires .MQ5 source-code submission + written pre-approval; a closed-source commercial EA cannot comply.
+- **(Reference — non-gating) Goat Funded Trader — Prohibited (rulebook v1).** Bans off-the-shelf / commercial challenge-passing EAs (stricter reading of conflicting sources).
 
 ## Rule-Violation Flags
 - High live drawdown (~42%) would breach every target firm's max-overall-DD limit (~6–10%) at the settings that produced the verified record. (DD-definition mismatch caveat: Myfxbook DD ≠ firm balance/equity DD, but a 42% gap dwarfs any reconciliation.)

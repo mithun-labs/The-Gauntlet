@@ -50,6 +50,8 @@ XAUUSD (gold) only.
 - **Funding Pips — Conditional (rulebook v1).** Mechanism legal, but a fully-automated **third-party commercial** EA is barred on standard evaluations (allowed as trade/risk manager only) → Conditional/effectively Prohibited on standard programs.
 - **The 5%ers — Conditional (rulebook v1).** EAs allowed, but standards bar "shared third-party EA strategies" and require controlling the EA's internal logic (hostile to a closed-source commercial EA); **tick-scalping is banned** and hold-time is unconfirmed → Conditional.
 - **The Funded Trader — Conditional (rulebook v1).** Commercial pre-programmed EAs restricted / must have unique non-masked parameters → Conditional (depends on UNCONFIRMED commercial-EA detail).
+- **(Reference — non-gating) Alpha Capital Group — Prohibited (rulebook v1).** Requires .MQ5 source-code submission + written pre-approval; a closed-source commercial EA cannot comply.
+- **(Reference — non-gating) Goat Funded Trader — Prohibited (rulebook v1).** Bans off-the-shelf / commercial challenge-passing EAs (stricter reading of conflicting sources).
 
 ## Rule-Violation Flags
 - Claimed/displayed **25.95% max drawdown** dwarfs every primary firm's ~10% max-overall-DD limit at the settings that produced the record (DD-definition mismatch caveat applies, but a 26% gap dwarfs reconciliation).
