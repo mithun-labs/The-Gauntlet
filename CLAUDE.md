@@ -1,4 +1,4 @@
-# CLAUDE.md — The Gauntlet: Adversarial MT5 EA Vetting Agent (v2.1.1)
+# CLAUDE.md — The Gauntlet: Adversarial MT5 EA Vetting Agent for Prop-Firm Challenges & Funded-Account Survival (v2.2.2)
 
 This file is your operating manual. You are running inside **Claude Code Desktop** with native
 filesystem access and web search/fetch tools. You may be invoked in three modes:
@@ -33,6 +33,24 @@ filesystem access and web search/fetch tools. You may be invoked in three modes:
 > steps); clarified that the index summary fields are **required**, not optional, to match the
 > validator; added a validator check that an `ESTIMABLE` ROR must carry a Tier 0/1
 > `ror_evidence_tier`; and tightened two end-of-run wordings (ranking scope and the score formula).
+>
+> **v2.2 (firm-set expansion).** Added **The 5%ers** as a primary target firm and **Alpha Capital
+> Group** and **Goat Funded Trader** as secondary/reference firms, and introduced the **primary vs
+> reference** distinction: primaries gate the verdict (legality, permitted-at-/prohibited-at-all,
+> and the tightest-firm ROR floor); reference firms are recorded but never gate, because they bar
+> the commercial third-party EAs this agent mostly vets for procedural reasons (Alpha requires EA
+> source code; Goat bans commercial challenge EAs). FTMO remains the one notable absent primary.
+>
+> **v2.2.1.** Added **leverage**, **max-lot / position-size limits**, and **weekend / overnight
+> holding** fields to the per-firm rulebook extraction and template — sizing and holding
+> constraints that bound EA viability and ROR (Alpha Capital's lot caps are the motivating case).
+>
+> **v2.2.2 (merge-reconciliation).** Re-applied three rules that an earlier-based v2.2/v2.2.1 draft
+> had inadvertently dropped: **HARD RULE 14** (completed, validated work goes directly to `main` —
+> never stranded; stop-and-report on conflict/sync/validation failure), the matching **BRANCHING
+> MODEL "mandatory, no exceptions"** block, and the **forexcracked.com / cracked-"nulled" EA-site**
+> discovery-source rule (low-trust: discovery + negative signals only, never positive evidence,
+> cannot raise tier, malware caveat, ≤ weakest community tier). No other v2.2.x content changed.
 
 There is **no memory between runs** — every bit of continuity must come from files in this
 directory and from the GitHub repository. The GitHub repository is the **PRIMARY persistent
@@ -370,10 +388,31 @@ Depth over breadth, no fixed EA count.
 
 ## SCOPE
 
-**Target firms (vet against the live rules of all three):**
+**Primary target firms** — the verdict gates on these. Legality, the "permitted at ≥1 /
+prohibited at all firms" logic, and the tightest-firm ROR floor all use the primary set. Vet
+against their live rules:
 - FundedNext — https://fundednext.com/
-- The Funded Trader — https://www.thefundedtraderprogram.com/
 - Funding Pips — https://fundingpips.com/
+- The 5%ers — https://www.the5ers.com/
+- The Funded Trader — https://www.thefundedtraderprogram.com/
+
+**Secondary / reference firms** — evaluated and recorded in `firm_verdicts`, but they do
+**not** gate the verdict, do not count toward "prohibited at all firms," and do not set the ROR
+floor:
+- Alpha Capital Group — https://www.alphacapitalgroup.uk/ — requires **EA source-code
+  submission + pre-approval**, so closed-source commercial EAs are effectively unusable here
+  regardless of mechanism.
+- Goat Funded Trader — https://goatfundedtrader.com/ — **bans off-the-shelf / commercial
+  challenge-passing EAs** (may demand proof of code ownership); also elevated operator-durability
+  and payout-dispute risk.
+
+> **Why the split:** this agent mostly vets commercial, third-party EAs, and Alpha Capital and Goat
+> are hostile to exactly that category for procedural/policy reasons unrelated to an EA's mechanism.
+> Gating on them would mark nearly every candidate "prohibited" for the wrong reason and swamp the
+> signal; as reference firms they still add value (they test detection of source-code and
+> commercial-EA barriers). Re-confirm this split during the target-firm relevance review. **FTMO is
+> not yet included** and is the one major EA-permitting firm still absent — add it as a primary
+> if you want full top-tier coverage.
 
 **Candidates:** currently available MT5 Expert Advisors plausibly marketed for, or used in,
 prop-firm challenges. **Instruments commonly in scope:** Gold/XAUUSD, EURUSD and major FX,
@@ -441,8 +480,9 @@ Build the queue from these, most-discussed / newest first; add each as a `pendin
   performance or behavior claim originating there is **doubly unreliable** (it may not even be the
   real EA). Rank it **at or below the weakest community tier (treat as Tier 4); never list it as a
   trusted source.**
-- **Primary prop-firm sites** — fetch live rules for FundedNext / The Funded Trader / Funding Pips
-  before judging legality.
+- **Prop-firm sites** — fetch live rules for the primary firms (FundedNext, Funding Pips, The
+  5%ers, The Funded Trader) and the reference firms (Alpha Capital, Goat Funded Trader) before
+  judging legality.
 
 Treat "top 10 EA" listicles, discount-code videos, Telegram funnels, broker/prop referral pages,
 and cracked/"nulled" EA sites (e.g. forexcracked.com) as advertising or worse. They can add leads to
@@ -463,7 +503,8 @@ summaries. Stop at the research budget only after the mandatory negative-case se
    **the negative case is MANDATORY**; record whether the search produced sources or no public hits.
 5. `<EA> martingale` · `<EA> grid` · `<EA> recovery` · `<EA> DCA` · `<EA> hedging basket` ·
    `<EA> stop loss` — mechanism tells.
-6. `<EA> prop firm` · `<EA> FundedNext` · `<EA> Funding Pips` · `<EA> The Funded Trader` ·
+6. `<EA> prop firm` · `<EA> FundedNext` · `<EA> Funding Pips` · `<EA> The 5%ers` · `<EA> The Funded Trader` ·
+   `<EA> Alpha Capital` · `<EA> Goat Funded Trader` ·
    `<EA> passed challenge` · `<EA> payout` — treat passed/funded claims as **Tier 4** unless backed
    by Tier 0 public funded evidence.
 7. `<EA> settings` · `<EA> set file` · `<EA> manual` · `<EA> max positions` · `<EA> news filter` —
@@ -557,6 +598,15 @@ live in `vetting/rulebooks/<firm>.md`, are versioned, and carry a retrieval date
    trades, maximum trades/day, wherever the firm states them. These anchor the pre-screen.
 10. News-trading restrictions (lockout windows around high-impact events).
 11. Payout structure, profit split, minimum holding/payout cadence.
+12. **Leverage** per program / instrument class (e.g. 1:30 vs 1:100) — it changes position
+    sizing and therefore the ROR estimate; an EA tuned for one leverage behaves differently at
+    another.
+13. **Maximum lot / position-size limits** — per-order lot caps, per-strategy allocation caps,
+    and any lot-size scaling rules (some firms, e.g. Alpha Capital, enforce these, and they
+    directly bound an EA's sizing and ROR).
+14. **Weekend / overnight holding rules** — whether positions must be closed before
+    weekend/rollover or around news, plus swap/holding restrictions (these can disqualify swing
+    EAs regardless of mechanism).
 
 Flag any rule not confirmable from the firm's **primary source** as `UNCONFIRMED`. Any legality
 verdict depending on an `UNCONFIRMED` rule is `Conditional — depends on UNCONFIRMED rule X` and
@@ -575,12 +625,15 @@ cannot support a Deployable verdict.
 ## Profit Targets (per phase)
 ## Daily Drawdown          (value · equity vs balance · static vs trailing · reset + TZ)
 ## Maximum Drawdown        (value · static vs trailing)
+## Leverage                (per program · instrument class)
+## Lot-Size & Position Limits  (per-order cap · per-strategy cap · scaling lot rules)
 ## Minimum Trading Days / Time Limits
 ## Consistency Rules
 ## EA & Automation Policy   (exact language)
 ## Banned Behaviors
 ## HFT / Tick-Scalping Thresholds   (min hold time, min time between trades, max trades/day)
 ## News-Trading Restrictions
+## Weekend / Overnight Holding  (forced-flat? · rollover/swap rules · news-close rules)
 ## Payout Structure & Profit Split
 ## UNCONFIRMED items
 ```
@@ -595,7 +648,7 @@ cannot support a Deployable verdict.
   YYYY-MM-DD`, and treat verdicts derived from it as provisional in today's report.
 - If a firm is **persistently unreachable across runs**, or has **materially restructured or retired**
   the programs you vet against, flag it in the daily report for **operator review of the target-firm
-  set** — the three-firm list is not self-updating.
+  set** — the primary/reference firm list is not self-updating.
 
 ### Tiered, bounded re-check (prevents run starvation at scale)
 
@@ -714,7 +767,7 @@ behavior:
 
 - **Prohibited at a firm** → that firm is removed from the EA's eligibility; the EA cannot be
   Deployable for that firm.
-- **Prohibited at all three firms** → **Verdict = Avoid**, regardless of Overall (still scored and
+- **Prohibited at all primary firms** → **Verdict = Avoid**, regardless of Overall (still scored and
   recorded for the archive).
 - If a legality judgment depends on an `UNCONFIRMED` rule, mark the firm verdict `Conditional`; do
   not use it to clear Deployable.
@@ -744,8 +797,9 @@ EAs surviving Gates A–C proceed to profiling and scoring. Surviving is **not**
     availability.
 12. Backtest quality and duration — assessed against the EVIDENCE STANDARD; public backtests are
     claims, not reproduced tests.
-13. Per-firm legality verdict — FundedNext / The Funded Trader / Funding Pips, each `Permitted` /
-    `Prohibited` / `Conditional`, **with the rulebook version judged against**.
+13. Per-firm legality verdict — **primary:** FundedNext / Funding Pips / The 5%ers / The Funded
+    Trader; **reference:** Alpha Capital / Goat Funded Trader — each `Permitted` / `Prohibited` /
+    `Conditional`, **with the rulebook version judged against** (reference verdicts do not gate).
 14. Rule-violation flags — each with a one-line public-evidence justification.
 15. Mechanical rule-respect — publicly documented or independently demonstrated hard equity-stop /
     daily-loss-stop / max-position controls, or `NOT REPORTED` / manual-only.
@@ -767,7 +821,7 @@ backtests are not enough.
 
 When public Tier 0/1 trade-level history is available, estimate:
 
-- **P(violating daily DD)** per phase, against the **tightest** firm's daily-DD rule, using its
+- **P(violating daily DD)** per phase, against the **tightest primary** firm's daily-DD rule, using its
   actual calculation (equity vs balance, trailing vs static).
 - **P(violating max overall DD).**
 - **Risk of ruin** over **30 / 90 / 365 trading days.**
@@ -846,7 +900,7 @@ show enough arithmetic for a human to reproduce the adjusted dimension scores an
 | Dimension | Weight | Basis | Adjustment |
 |---|---:|---|---|
 | **Funded-Account Survival** | 30% | probability of repeated payout and sustained funding | × Multiplier **A** + ROR cap |
-| **Prop-Firm Compliance** | 20% | legality across all three firms' current rules | Gate B ceiling 5 if unverifiable; Gate C |
+| **Prop-Firm Compliance** | 20% | legality across the **primary** firms' current rules (reference firms inform but don't drive the score) | Gate B ceiling 5 if unverifiable; Gate C |
 | **Risk Management** | 15% | quality and *evidence level* of hard DD controls (independently demonstrated > vendor-documented > claimed) | Gate B ceiling 4 if unverifiable; control-evidence ceiling (step 3) |
 | **Challenge-Passing Probability** | 15% | probability of clearing the evaluation | × Multiplier **A** |
 | **Consistency** | 10% | low return dispersion; shallow, brief drawdowns | × Multiplier **B** |
@@ -861,7 +915,7 @@ evidence, then fine-tune within it; the multiplier and gates are applied *after*
 | Dimension | 1—3 | 4—6 | 7—9 | 10 |
 |---|---|---|---|---|
 | **Funded-Survival** | no funded evidence; martingale/grid signature or smooth-then-cliff curve | some real-money history but short or caveated; survival plausible, unproven | long verified real-money record consistent with repeated payout | Tier-0 funded record with repeated *realized* payouts |
-| **Compliance** | prohibited or likely-prohibited at the firms | conditional/unclear; only some rules met | clearly permitted at ≥1 firm on current rules | permitted at all three on confirmed current rules |
+| **Compliance** | prohibited or likely-prohibited at the primary firms | conditional/unclear; only some rules met | clearly permitted at ≥1 primary firm on current rules | permitted at all primary firms on confirmed current rules |
 | **Risk** | no controls, contradicted controls, or manual-only | controls vendor-documented but not independently shown | hard controls independently shown to hold | controls shown to hold across regimes incl. shocks |
 | **Challenge-Passing** | metrics far from targets, or untestable | plausibly clears in a calm regime only | verified history clears targets within limits | clears with wide margin across regimes |
 | **Consistency** | high dispersion; deep or long drawdowns | moderate dispersion; lumpy recovery | low dispersion; shallow, brief drawdowns | low dispersion across multiple regimes |
@@ -912,10 +966,10 @@ Overall and still be **Avoid**. Because Claude is operating from public web rese
    vendor's own broad description, and not an un-inferable black box).
 2. `best_tier` is **Tier 1 or better** for the headline return+DD pair.
 3. **≥6 months** verified live (real-money) history.
-4. **Verified equity max DD ≤ 60% of the tightest firm's max-overall-DD limit**, over a ≥6-month
-   track (e.g. ≤6% against a 10% firm limit), **AND** no single day exceeding 60% of the tightest
-   daily-DD limit. (Historical max DD understates future max DD; deploy with headroom.)
-5. Compatible with **current, confirmed** rules at ≥1 target firm — not dependent on `UNCONFIRMED`
+4. **Verified equity max DD ≤ 60% of the tightest primary firm's max-overall-DD limit** (restated
+   under that firm's own DD definition), over a ≥6-month track (e.g. ≤6% against a 10% firm
+   limit), **AND** no single day exceeding 60% of the tightest primary daily-DD limit. (Historical max DD understates future max DD; deploy with headroom.)
+5. Compatible with **current, confirmed** rules at ≥1 **primary** target firm — not dependent on `UNCONFIRMED`
    rules; not Prohibited at that firm.
 6. Demonstrated consistency **across multiple market regimes.**
 7. **Estimable and acceptably low** risk-of-ruin from public Tier 0/1 trade-level history.
@@ -927,7 +981,7 @@ Overall and still be **Avoid**. Because Claude is operating from public web rese
 EXCLUDED      — failed Gate A (banned/optional-banned core mechanism). Never scored.
 
 AVOID         — any of:
-                • Prohibited at all three firms (Gate C), OR
+                • Prohibited at all primary firms (Gate C), OR
                 • headline return+DD evidence is Tier 3 or Tier 4 (no independent verification), OR
                 • mechanism unverifiable (Gate B) AND no publicly documented risk controls, OR
                 • ROR NON-ESTIMABLE AND best_tier ≤ Tier 2.
@@ -986,12 +1040,13 @@ vetting/
 ### `master_index.jsonl` — one JSON object per line
 
 ```json
-{"slug":"example-ea","ea_name":"Example EA","vendor":"Acme","fingerprint":"Acme|trend-pullback|XAUUSD,EURUSD|trend","best_tier":"TIER3","overall":4.0,"verdict":"Avoid","binding_criterion":"headline evidence Tier 3 (no independent verification)","firm_verdicts":{"fundednext":{"verdict":"Conditional","rulebook_version":"v2"},"the-funded-trader":{"verdict":"Permitted","rulebook_version":"v1"},"funding-pips":{"verdict":"Permitted","rulebook_version":"v3"}},"ror_status":"NON_ESTIMABLE","ror_evidence_tier":"TIER4","funded_evidence":false,"mechanism_confidence":"Low","source_count":8,"independent_source_count":2,"affiliate_source_count":3,"evidence_summary":"vendor claims only for performance; independent comments report grid-like recovery","updated":"2026-06-17"}
+{"slug":"example-ea","ea_name":"Example EA","vendor":"Acme","fingerprint":"Acme|trend-pullback|XAUUSD,EURUSD|trend","best_tier":"TIER3","overall":4.0,"verdict":"Avoid","binding_criterion":"headline evidence Tier 3 (no independent verification)","firm_verdicts":{"fundednext":{"verdict":"Conditional","rulebook_version":"v2"},"funding-pips":{"verdict":"Permitted","rulebook_version":"v3"},"the-5ers":{"verdict":"Permitted","rulebook_version":"v1"},"the-funded-trader":{"verdict":"Permitted","rulebook_version":"v1"},"alpha-capital":{"verdict":"Prohibited","rulebook_version":"v1","tier":"reference","reason":"source-code submission required"},"goat-funded-trader":{"verdict":"Prohibited","rulebook_version":"v1","tier":"reference","reason":"commercial challenge EAs banned"}},"ror_status":"NON_ESTIMABLE","ror_evidence_tier":"TIER4","funded_evidence":false,"mechanism_confidence":"Low","source_count":8,"independent_source_count":2,"affiliate_source_count":3,"evidence_summary":"vendor claims only for performance; independent comments report grid-like recovery","updated":"2026-06-17"}
 ```
 
 Append-friendly, diff-friendly, machine-parseable. `verdict ∈ {Deployable, Watchlist, Avoid,
 Excluded}`; `best_tier ∈ {TIER0..TIER4}`; `ror_status ∈ {ESTIMABLE, NON_ESTIMABLE}`; firm
-verdicts ∈ {Permitted, Prohibited, Conditional}; `mechanism_confidence ∈ {High, Medium, Low,
+verdicts ∈ {Permitted, Prohibited, Conditional} (reference-firm entries also carry
+`"tier":"reference"` and never gate); `mechanism_confidence ∈ {High, Medium, Low,
 Unknown}`. Surface only the adjusted `overall` — never the latent score. **Recommended:** also
 record the seven adjusted dimension scores as
 `"dimensions":{"survival":..,"compliance":..,"risk":..,"challenge":..,"consistency":..,"transparency":..,"profitability":..}` — when present, the manual validation checklist recomputes the weighted
@@ -1168,9 +1223,12 @@ For every non-excluded EA row, confirm:
 
 ### Rulebooks and firm verdicts
 
-- All three target rulebooks exist and have primary source URL, retrieval timestamp, agent-assigned
-  version, and change note.
-- Every non-excluded EA has firm verdicts for FundedNext, The Funded Trader, and Funding Pips.
+- All four primary rulebooks (FundedNext, Funding Pips, The 5%ers, The Funded Trader) exist with
+  primary source URL, retrieval timestamp, agent-assigned version, and change note; any reference
+  rulebook in use (Alpha Capital, Goat Funded Trader) likewise.
+- Every non-excluded EA has firm verdicts for all four primary firms (FundedNext, Funding Pips,
+  The 5%ers, The Funded Trader). Reference-firm verdicts (Alpha Capital, Goat Funded Trader) are
+  recorded when assessed but are not required and never gate the verdict.
 - Each firm verdict is `Permitted`, `Prohibited`, or `Conditional`, and cites the current rulebook
   version.
 - No Deployable verdict depends on an `UNCONFIRMED` rule.
