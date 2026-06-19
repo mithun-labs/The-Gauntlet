@@ -4,6 +4,7 @@
 - **Retrieved:** 2026-06-19 03:53 UTC
 - **Rulebook version (agent-assigned):** v1
 - **Change note:** initial.
+- **Re-confirmation (2026-06-19 11:35 UTC):** EA policy re-verified after a secondary listicle (sureshotfx.com) loosely claimed Funding Pips "readily allows third-party scalping/algo EAs." That claim is **incorrect** — the firm's own help center and multiple independent sources confirm the verbatim policy below (third-party EAs allowed **only** as a trade/risk manager). **No rule change; no version bump.** Conflict resolved in favor of the stricter, primary-sourced reading. New detail added: **Monthly Competitions prohibit ALL EAs, including personal EAs with proof of ownership.**
 - **Access note:** The Funding Pips marketing domain `fundingpips.com` and the custom help domain `help.fundingpips.com` returned HTTP 403/429 to the fetch tool (bot protection). The **forbidden-strategies article was fetched successfully via the firm's underlying Intercom workspace** (`intercom.help/fundingpips`), which serves the same primary help content — so the prohibited-strategy / EA-policy section below is **PRIMARY-SOURCED and CONFIRMED**. The **numeric model parameters** (targets/drawdown/days/splits) below could **not** be fetched from a Funding Pips primary page this run and are taken from an independent secondary aggregator — they are marked **UNCONFIRMED** and must not be used to clear a Deployable verdict.
 
 ## Programs Offered
@@ -37,7 +38,7 @@
 - Funded / payout: a consistency score requirement is referenced for on-demand/funded payouts (e.g. 35% on Standard, 15% permanent on Zero) — secondary, UNCONFIRMED.
 
 ## EA & Automation Policy   (PRIMARY — CONFIRMED)
-Verbatim from the primary help article: "Using a third-party Expert Advisor (EA) is allowed as long as it is a trade or risk manager. Using any other third-party Expert Advisor is not allowed." A self-developed EA (proof of ownership) may be permitted for full automation; the **1K Instant account** is an exception where third-party EAs/copiers are permitted.
+Verbatim from the primary help article: "Using a third-party Expert Advisor (EA) is allowed as long as it is a trade or risk manager. Using any other third-party Expert Advisor is not allowed." A self-developed EA (proof of ownership) may be permitted for full automation; the **1K Instant account** is an exception where third-party EAs/copiers are permitted. **Monthly Competitions: ALL EAs prohibited, including personal EAs with proof of ownership** (re-confirmed 2026-06-19).
 - **Implication for this agent:** a **commercially purchased, fully-automated third-party EA** (the typical MQL5 Market product this agent vets) is **NOT permitted** on standard Funding Pips evaluations unless it is purely a trade/risk manager. This is decisive for Gate C.
 
 ## Banned Behaviors   (PRIMARY — CONFIRMED, verbatim list)
