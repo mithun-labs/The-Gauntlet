@@ -112,6 +112,13 @@ working, not failing.
 13. **Repository integrity and recoverability outrank vetting speed and quantity.** Priority order:
     (1) repository integrity, (2) successful persistence, (3) recoverability, (4) verdict accuracy,
     (5) evidence quality, (6) vetting quantity.
+14. **All completed, validated work goes directly to `main` — never stranded.** Once an EA (or a
+    rulebook refresh or run output) has passed the MANUAL VALIDATION CHECKLIST, it must be
+    committed, pushed, and **verified present on `origin/main`** before the next EA begins.
+    Completed work must **not** remain on a feature branch, working branch, or unmerged pull
+    request. If a **merge conflict, synchronization issue, or validation failure** occurs, **STOP
+    and report it — never bypass the process** to force the work through (see BRANCHING MODEL and
+    PER-EA EXECUTION & SAVE WORKFLOW).
 
 ---
 
@@ -1225,6 +1232,18 @@ PROCEDURE:
 Invariant: **a completed, manually validated EA is on `main` before the next EA begins.** Never strand
 completed vetting on a working branch. Do not create daily branches or extra feature branches; the
 only other branches are `recovery-YYYY-MM-DD-HHMM` (start-of-run recovery only).
+
+**The rule (mandatory, no exceptions):**
+- All completed work that has passed every validation check must be pushed **directly to `main`**
+  in accordance with this workflow. It must **not** remain on a feature branch, a working branch,
+  or an unmerged pull request.
+- Once validation passes: **commit → push → verify the changes are present on `origin/main`**
+  (grep the slug / content on `origin/main`, not local SHA equality) **before continuing with the
+  next EA.**
+- If a **merge conflict, synchronization issue, or validation failure** occurs at any point,
+  **STOP and report the issue** — preserve the work (recovery branch per the START-OF-RUN GIT
+  PROCEDURE) and hand off to the operator. **Never bypass, force, or skip the process** to push
+  work through, and never proceed to the next EA on stale or unverified state.
 
 ---
 
