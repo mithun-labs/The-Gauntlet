@@ -1,8 +1,8 @@
 # Rulebook — Alpha Capital Group
 - **Source:** https://alphacapitalgroup.uk/ (official; rules-explained-2026 post — primary, 403 to fetch tool this run) · secondary/corroborating: https://www.eafunded.com/firms/alpha-capital · https://tradingfinder.com/props/alpha-capital-group/rules/ · https://thetrustedprop.com/prop-firms/alpha-capital-group · https://propfirmmatch.com/prop-firms/alpha-capital-group (403)
-- **Retrieved:** 2026-06-19 11:20 UTC
+- **Retrieved:** 2026-06-19 11:20 UTC — **stale (>72h) but NON-GATING (reference firm); carried forward 2026-06-22.**
 - **Rulebook version (agent-assigned):** v1
-- **Change note:** initial — Alpha Capital Group is a REFERENCE firm (CLAUDE.md v2.2). Recorded in `firm_verdicts` but does **not** gate the verdict. Built from secondary sources because the official rules page and Prop Firm Match both 403'd; numeric parameters flagged accordingly.
+- **Change note:** initial — Alpha Capital Group is a REFERENCE firm (CLAUDE.md v2.2). Recorded in `firm_verdicts` but does **not** gate the verdict. Built from secondary sources because the official rules page and Prop Firm Match both 403'd; numeric parameters flagged accordingly. **2026-06-22:** rulebook is past the 72h staleness threshold but, as a reference firm whose verdict never gates, was carried forward without a full re-fetch this run (primary refresh budget spent on the four gating primaries). Its binding procedural fact for this agent — **mandatory .MQ5 source-code submission + pre-approval**, which closed-source commercial EAs cannot satisfy — is policy-stable. Flag for full refresh next run if a reference verdict becomes material.
 
 ## Tier / Gating
 - **REFERENCE firm — never gates the verdict.** Does not count toward "prohibited at all firms" and does not set the ROR floor. The reason it is reference, not primary: Alpha **requires EA source-code (.MQ5) submission + written pre-approval**, so closed-source commercial third-party EAs (the bulk of this agent's candidates) are effectively unusable here for procedural reasons unrelated to mechanism. Recording it tests detection of the source-code barrier.

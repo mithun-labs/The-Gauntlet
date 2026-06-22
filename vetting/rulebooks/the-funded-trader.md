@@ -2,9 +2,9 @@
 - **Source (primary):** https://www.thefundedtrader.com/terms-of-use/ (The Funded Trader's own Terms of Use — prohibited-strategy / automation language)
 - **Source (primary, landing):** https://thefundedtraderprogram.com/ (program list)
 - **Source (secondary, numerics):** https://tradingfinder.com/props/the-funded-trader/rules/ (independent aggregator — numeric model parameters)
-- **Retrieved:** 2026-06-19 03:52 UTC
+- **Retrieved:** 2026-06-22 18:33 UTC (re-confirmed; previously 2026-06-19 03:52 UTC)
 - **Rulebook version (agent-assigned):** v1
-- **Change note:** initial.
+- **Change note:** initial. **2026-06-22 freshness refresh:** Terms of Use re-fetched from primary (thefundedtrader.com/terms-of-use) — prohibited-strategy / automation language (bans AI/HFT automated software that "manipulate or abuse" the simulated environment, cross-account hedging, account sharing, gap/news-window trading, gross overleverage) UNCHANGED. No version bump. Numeric model parameters still secondary/UNCONFIRMED.
 - **Access note:** The Funded Trader's marketing landing (`thefundedtraderprogram.com`) and Terms (`thefundedtrader.com/terms-of-use`) **fetched successfully** — so the prohibited-strategy / automation language is **PRIMARY-CONFIRMED**. The help center `help.thefundedtraderprogram.com` returned 403. **Numeric model parameters** below are from a secondary aggregator → **UNCONFIRMED**.
 
 ## Programs Offered   (PRIMARY — landing page)

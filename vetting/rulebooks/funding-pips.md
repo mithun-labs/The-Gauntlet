@@ -1,9 +1,9 @@
 # Rulebook — Funding Pips
 - **Source (primary):** https://intercom.help/fundingpips/en/articles/8536000-what-are-the-forbidden-strategies (Funding Pips' own Intercom-hosted help center — forbidden-strategy language)
 - **Source (secondary, numerics):** https://proptradingvibes.com/blog/fundingpips-rules (independent aggregator — numeric model parameters)
-- **Retrieved:** 2026-06-19 03:53 UTC
+- **Retrieved:** 2026-06-22 18:33 UTC (re-confirmed; previously 2026-06-19 03:53 UTC)
 - **Rulebook version (agent-assigned):** v1
-- **Change note:** initial.
+- **Change note:** initial. **2026-06-22 freshness refresh:** forbidden-strategies article re-fetched from the primary Intercom help center — prohibited-strategy list and EA policy ("third-party EA allowed only as a trade/risk manager") UNCHANGED. No version bump. Numeric model parameters still secondary/UNCONFIRMED.
 - **Re-confirmation (2026-06-19 11:35 UTC):** EA policy re-verified after a secondary listicle (sureshotfx.com) loosely claimed Funding Pips "readily allows third-party scalping/algo EAs." That claim is **incorrect** — the firm's own help center and multiple independent sources confirm the verbatim policy below (third-party EAs allowed **only** as a trade/risk manager). **No rule change; no version bump.** Conflict resolved in favor of the stricter, primary-sourced reading. New detail added: **Monthly Competitions prohibit ALL EAs, including personal EAs with proof of ownership.**
 - **Access note:** The Funding Pips marketing domain `fundingpips.com` and the custom help domain `help.fundingpips.com` returned HTTP 403/429 to the fetch tool (bot protection). The **forbidden-strategies article was fetched successfully via the firm's underlying Intercom workspace** (`intercom.help/fundingpips`), which serves the same primary help content — so the prohibited-strategy / EA-policy section below is **PRIMARY-SOURCED and CONFIRMED**. The **numeric model parameters** (targets/drawdown/days/splits) below could **not** be fetched from a Funding Pips primary page this run and are taken from an independent secondary aggregator — they are marked **UNCONFIRMED** and must not be used to clear a Deployable verdict.
 
