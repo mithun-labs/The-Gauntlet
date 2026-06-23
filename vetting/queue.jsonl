@@ -11,3 +11,10 @@
 {"slug": "one-man-army-mt5", "state": "pending", "added": "2026-06-22", "updated": "2026-06-22", "discovery_source": "web search: multi-currency pending-limit scalper for prop firms"}
 {"slug": "dowgold-mt5", "state": "pending", "added": "2026-06-22", "updated": "2026-06-22", "discovery_source": "web search: hedging scalper Gold/US30 verified $100k since 2022"}
 {"slug": "hft-propfirm-ea-mt5", "state": "pending", "added": "2026-06-22", "updated": "2026-06-22", "discovery_source": "web search: MQL5 product/117386 HFT PropFirm EA (HFT \u2014 likely Gate A)"}
+{"slug":"forex-flex-ea-mt5","state":"excluded","added":"2026-06-23","updated":"2026-06-23","discovery_source":"broad web+YouTube discovery: top-ranked 'best prop firm EA 2026' / '86% winrate pass every challenge'; FundedNext name-banned list"}
+{"slug":"x-pass-bot","state":"pending","added":"2026-06-23","updated":"2026-06-23","discovery_source":"FundedNext name-banned EA list (via discovery)"}
+{"slug":"gold-oneshot-ea-mt5","state":"pending","added":"2026-06-23","updated":"2026-06-23","discovery_source":"FundedNext name-banned EA list"}
+{"slug":"the-prop-pilot-ea","state":"pending","added":"2026-06-23","updated":"2026-06-23","discovery_source":"FundedNext name-banned EA list"}
+{"slug":"propea","state":"pending","added":"2026-06-23","updated":"2026-06-23","discovery_source":"FundedNext name-banned EA list"}
+{"slug":"dark-algo-ea","state":"pending","added":"2026-06-23","updated":"2026-06-23","discovery_source":"broad discovery: algotradingspace forex EA"}
+{"slug":"xaubot-prop-firm-ea","state":"pending","added":"2026-06-23","updated":"2026-06-23","discovery_source":"broad discovery: xaubot.com prop firm EA MT4/MT5"}
