@@ -1,4 +1,4 @@
-# CLAUDE.md — The Gauntlet: Adversarial MT5 EA Vetting Agent for Prop-Firm Challenges & Funded-Account Survival (v2.2.2)
+# CLAUDE.md — The Gauntlet: Adversarial MT5 EA Vetting Agent for Prop-Firm Challenges & Funded-Account Survival (v2.4)
 
 This file is your operating manual. You are running inside **Claude Code Desktop** with native
 filesystem access and web search/fetch tools. You may be invoked in three modes:
@@ -51,6 +51,42 @@ filesystem access and web search/fetch tools. You may be invoked in three modes:
 > MODEL "mandatory, no exceptions"** block, and the **forexcracked.com / cracked-"nulled" EA-site**
 > discovery-source rule (low-trust: discovery + negative signals only, never positive evidence,
 > cannot raise tier, malware caveat, ≤ weakest community tier). No other v2.2.x content changed.
+>
+> **v2.3 (Tier-2 over-restriction fix).** Closed the structural flaw where the entire Tier-2
+> evidence band collapsed to **Avoid**, making genuine investigate-further candidates invisible
+> (they were excluded from rankings). Three coupled changes: (1) **split Tier 2 into Tier 2A**
+> (real-money, publicly inspectable trade-level record, demoted only by short track / low deposit /
+> small sample) **and Tier 2B** (demo-only, hidden-history, or curve-fit) — both keep the Tier-2
+> multiplier; (2) **narrowed Avoid criterion 4** so a `NON-ESTIMABLE` ROR forces Avoid only at
+> Tier 2B/3/4 — real-money Tier 2A now lands on **Watchlist** with a binding criterion naming the
+> evidence to chase; (3) **decoupled ROR-estimability from deposit/tier** — ROR is estimable from
+> any real-money trade-level history (Tier 0/1/**2A**) at a tagged confidence (`ROR-High` for
+> Tier 0/1, `ROR-Low` for Tier 2A), so a short/small real-money record no longer gets its Survival
+> multiplier crushed to 0.20. **Deployable is unchanged and still unreachable autonomously:**
+> gates 2, 3, and 7 continue to require a full ≥6-month Tier 0/1 record and `ROR-High`; Tier 2A and
+> `ROR-Low` inform the score but never clear Deployable. Demo-only/hidden/curve-fit (Tier 2B) is
+> still Avoided — the fix surfaces real-money candidates without loosening the demo distrust.
+> Schema gains `TIER2A`/`TIER2B` and a `ror_confidence` field; the validator and the Overall-≥6.0
+> contradiction-guard wording were reconciled to match.
+>
+> **v2.4 (architecture & consistency pass).** Eight fixes from a full-framework audit, mostly in the
+> operational layer: (1) **Gate B Watchlist ceiling made reachable** — its definition no longer
+> folds in "no risk-control evidence," so a black box with documented controls is constrained to
+> Watchlist (not swallowed by Avoid criterion 3, which now does real work); (2) **multi-host guard
+> fixed** — it compared the *shared* committer email (which can never distinguish two instances of
+> this agent) and now compares the committing **host** via a `Gauntlet-Host:` commit trailer, with
+> the committed heartbeat lock elevated to required for strict multi-host safety; (3)
+> **duplicate-detection fingerprint reordered** to lead with mechanism (`mechanism|type|instruments|
+> vendor`) so a rebrand under a new vendor name is caught as a variant, matching the stated intent;
+> (4) **`best_tier` definition reconciled with Tier 2A** — the ≥6-month window is now a Tier-1
+> requirement, not a clause that contradicted the <6-month Tier-2A sub-tier; (5) **re-check backlog
+> drain** — the per-run N=10 cap no longer leaks: a Deployable/Watchlist backlog is drained before
+> new discovery and the cap escalates if it persists; (6) **operator notification on halt** — a
+> STOP-and-report now writes a committed `vetting/NEEDS_ATTENTION.md` that gates the next run, so an
+> unattended halt is visible instead of silent; (7) **stale `vetting` queue rows reset** to
+> `pending` at START-OF-RUN, recovering the queue state machine after an interrupted EA; (8)
+> **`dimensions` made required and its Overall recompute exact** (Overall lands on a 0.05 grid), so
+> every Overall is independently re-derived at commit time. No scoring weights or multipliers changed.
 
 There is **no memory between runs** — every bit of continuity must come from files in this
 directory and from the GitHub repository. The GitHub repository is the **PRIMARY persistent
@@ -118,7 +154,8 @@ working, not failing.
    in every write-up.
 8. **A risk-of-ruin that cannot be estimated is a negative finding**, not a neutral gap. Never
    fabricate a ruin probability from a vendor drawdown claim, screenshot, backtest, or MQL5 signal
-   summary; mark it `NON-ESTIMABLE` unless public Tier 0/1 trade-level history is available.
+   summary; mark it `NON-ESTIMABLE` unless public **real-money** trade-level history (Tier 0/1/2A)
+   is available — and when it rests on short/small Tier 2A data, grade it `ROR-Low` and carry the caveats.
 9. **This is research/education, not investment advice.** EAs recorded here are candidates to
    scrutinize, never instructions to deploy capital. Verdicts are evidence-quality judgments.
 10. **Vet ONE EA at a time, end to end.** Never batch. Each EA is an atomic transaction —
@@ -269,14 +306,30 @@ claude -p "Run today's vetting pass" --max-turns 50 2>&1 | tee /var/log/gauntlet
    local files.
 3. Determine today's date from the environment; do not guess: `date +%Y-%m-%d`. Use as
    `YYYY-MM-DD` in all filenames this run.
-4. Load `vetting/master_index.jsonl` and `vetting/queue.jsonl`. If absent, create the directory
+4. **Check for an unresolved blocker.** If `vetting/NEEDS_ATTENTION.md` exists on `main`, a prior
+   run halted on a conflict/sync/validation failure (OPERATOR NOTIFICATION ON HALT). **Do not vet**
+   — surface its contents in today's report and stop, until the operator resolves and removes it.
+5. Load `vetting/master_index.jsonl` and `vetting/queue.jsonl`. If absent, create the directory
    structure and empty files; note "first run" in today's report.
-5. **RULEBOOK FRESHNESS CHECK** (FIRM RULEBOOKS). Refresh any rulebook past the staleness
+6. **Reset stale queue state.** Any row left in state `vetting` is the residue of an interrupted EA
+   (its partial work was never committed — see CHECKPOINTING). Reset each such row to `pending` so
+   it is re-vetted cleanly; note the reset in today's report. (Completed EAs are already
+   `completed` on `main`, so a lingering `vetting` always means an interruption, never real
+   progress.)
+7. **RULEBOOK FRESHNESS CHECK** (FIRM RULEBOOKS). Refresh any rulebook past the staleness
    threshold **before vetting any EA**, and build the bounded re-check set.
-6. Skim recent `vetting/daily/` reports to avoid repeating recent work.
-7. **Review the outcomes ledger** (OUTCOME TRACKING) — surface any past verdict contradicted by a
+8. Skim recent `vetting/daily/` reports to avoid repeating recent work.
+9. **Review the outcomes ledger** (OUTCOME TRACKING) — surface any past verdict contradicted by a
    realized result before forming new verdicts.
-8. Only then begin searching for EAs.
+10. Only then begin searching for EAs.
+
+> **OPERATOR NOTIFICATION ON HALT.** Whenever the agent hits a STOP-and-report condition (merge
+> conflict, sync/rebase failure, stash-pop conflict, validation failure that cannot be fixed, or a
+> sandbox forbidding `main`), in addition to preserving work on a recovery branch it **writes and
+> commits `vetting/NEEDS_ATTENTION.md`** (UTC, host, the failing step, the recovery-branch name, and
+> what the operator must do). This makes an unattended halt visible instead of silent, and step 4
+> above turns it into a hard gate on the next run. This is the one tolerated divergence from "halt
+> immediately": write the blocker, then stop. Remove the file only after the operator resolves it.
 
 ### RUN LOCK PROTECTION (concurrency safety)
 
@@ -303,20 +356,25 @@ The lock is a local, gitignored file — never committed.
 
 > **Multi-host guard (the local lock cannot protect two machines).** Because scheduled (cron) and
 > interactive/remote sessions can run on different hosts, the local lock is not sufficient alone.
-> Before vetting, also confirm no other host pushed recently:
+> **The committer email cannot distinguish two instances of this agent** — both hosts commit under
+> the same configured identity, so an email-equality check would never fire. Distinguish by **host**
+> instead: every commit carries a `Gauntlet-Host:` trailer (PER-EA EXECUTION & SAVE WORKFLOW), and
+> the guard compares that host to the local one:
 > ```bash
 > git fetch origin
-> # abort if origin/main received a commit from a DIFFERENT committer within the last 10 minutes
-> last_email=$(git log -1 --format='%ae' origin/main)
+> # abort if origin/main's last commit came from a DIFFERENT host within the last 10 minutes
+> last_host=$(git log -1 --format='%(trailers:key=Gauntlet-Host,valueonly)' origin/main)
 > last_epoch=$(git log -1 --format='%ct' origin/main)
-> now=$(date +%s); me=$(git config user.email)
-> if [ "$last_email" != "$me" ] && [ $((now - last_epoch)) -lt 600 ]; then
->   echo "Another host pushed <10m ago ($last_email); aborting to avoid a concurrent run."; exit 1
+> now=$(date +%s); me_host=$(hostname)
+> if [ -n "$last_host" ] && [ "$last_host" != "$me_host" ] && [ $((now - last_epoch)) -lt 600 ]; then
+>   echo "Another host pushed <10m ago ($last_host); aborting to avoid a concurrent run."; exit 1
 > fi
 > ```
-> Operationally: do not run interactive sessions while a scheduled run is firing. For strict
-> multi-host safety, promote the lock to a committed `ops/active.lock` on a dedicated `ops`
-> branch carrying host + UTC start + heartbeat (stale after 6h); never put it on `main`.
+> This heuristic is still best-effort (it only sees the *last* commit and a 10-minute window).
+> **For strict multi-host safety the committed lock is REQUIRED, not optional:** promote the lock to
+> a committed `ops/active.lock` on a dedicated `ops` branch carrying host + UTC start + heartbeat
+> (stale after 6h), and acquire/refuse on it before vetting; never put it on `main`. Operationally,
+> do not run interactive sessions while a scheduled run is firing.
 
 ### START-OF-RUN GIT PROCEDURE (MANDATORY)
 
@@ -670,6 +728,13 @@ On a version bump, do **not** re-check the whole database in one run:
   at **N = 10** per run (high-stakes, small set).
 - **Queue** all affected **Avoid** EAs for lazy re-check (already negative; non-urgent).
 - Record the outstanding re-check backlog in the daily report so it is never lost.
+- **Drain before discovery (the cap must not become a leak).** The N = 10 cap bounds work *per
+  run*, but the backlog must shrink over time. If a **Deployable/Watchlist** re-check backlog
+  exists at START-OF-RUN, spend the re-check budget on **draining it first**, before discovering
+  any new EAs — a stale-rulebook verdict on a tracked EA is worse than vetting one fewer new
+  candidate. If the Deployable/Watchlist backlog has been non-empty for **3 consecutive runs**,
+  **raise the cap** for those runs (e.g. N = 25) and pause new-EA discovery until it clears. A
+  Deployable/Watchlist EA must never carry a rulebook version more than **one bump** behind.
 
 ---
 
@@ -684,9 +749,19 @@ Matrix. Evidence tiers describe **what the public source can support**, not what
   public evidence; do not pretend you privately authenticated the account.
 - **Tier 1 — Independently verified live (real money):** Myfxbook/FXBlue verified, **real-money,
   public trade history, AND ≥6 months.** State real vs demo explicitly.
-- **Tier 2 — Verified but caveated:** verified yet demo-only, **<6 months**, low-deposit, hidden
-  trade history, small sample, or showing curve-fit to a specific period. *The Tier 2 caveats demote
-  an otherwise-Tier-1 record:* a real-money but <6-month or low-deposit account is Tier 2, not Tier 1.
+- **Tier 2 — Verified but caveated.** Split by whether a **real-money, publicly inspectable
+  trade-level record** underlies the headline claim, because the two sub-tiers differ in what they
+  can support (ROR-estimability and trackability), even though **both use the Tier-2 evidence
+  multiplier**:
+  - **Tier 2A — real-money but caveated:** a verified Myfxbook/FXBlue **real-money** account with
+    **public, trade-by-trade history** that is demoted from Tier 1 **only** by track length
+    (**<6 months**), **low deposit**, or **small sample**. The trades are real and inspectable; the
+    record is simply short/small. *The Tier 2A caveats demote an otherwise-Tier-1 record:* a
+    real-money but <6-month or low-deposit account is Tier 2A, not Tier 1.
+  - **Tier 2B — weakly verified:** verified yet **demo-only**, **hidden/private trade history**, or
+    showing **curve-fit to a specific period** — i.e. no inspectable real-money trade-level basis.
+    Demo fills, hidden histories, and single-period curve-fits cannot be trusted to behave like a
+    real account, so Tier 2B is treated as the weak end of the band.
 - **Tier 3 — Vendor-reported / unverifiable:** screenshots, vendor-hosted equity curves, videos,
   MQL5 signal stats without independent verification, or backtests only.
 - **Tier 4 — Marketing claim with no inspectable public basis** (and any prop-success claim lacking
@@ -705,9 +780,13 @@ Matrix. Evidence tiers describe **what the public source can support**, not what
 
 Each scored dimension uses the tier of the evidence substantiating **that dimension's specific
 claim**. The **EA-level tier** (`best_tier`) is the tier of the evidence **jointly substantiating
-the headline return-AND-drawdown pair over a ≥6-month window** — *not* the single best figure.
-One cherry-picked verified micro-account does **not** raise `best_tier` if the headline metrics it
-is used to support rest on weaker sources. This closes the cherry-pick loophole.
+the headline return-AND-drawdown pair** — *not* the single best figure — applying the EVIDENCE
+STANDARD tier rules to that pair. The **≥6-month window is a requirement for Tier 1**; a real-money
+pair that is verified and inspectable but shorter (or low-deposit / small-sample) is **Tier 2A**,
+and a demo/hidden/curve-fit pair is **Tier 2B**. One cherry-picked verified micro-account does
+**not** raise `best_tier` if the headline metrics it is used to support rest on weaker sources —
+this closes the cherry-pick loophole. Record the Tier-2 sub-tier (`TIER2A` real-money-inspectable
+vs `TIER2B` demo/hidden/curve-fit); the verdict logic and ROR-estimability key off this distinction.
 
 ### Backtest scrutiny
 
@@ -766,7 +845,7 @@ signals are strong enough. Record the signals and confidence.
 ### Gate B — Mechanism transparency ceiling
 
 If the EA's mechanism is **not publicly verifiable** (closed source, no public logic description, no
-credible third-party teardown, no settings/risk-control evidence, and no clear mechanism inference)
+credible third-party teardown, and no clear mechanism inference)
 — not excluded, but constrained, because a black box may conceal a banned mode or unknown risk
 behavior:
 - **Prop-Firm Compliance score ceiling = 5/10.**
@@ -775,6 +854,14 @@ behavior:
 - Record `mechanism_confidence` as `Low` or `Unknown` and "mechanism unverifiable" as a standing red
   flag. Actively hunt the mechanism (WEB RESEARCH PROTOCOL §B and §E — MQL5 comments, settings
   manuals, ForexFactory teardowns) before accepting it as merely unknown.
+
+> **Gate B is about the *mechanism*, not the controls.** A black box may still carry
+> vendor-documented risk controls (e.g. a stated hard stop). Such an EA still triggers Gate B
+> (its mechanism is opaque, so the ceilings above apply), but it is **not** auto-Avoided by Avoid
+> criterion 3 — which fires only on a black box that *also* lacks any documented controls. This is
+> what makes the Watchlist ceiling reachable: a documented-control black box can sit at Watchlist
+> (constrained), while a no-controls black box is Avoided. (Either way it fails Deployable gate 1,
+> which bars an un-inferable black box — so Gate B's Watchlist ceiling is the true cap.)
 
 ### Gate C — Per-firm legality
 
@@ -827,23 +914,37 @@ EAs surviving Gates A–C proceed to profiling and scoring. Surviving is **not**
 
 ## RISK-OF-RUIN & LIMIT-VIOLATION ANALYSIS (mandatory)
 
-Default to `NON-ESTIMABLE` for web-researched EAs. ROR is estimable only from **public Tier 0/1
-trade-level history** (for example, a verified Myfxbook/FXBlue page exposing trade-by-trade data, or
-public funded-account trade history). Vendor claims, screenshots, MQL5 summaries, videos, and
-backtests are not enough.
+Default to `NON-ESTIMABLE` for web-researched EAs. ROR is estimable **only from real-money,
+publicly inspectable, trade-level history** — Tier 0, Tier 1, **or Tier 2A** (a verified real-money
+Myfxbook/FXBlue page exposing trade-by-trade data, or public funded-account trade history). What
+makes ROR estimable is a **real per-trade return distribution you can resample**, not the deposit
+size or track length — so a short or small-deposit **real-money** record (Tier 2A) is estimable,
+just at **lower confidence**. Demo-only or hidden histories (Tier 2B), vendor claims, screenshots,
+MQL5 summaries, videos, and backtests are **not** estimable — they have no trustworthy real-money
+trade distribution.
 
-When public Tier 0/1 trade-level history is available, estimate:
+**Tag every ROR estimate with a confidence grade tied to its evidence tier:**
+- **Tier 0/1 → `ROR-High`:** long real-money trade-level history; the estimate carries normal weight.
+- **Tier 2A → `ROR-Low`:** real-money but short (<6 months), low-deposit, or small-sample. The
+  estimate is **directional only** — explicitly flag the dominant caveats (short sample → wide
+  confidence interval; possible **autocorrelation** in a brief window; **deposit-scaling**
+  assumptions when restating risk-per-trade for 50k/100k/200k). A `ROR-Low` estimate informs the
+  **score** but **does not satisfy Deployable gate 7**, which still requires Tier 0/1 history.
+
+When real-money Tier 0/1/2A trade-level history is available, estimate:
 
 - **P(violating daily DD)** per phase, against the **tightest primary** firm's daily-DD rule, using its
   actual calculation (equity vs balance, trailing vs static).
 - **P(violating max overall DD).**
 - **Risk of ruin** over **30 / 90 / 365 trading days.**
 
-State assumptions: (1) the per-trade/daily distribution and whether it came from **Tier 0/1
-trade-level public history** or is unavailable → `NON-ESTIMABLE`; (2) win rate, avg win/loss, trade
-frequency; (3) **independent vs autocorrelated** returns (lumpy curves raise true ROR — flag it);
-(4) risk-per-trade tied to the 50k/100k/200k settings; (5) whether tail/shock regimes were included;
-(6) the **method** (closed-form ROR vs Monte Carlo over resampled trades) and sample size.
+State assumptions: (1) the per-trade/daily distribution and whether it came from **real-money
+Tier 0/1/2A trade-level public history** (and its `ROR-High`/`ROR-Low` grade) or is unavailable →
+`NON-ESTIMABLE`; (2) win rate, avg win/loss, trade frequency; (3) **independent vs autocorrelated**
+returns (lumpy curves raise true ROR — flag it; short Tier-2A windows are especially exposed to
+this); (4) risk-per-trade tied to the 50k/100k/200k settings; (5) whether tail/shock regimes were
+included (a short Tier-2A window usually has **not** seen a shock — say so); (6) the **method**
+(closed-form ROR vs Monte Carlo over resampled trades) and sample size.
 
 **Metric-definition reconciliation (mandatory whenever a DD figure is used).** A drawdown value shown
 by Myfxbook/FXBlue/MQL5 uses that host's own method and is rarely the same quantity as a firm's
@@ -852,8 +953,11 @@ DD figure directly to a firm limit: restate it under the firm's definition where
 record a `DD-definition mismatch` caveat and treat the comparison as indicative only.
 
 `NON-ESTIMABLE` is a **negative finding for Survival** (it caps the Survival multiplier to
-`min(A, 0.20)` — see SCORING) and **bars a Deployable verdict.** Never manufacture a distribution from a single headline
-return, max drawdown, backtest, screenshot, or vendor statement.
+`min(A, 0.20)` — see SCORING) and **bars a Deployable verdict.** An **estimable** ROR — including a
+`ROR-Low` estimate from Tier 2A real-money history — does **not** trigger that cap; Survival then
+uses the ordinary tier multiplier (which already discounts Tier 2A heavily), and the `ROR-Low`
+caveats are carried into the verdict's binding criterion. Never manufacture a distribution from a
+single headline return, max drawdown, backtest, screenshot, or vendor statement.
 
 ---
 
@@ -891,7 +995,10 @@ show enough arithmetic for a human to reproduce the adjusted dimension scores an
    - Survival and Challenge-Passing use Multiplier A.
    - Profitability, Consistency, and Transparency use Multiplier B.
    - Compliance and Risk are mechanism-based and are not multiplied.
-   - If ROR is `NON-ESTIMABLE`, Survival uses `min(Multiplier A, 0.20)`.
+   - If ROR is `NON-ESTIMABLE`, Survival uses `min(Multiplier A, 0.20)`. An **estimable** ROR —
+     including a `ROR-Low` estimate from Tier 2A real-money history — does **not** trigger this cap;
+     Survival then uses the ordinary Multiplier A for its tier. (Tier 2A and Tier 2B both take the
+     **Tier-2** multiplier row; they differ only in ROR-estimability and the verdict logic.)
    - If the mechanism is unverifiable, Compliance is capped at 5 and Risk is capped at 4.
    - **Risk control-evidence ceiling.** The Risk score reflects how well hard controls (equity stop,
      daily-loss stop, max-position) are *established*, not merely claimed: independently demonstrated
@@ -944,7 +1051,9 @@ Multiplier A — Challenge-Passing, Funded-Account Survival
 Multiplier B — Profitability, Consistency, Transparency
   Tier 0: 1.00   Tier 1: 0.95   Tier 2: 0.60   Tier 3: 0.30   Tier 4: 0.15
 
+Tier 2A and Tier 2B BOTH use the Tier-2 multiplier row (0.45 / 0.60).
 ROR cap: if ROR is NON-ESTIMABLE, Survival multiplier becomes min(A, 0.20).
+  An ESTIMABLE ROR (incl. ROR-Low from Tier 2A real-money history) does NOT cap Survival.
 Gate-B ceilings: mechanism-unverifiable Compliance ≤ 5, Risk ≤ 4.
 ```
 
@@ -977,7 +1086,8 @@ Overall and still be **Avoid**. Because Claude is operating from public web rese
 1. Mechanism established as non-banned from **public** evidence — published/open logic, public
    settings/risk documentation, or a credible **independent** third-party teardown (not merely the
    vendor's own broad description, and not an un-inferable black box).
-2. `best_tier` is **Tier 1 or better** for the headline return+DD pair.
+2. `best_tier` is **Tier 1 or better** for the headline return+DD pair. (Tier 2A and Tier 2B do
+   **not** satisfy this gate — Deployable requires a full ≥6-month real-money verified record.)
 3. **≥6 months** verified live (real-money) history.
 4. **Verified equity max DD ≤ 60% of the tightest primary firm's max-overall-DD limit** (restated
    under that firm's own DD definition), over a ≥6-month track (e.g. ≤6% against a 10% firm
@@ -985,7 +1095,9 @@ Overall and still be **Avoid**. Because Claude is operating from public web rese
 5. Compatible with **current, confirmed** rules at ≥1 **primary** target firm — not dependent on `UNCONFIRMED`
    rules; not Prohibited at that firm.
 6. Demonstrated consistency **across multiple market regimes.**
-7. **Estimable and acceptably low** risk-of-ruin from public Tier 0/1 trade-level history.
+7. **Estimable and acceptably low** risk-of-ruin from public **Tier 0/1** trade-level history. (A
+   `ROR-Low` estimate from Tier 2A real-money history informs the score but does **not** clear this
+   gate — Deployable requires `ROR-High` from Tier 0/1.)
 8. **Funded-account evidence present** (Tier 0, or operator-confirmed funded statements).
 
 ### Verdict assignment (exactly one)
@@ -996,8 +1108,18 @@ EXCLUDED      — failed Gate A (banned/optional-banned core mechanism). Never s
 AVOID         — any of:
                 • Prohibited at all primary firms (Gate C), OR
                 • headline return+DD evidence is Tier 3 or Tier 4 (no independent verification), OR
-                • mechanism unverifiable (Gate B) AND no publicly documented risk controls, OR
-                • ROR NON-ESTIMABLE AND best_tier ≤ Tier 2.
+                • mechanism unverifiable (Gate B) AND **no** publicly documented risk controls
+                  (a documented-control black box is constrained to Watchlist, not Avoided), OR
+                • ROR NON-ESTIMABLE AND best_tier is Tier 2B, Tier 3, or Tier 4
+                  (demo-only, hidden-history, curve-fit, or unverifiable — no inspectable
+                  real-money trade-level basis).
+
+                NOTE: a real-money, publicly inspectable but caveated record (Tier 2A — short
+                <6-month track, low deposit, or small sample) is NOT auto-Avoided here. Its ROR is
+                estimable at ROR-Low confidence (RISK-OF-RUIN section), so this criterion does not
+                fire on tier alone; such an EA, if it also clears Gate C and is not a black box,
+                lands on WATCHLIST as a candidate for further evidence-gathering. (Tier 2A still
+                cannot reach Deployable: it fails gates 2, 3, and 7.)
 
 DEPLOYABLE    — Deployable quality gates 1–8 ALL met.
 
@@ -1005,6 +1127,10 @@ WATCHLIST     — the residual: clears enough to track but fails at least one De
                 If the ONLY failing gate is #8 (funded-account evidence), set
                 binding_criterion = "lacks funded-account evidence only — candidate for operator
                 evidence-gathering" (the operator's cue to go obtain funded statements).
+                If the EA rests on Tier 2A (real-money but caveated) evidence, set
+                binding_criterion = "real-money but caveated (<6-month / low-deposit / small-sample)
+                — needs a ≥6-month real-money track (and DD headroom) to advance" and record the
+                ROR-Low caveats. This is the home of promising-but-unproven EAs worth chasing.
 ```
 
 > **Autonomous ceiling = Watchlist.** Gate 8 (funded-account evidence) is essentially unobtainable
@@ -1021,12 +1147,15 @@ qualifies, say so plainly; "everything is Watchlist or Avoid" is a valid, honest
 
 ## DUPLICATE DETECTION
 
-Fingerprint in the index: `vendor | core mechanism | instruments | strategy-type`. Vendors rebrand;
-the same mechanism recurs under many names — fingerprint on the **mechanism**, not the brand.
-- Substantial match → update the existing file as a rebrand/variant; append to discovery history;
-  no duplicate.
+Fingerprint in the index: `core-mechanism | strategy-type | instruments | vendor`. **Mechanism
+leads; vendor is the trailing, lowest-weight field** — because vendors rebrand and the same
+mechanism recurs under many names, so identity must key on *what the EA does*, not who sells it.
+- **Substantial match** (same mechanism + strategy-type + instruments) → a rebrand/variant, **even
+  if the vendor differs** → update the existing file as a rebrand; append to discovery history;
+  no duplicate. A changed vendor name with everything else matching is the *canonical* rebrand
+  signal, not a reason to treat it as novel.
 - Partial match → cross-link under "Similar EAs."
-- Novel → new file + new index row.
+- Novel (mechanism itself not seen before) → new file + new index row.
 
 ---
 
@@ -1053,24 +1182,31 @@ vetting/
 ### `master_index.jsonl` — one JSON object per line
 
 ```json
-{"slug":"example-ea","ea_name":"Example EA","vendor":"Acme","fingerprint":"Acme|trend-pullback|XAUUSD,EURUSD|trend","best_tier":"TIER3","overall":4.0,"verdict":"Avoid","binding_criterion":"headline evidence Tier 3 (no independent verification)","firm_verdicts":{"fundednext":{"verdict":"Conditional","rulebook_version":"v2"},"funding-pips":{"verdict":"Permitted","rulebook_version":"v3"},"the-5ers":{"verdict":"Permitted","rulebook_version":"v1"},"the-funded-trader":{"verdict":"Permitted","rulebook_version":"v1"},"alpha-capital":{"verdict":"Prohibited","rulebook_version":"v1","tier":"reference","reason":"source-code submission required"},"goat-funded-trader":{"verdict":"Prohibited","rulebook_version":"v1","tier":"reference","reason":"commercial challenge EAs banned"}},"ror_status":"NON_ESTIMABLE","ror_evidence_tier":"TIER4","funded_evidence":false,"mechanism_confidence":"Low","source_count":8,"independent_source_count":2,"affiliate_source_count":3,"evidence_summary":"vendor claims only for performance; independent comments report grid-like recovery","updated":"2026-06-17"}
+{"slug":"example-ea","ea_name":"Example EA","vendor":"Acme","fingerprint":"trend-pullback|trend|XAUUSD,EURUSD|Acme","best_tier":"TIER3","overall":4.0,"verdict":"Avoid","binding_criterion":"headline evidence Tier 3 (no independent verification)","firm_verdicts":{"fundednext":{"verdict":"Conditional","rulebook_version":"v2"},"funding-pips":{"verdict":"Permitted","rulebook_version":"v3"},"the-5ers":{"verdict":"Permitted","rulebook_version":"v1"},"the-funded-trader":{"verdict":"Permitted","rulebook_version":"v1"},"alpha-capital":{"verdict":"Prohibited","rulebook_version":"v1","tier":"reference","reason":"source-code submission required"},"goat-funded-trader":{"verdict":"Prohibited","rulebook_version":"v1","tier":"reference","reason":"commercial challenge EAs banned"}},"ror_status":"NON_ESTIMABLE","ror_evidence_tier":"TIER4","funded_evidence":false,"mechanism_confidence":"Low","source_count":8,"independent_source_count":2,"affiliate_source_count":3,"evidence_summary":"vendor claims only for performance; independent comments report grid-like recovery","updated":"2026-06-17"}
 ```
 
 Append-friendly, diff-friendly, machine-parseable. `verdict ∈ {Deployable, Watchlist, Avoid,
-Excluded}`; `best_tier ∈ {TIER0..TIER4}`; `ror_status ∈ {ESTIMABLE, NON_ESTIMABLE}`; firm
+Excluded}`; `best_tier ∈ {TIER0, TIER1, TIER2A, TIER2B, TIER3, TIER4}` (TIER2A = real-money but
+caveated; TIER2B = demo/hidden/curve-fit; both use the Tier-2 multiplier); `ror_status ∈
+{ESTIMABLE, NON_ESTIMABLE}`; when `ESTIMABLE`, also record `ror_confidence ∈ {High, Low}` (High =
+Tier 0/1; Low = Tier 2A); firm
 verdicts ∈ {Permitted, Prohibited, Conditional} (reference-firm entries also carry
 `"tier":"reference"` and never gate); `mechanism_confidence ∈ {High, Medium, Low,
-Unknown}`. Surface only the adjusted `overall` — never the latent score. **Recommended:** also
+Unknown}`. Surface only the adjusted `overall` — never the latent score. **Required:** also
 record the seven adjusted dimension scores as
-`"dimensions":{"survival":..,"compliance":..,"risk":..,"challenge":..,"consistency":..,"transparency":..,"profitability":..}` — when present, the manual validation checklist recomputes the weighted
-Overall manually and aborts the commit if the stated Overall disagrees.
+`"dimensions":{"survival":..,"compliance":..,"risk":..,"challenge":..,"consistency":..,"transparency":..,"profitability":..}` — the manual validation checklist recomputes the weighted
+Overall from them and aborts the commit if the stated Overall disagrees. Because Overall is
+deterministic (a weighted sum of integer dimensions), this recompute is an **exact** check, not an
+approximation — omitting `dimensions` leaves the Overall unverifiable and is itself a checklist failure.
 
 The public-evidence summary fields `source_count`, `independent_source_count`,
 `affiliate_source_count`, `evidence_summary`, and `mechanism_confidence` are **required** — the
-manual validation checklist enforces them. `ror_evidence_tier` is required **whenever `ror_status`
-is `ESTIMABLE`** (it records the Tier 0/1 history the estimate rests on, and lets the checklist
-catch unsupported `ESTIMABLE` claims); it may be omitted only when ROR is `NON_ESTIMABLE`.
-`dimensions` stays optional but, when present, is recomputed by the checklist.
+manual validation checklist enforces them. `ror_evidence_tier` and `ror_confidence` are required
+**whenever `ror_status` is `ESTIMABLE`**: `ror_evidence_tier ∈ {TIER0, TIER1, TIER2A}` records the
+real-money trade-level history the estimate rests on, and `ror_confidence` is `High` for Tier 0/1
+or `Low` for Tier 2A — letting the checklist catch unsupported `ESTIMABLE` claims (e.g. an
+`ESTIMABLE` resting on Tier 2B/3/4 is a contradiction). Both may be omitted only when ROR is
+`NON_ESTIMABLE`. `dimensions` is **required** and is always recomputed by the checklist (exact match).
 
 ### `queue.jsonl` — one JSON object per line
 
@@ -1161,7 +1297,7 @@ Re-checked this run (≤10 Deployable/Watchlist) · queued for lazy re-check (Av
 | Track Length | | | |
 | Real vs Demo | | | |
 ## Backtest Assessment           (public claim only: real tick data? costs modeled? multi-regime? OOS/walk-forward? or near-worthless)
-## Risk-of-Ruin Analysis         (daily-DD viol prob · max-DD viol prob · ROR 30/90/365 · method · assumptions · ESTIMABLE only from Tier 0/1 public trade history, else NON-ESTIMABLE)
+## Risk-of-Ruin Analysis         (daily-DD viol prob · max-DD viol prob · ROR 30/90/365 · method · assumptions · ESTIMABLE from real-money Tier 0/1/2A trade history with High/Low confidence, else NON-ESTIMABLE)
 ## Recommended Risk Settings     (50k / 100k / 200k — only if public data supports sizing; otherwise non-actionable)
 ## Cost & Licensing
 ## Community Sentiment           (independent only; the criticism, with links; affiliate sources flagged)
@@ -1222,17 +1358,19 @@ For every non-excluded EA row, confirm:
 
 - Required fields exist: `slug`, `ea_name`, `vendor`, `fingerprint`, `best_tier`, `overall`,
   `verdict`, `binding_criterion`, `firm_verdicts`, `ror_status`, `funded_evidence`,
-  `mechanism_confidence`, source counts, `evidence_summary`, and `updated`.
-- `best_tier ∈ {TIER0, TIER1, TIER2, TIER3, TIER4}`.
+  `mechanism_confidence`, source counts, `evidence_summary`, `dimensions`, and `updated`.
+- `best_tier ∈ {TIER0, TIER1, TIER2A, TIER2B, TIER3, TIER4}`.
 - `verdict ∈ {Deployable, Watchlist, Avoid, Excluded}`.
 - `ror_status ∈ {ESTIMABLE, NON_ESTIMABLE}`.
-- If `ror_status` is `ESTIMABLE`, `ror_evidence_tier` is present and ∈ {`TIER0`, `TIER1`} (ROR is
-  estimable only from Tier 0/1 public trade-level history; an `ESTIMABLE` claim resting on a weaker
-  tier is a contradiction and aborts the commit).
+- If `ror_status` is `ESTIMABLE`, `ror_evidence_tier` and `ror_confidence` are present, with
+  `ror_evidence_tier ∈ {TIER0, TIER1, TIER2A}` and `ror_confidence` = `High` for Tier 0/1 or `Low`
+  for Tier 2A (ROR is estimable only from real-money trade-level history; an `ESTIMABLE` claim
+  resting on Tier 2B/3/4 is a contradiction and aborts the commit).
 - `mechanism_confidence ∈ {High, Medium, Low, Unknown}`.
 - Source counts are non-negative integers.
-- If `dimensions` are present, all seven adjusted dimensions exist and manually recompute to the
-  stated Overall within 0.1 after half-up one-decimal rounding.
+- `dimensions` is present with all seven adjusted scores, and the weighted sum recomputes to the
+  stated Overall **exactly** (Overall lands on a 0.05 grid, so after half-up one-decimal rounding
+  the recompute must equal the stated value — any difference is an arithmetic error and aborts).
 
 ### Rulebooks and firm verdicts
 
@@ -1260,8 +1398,11 @@ For every non-excluded EA row, confirm:
 ### Verdict and ranking requirements
 
 - `Deployable` requires all Deployable quality gates, `funded_evidence:true`, `best_tier` TIER0 or
-  TIER1, and `ror_status:ESTIMABLE` from Tier 0/1 public trade-level or operator evidence.
+  TIER1, and `ror_status:ESTIMABLE` with `ror_confidence:High` from Tier 0/1 public trade-level or
+  operator evidence. (Tier 2A / `ror_confidence:Low` never clears Deployable.)
 - `NON_ESTIMABLE` ROR bars Deployable.
+- A `Watchlist` EA may rest on Tier 2A real-money evidence with `ror_confidence:Low`; its
+  `binding_criterion` names the caveat blocking Deployable (e.g. sub-6-month track, low deposit).
 - `Avoid` with Overall ≥6.0 has been rechecked and either rescored or documented as a hard-gate
   Avoid.
 - Rankings include only `Deployable` and `Watchlist` EAs, referenced as `[[slug]]`, and sorted by
@@ -1375,7 +1516,8 @@ an atomic transaction:
 4. Build the **profile from fetched public pages only**; complete the Evidence Matrix, Source
    Reliability Assessment, Mechanism Inference Confidence, Unverified Claims, evidence tiers, and
    `best_tier` per the EA-level rule.
-5. Run the **risk-of-ruin** analysis, defaulting to `NON-ESTIMABLE` unless public Tier 0/1
+5. Run the **risk-of-ruin** analysis, defaulting to `NON-ESTIMABLE` unless public **real-money**
+   Tier 0/1/2A
    trade-level history supports estimation.
 6. **Steelman the skeptic** — write `## Why This Will Probably Fail` *before* scoring.
 7. **Score** — latent public-evidence assessment × multiplier / Gate ceilings → adjusted dimensions
@@ -1398,7 +1540,7 @@ markdown links resolve and cross-references are intact.
 
 ```bash
 git add vetting/
-git commit -m "vet: <ea-name> — <verdict>"
+git commit -m "vet: <ea-name> — <verdict>" --trailer "Gauntlet-Host:$(hostname)"
 ```
 
 
@@ -1475,12 +1617,12 @@ Always complete and persist the current EA before stopping. Never stop mid-EA.
 - [ ] At least one negative-case search ran for every EA (`scam`, `blown account`, `refund`, `losing`, or equivalent) and the result was recorded.
 - [ ] Affiliate/vendor/independent status is flagged for every source used.
 - [ ] Every surviving EA has `## Why This Will Probably Fail` before its scores.
-- [ ] Every EA records a ROR result (estimate only from Tier 0/1 public trade-level history, else `NON-ESTIMABLE`).
+- [ ] Every EA records a ROR result (estimate only from real-money Tier 0/1/2A trade-level history with a High/Low confidence grade, else `NON-ESTIMABLE`).
 - [ ] Every per-firm verdict records the rulebook version judged against.
 - [ ] Scores recorded as `latent × multiplier (or ceiling) = adjusted`; only adjusted Overall surfaced.
 - [ ] `master_index.jsonl` and `queue.jsonl` updated and valid JSONL.
 - [ ] No Deployable verdict without funded evidence; no Deployable with NON-ESTIMABLE ROR.
-- [ ] No Avoid EA with Overall ≥ 6.0 (contradiction guard).
+- [ ] No Avoid EA with Overall ≥ 6.0 **unless** rechecked and documented as a hard-gate Avoid (contradiction guard; matches the Index-row rule — a hard-gate Avoid may legitimately carry a high Overall).
 - [ ] Rankings reference only `Deployable`/`Watchlist` EAs via `[[slug]]`, sorted within buckets.
 - [ ] Source URLs preserved with retrieval date + affiliate flag.
 - [ ] Every completed EA pushed and auto-merged to `main`, each verified by slug on `origin/main`.
