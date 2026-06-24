@@ -1,4 +1,32 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # One Man Army (MT5)
+*17-pair reversal limit-scalper with a real but small, caveated 9-month real-money record — 🟡 Watchlist, pending an adequately-capitalized longer track and funded evidence.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | 🟡 **WATCHLIST** |
+| **Overall** | **3.1 / 10** · poor |
+| **Mechanism** | 17-pair M15 reversal/correction limit-scalper · confidence **Medium** · Gate B: **black box** (vendor-documented hard SL) |
+| **Evidence** | ◉ best_tier **T2A** · real-money · ~41 wk (~9.5 mo) · MQL5 live signal |
+| **Risk of ruin** | **ESTIMABLE — ROR-Low** · overall-DD breach **non-trivial** · daily-DD **possible/unquantified** |
+| **Legality** | FP ✅ · 5% ✅ · TFT ✅ · FN ⚠️ Conditional (provisional rulebook) |
+| **Verified perf** | +~4%/mo [T2A] · max DD **8.94%** [T2A] · ~41 wk real-money |
+| **Vendor** | Ihor Otkydach — identifiable & accountable |
+
+> **Bottom line — binding criterion:** real-money but caveated (Tier 2A) — a single small **$1,000**
+> vendor-hosted account whose **8.94% max DD leaves no headroom** versus prop limits; lacks an
+> adequately-capitalized **≥6-month independently-verified** record and any **funded-account evidence**.
+> Fails Deployable gates 2, 3, 4, 7, 8. A candidate to chase real evidence on — **not** a recommendation.
+
+> **Re-evaluation log — 2026-06-24:** re-scored under the v2.6 framework (current scoring engine =
+> v2.3 Tier-2A/ROR rules; v2.4–v2.6 changed structure/presentation only). **No change** to any
+> dimension, Overall (3.1), or the verdict — the original 2026-06-23 pass already applied these rules.
+> This revision only brings the *page* up to the v2.5/v2.6 output presentation standard.
+
+---
+## Profile
 
 ## Overview
 Multi-currency (17-pair) M15 reversal/correction **scalper using pending limit orders**, sold on the
@@ -7,19 +35,6 @@ non-grid, single-trade-per-pair, with a hard Stop Loss on every trade**. Disting
 the rest of the archive: the vendor runs a **public, real-money MQL5 live signal (~9 months / 41 weeks)**
 that is inspectable, making this the **first archived EA whose headline return+DD pair rests on a
 real-money trade-level record (Tier 2A)** rather than screenshots or vendor curves.
-
-## Vendor / Developer
-**Ihor Otkydach** (MQL5 seller profile `fibomen2`, listed Slovakia, MQL5 rating ~30,750 — a prolific,
-**identifiable and accountable** high-reputation seller). Runs a **stable of $999/month copy signals**
-(One Man Army M15, "Scalper Investor M15 Reverse", "Swing Master Incubator", "Double Shot") — i.e. a
-signal-selling operation, which raises a **survivorship concern** (many launched signals; only winners
-get marketed). Price **$599** one-time on MQL5 (group-buy/cracked copies circulate ~$239 — discovery
-noise, not evidence).
-
-## MT5 Compatibility & Dependencies
-MT5 only. 17 major FX pairs, M15. Min recommended deposit **$500**; live signal runs **1:500 leverage**
-on a small ($1,000) real account. Hedging-account behavior not documented as required (single trade per
-pair). No public VPS/broker constraint beyond standard.
 
 ## Strategy Mechanism
 Publicly **vendor-described** (not code-verified, no third-party teardown): scalps short/medium-term
@@ -39,6 +54,9 @@ correlated pairs.
 
 ## Recommended Instruments
 17 major FX pairs (EURCAD cited for testing). No XAUUSD/indices headline.
+
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
 
 ## Evidence Matrix
 
@@ -61,61 +79,24 @@ the strongest *positive* evidence in the archive to date.
 - All performance beyond the single $1,000 live signal (no second account, no funded statement, no
   independent Myfxbook). Risk-control behaviour under news/trend shock — **not observed** in the record.
 
-## Eligibility Gates
-- **Gate A — PASS (not excluded).** No banned core mechanism by claim or by the real equity signature
-  (contained DD, no cliff). 90% win rate is a watch-flag, not a martingale proof; SL-on-every-trade and
-  the bounded real DD argue against grid/martingale. Mechanism inference Medium.
-- **Gate B — TRIGGERED (black box).** Closed source, no independent teardown → ceilings apply:
-  **Compliance ≤ 5, Risk ≤ 4, verdict ≤ Watchlist.** NOT auto-Avoided (it carries a vendor-documented
-  hard SL → Avoid criterion 3 does not fire).
-- **Gate C — per-firm legality:** not prohibited at all primaries (see below).
-
-## Per-Firm Legality Verdict
-- **FundedNext — Conditional (v1, PROVISIONAL rulebook, primary 503 x5 runs).** EA-permissive; non-grid
-  SL scalper fine in principle, but legality rests on an unconfirmed/stale rulebook → cannot exceed
-  Conditional, cannot support Deployable.
-- **Funding Pips — Permitted (v1).** Mechanism (non-martingale/grid, low frequency ~14 trades/wk total →
-  not HFT/tick-scalping) is within policy.
-- **The 5%ers — Permitted (v1).** Same; mechanism clean.
-- **The Funded Trader — Permitted (v1).** Same.
-- **Reference (non-gating):** Alpha Capital **Prohibited** (closed-source commercial EA can't meet
-  source-code submission); Goat Funded Trader **Prohibited** (bans commercial challenge EAs).
-- **Standing compliance risk (not a prohibition):** a widely-sold commercial EA run identically by many
-  buyers can trip **shared-strategy / copy-trading / strategy-uniqueness** detection at several firms.
-
-## Rule-Violation Flags
-- **Drawdown headroom:** real max DD **8.94%** ≈ 89% of a 10% overall limit (MQL5 equity method; restate
-  caveat) — **fails Deployable gate 4** (needs ≤60% of the limit) and is the central survival risk.
-- **Daily-DD exposure:** 17 correlated reversal positions can cluster losses intraday → possible breach
-  of a ~5% daily-DD rule on a trend/news day (no intraday data to confirm — indicative).
-
-## Mechanical Rule-Respect
-Hard per-trade SL **vendor-documented** and consistent with the real DD curve; **not** independently
-demonstrated (no teardown), and **no** documented account-level daily-loss stop or max-position governor
-beyond "one per pair." → Risk control-evidence ceiling: **vendor-documented → Risk ≤ 5** (Gate B already
-caps Risk ≤ 4; lowest applies).
-
 ## Evidence & Performance
 
 | Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | ~4%/mo (43.03% over ~9 mo, real) | TIER2A | mql5.com/en/signals/2332504 |
-| Maximum Drawdown | 8.94% (equity, MQL5 method) | TIER2A | mql5.com/en/signals/2332504 |
-| Win Rate | 89.94% (567 trades) | TIER2A | mql5.com/en/signals/2332504 |
-| Profit Factor | 1.63 | TIER2A | mql5.com/en/signals/2332504 |
-| Track Length | ~41 weeks (since 2025-09-18) | TIER2A | mql5.com/en/signals/2332504 |
-| Real vs Demo | **Real** ($1,000 deposit, 1:500, CapitalPointTrading) | TIER2A | mql5.com/en/signals/2332504 |
-| Backtest "23,322%" | NOT CREDITED | TIER4 | affiliate |
-
-## Backtest Assessment
-Vendor/affiliate "23,322% 2018–2025" is a **near-worthless curve-fit headline** (no stated real-tick/cost
-modelling, no OOS/walk-forward visible, magnitude implausible). The **only** evidence credited is the live
-signal.
+|--------|-------|:----:|--------|
+| Average Monthly Return | ~4%/mo (43.03% over ~9 mo, real) | [T2A] | mql5.com/en/signals/2332504 |
+| Maximum Drawdown | 8.94% (equity, MQL5 method) | [T2A] | mql5.com/en/signals/2332504 |
+| Win Rate | 89.94% (567 trades) | [T2A] | mql5.com/en/signals/2332504 |
+| Profit Factor | 1.63 | [T2A] | mql5.com/en/signals/2332504 |
+| Track Length | ~41 weeks (since 2025-09-18) | [T2A] | mql5.com/en/signals/2332504 |
+| Real vs Demo | **Real** ($1,000 deposit, 1:500, CapitalPointTrading) | [T2A] | mql5.com/en/signals/2332504 |
+| Backtest "23,322%" | NOT CREDITED | [T4] | affiliate |
 
 ## Risk-of-Ruin Analysis
 **ESTIMABLE — ROR-Low** (rests on Tier 2A real-money trade-level history; directional only).
 - **Method:** directional read of the live account's realized distribution (567 real trades, win 89.94%,
-  PF 1.63, max equity DD 8.94%); no Monte-Carlo resample performed beyond order-of-magnitude reasoning.
+  PF 1.63, max equity DD 8.94%); closed-form reasoning on published **aggregates** — the per-trade list is
+  MQL5-login-gated, so no Monte-Carlo resample of actual trades was performed (this widens the interval and
+  is itself a reason the estimate stays ROR-Low, never ROR-High).
 - **P(violating overall DD, ~10%):** **meaningful / non-trivial.** Historical max DD 8.94% already sits at
   ~89% of a 10% static limit over a *calm* 9-month window; historical max understates future, and no shock
   regime was observed → over a multi-month funded period a 10% trailing/overall breach is a real risk.
@@ -129,19 +110,56 @@ signal.
   **DD-definition mismatch** — MQL5 equity DD ≠ any firm's daily/overall rule; (4) **no shock observed** in
   the window. → `ror_confidence: Low`; does **not** satisfy Deployable gate 7 (needs Tier 0/1 ROR-High).
 
-## Recommended Risk Settings (50k / 100k / 200k)
-**Non-actionable from public data for a funded account.** The only sizing reference is a $1,000/1:500
-account; restating per-trade risk to firm leverage and DD rules is an assumption, not a measurement.
-Any deployment would need to cut size hard to keep worst-case clustered DD well under the firm's daily
-and overall limits — and even then the 8.94% historical DD leaves too little headroom.
+## Backtest Assessment
+Vendor/affiliate "23,322% 2018–2025" is a **near-worthless curve-fit headline** (no stated real-tick/cost
+modelling, no OOS/walk-forward visible, magnitude implausible). The **only** evidence credited is the live
+signal.
 
-## Cost & Licensing
-$599 one-time (MQL5); copy-signal $999/mo. Group-buy/cracked copies (~$239) are discovery noise only.
+---
+## Eligibility & compliance
+
+## Eligibility Gates
+- **Gate A — PASS (not excluded).** No banned core mechanism by claim or by the real equity signature
+  (contained DD, no cliff). 90% win rate is a watch-flag, not a martingale proof; SL-on-every-trade and
+  the bounded real DD argue against grid/martingale. Mechanism inference Medium.
+- **Gate B — TRIGGERED (black box).** Closed source, no independent teardown → ceilings apply:
+  **Compliance ≤ 5, Risk ≤ 4, verdict ≤ Watchlist.** NOT auto-Avoided (it carries a vendor-documented
+  hard SL → Avoid criterion 3 does not fire).
+- **Gate C — per-firm legality:** not prohibited at all primaries (see below).
+
+## Per-Firm Legality Verdict
+
+| Firm | Verdict | Rulebook | Reason |
+|------|:-------:|:--------:|--------|
+| FundedNext | ⚠️ Conditional | v1 (PROVISIONAL — primary 503 ×5 runs) | EA-permissive; non-grid SL scalper fine in principle, but legality rests on a stale/unconfirmed rulebook → cannot exceed Conditional, cannot support Deployable |
+| Funding Pips | ✅ Permitted | v1 | Non-martingale/grid, low frequency (~14 trades/wk total → not HFT/tick-scalping) is within policy |
+| The 5%ers | ✅ Permitted | v1 | Mechanism clean |
+| The Funded Trader | ✅ Permitted | v1 | Mechanism clean |
+| Alpha Capital *(ref)* | ⛔ Prohibited | v1 | Closed-source commercial EA can't meet source-code submission (non-gating) |
+| Goat Funded Trader *(ref)* | ⛔ Prohibited | v1 | Bans commercial challenge EAs (non-gating) |
+
+**Standing compliance risk (not a prohibition):** a widely-sold commercial EA run identically by many
+buyers can trip **shared-strategy / copy-trading / strategy-uniqueness** detection at several firms.
+
+## Rule-Violation Flags
+- **Drawdown headroom:** real max DD **8.94%** ≈ 89% of a 10% overall limit (MQL5 equity method; restate
+  caveat) — **fails Deployable gate 4** (needs ≤60% of the limit) and is the central survival risk.
+- **Daily-DD exposure:** 17 correlated reversal positions can cluster losses intraday → possible breach
+  of a ~5% daily-DD rule on a trend/news day (no intraday data to confirm — indicative).
+
+## Mechanical Rule-Respect
+Hard per-trade SL **vendor-documented** and consistent with the real DD curve; **not** independently
+demonstrated (no teardown), and **no** documented account-level daily-loss stop or max-position governor
+beyond "one per pair." → Risk control-evidence ceiling: **vendor-documented → Risk ≤ 5** (Gate B already
+caps Risk ≤ 4; lowest applies).
 
 ## Community Sentiment
 25 MQL5 reviews, 4.74/5 (vendor-platform, not independent community). Independent forum/Reddit discussion
 is thin; **negative-case search returned no blown-account/scam reports** (recorded as a no-hit). Affiliate
 "reviews" (cheaperforex, eafxstore, bestforexeas) are funnels — flagged, not credited.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** a genuine non-martingale reversal scalper whose **edge is fragile**
@@ -157,21 +175,25 @@ is thin; **negative-case search returned no blown-account/scam reports** (record
    (or funded-account) record with DD headroom — **does not exist publicly.**
 
 ## Scores
-latent × multiplier(/ceiling) = adjusted (best_tier **TIER2A** → Multiplier A 0.45, Multiplier B 0.60;
-ROR **ESTIMABLE/Low** → no 0.20 Survival cap; Gate B → Compliance ≤5, Risk ≤4):
-- **Funded-Survival:** latent 5 × 0.45 = 2.25 → **2**
-- **Prop-Firm Compliance:** latent 7 → min(7, Gate-B 5) = **5**
-- **Risk Management:** latent 5 → min(5, Gate-B 4, ctrl-evidence 5) = **4**
-- **Challenge-Passing:** latent 5 × 0.45 = 2.25 → **2**
-- **Consistency:** latent 5 × 0.60 = 3.0 → **3**
-- **Transparency:** latent 5 × 0.60 = 3.0 → **3**
-- **Profitability:** latent 5 × 0.60 = 3.0 → **3**
+*latent × multiplier (or ceiling) = adjusted. best_tier **TIER2A** → Multiplier A 0.45, Multiplier B 0.60;
+ROR **ESTIMABLE/Low** → no 0.20 Survival cap; Gate B → Compliance ≤ 5, Risk ≤ 4. Only the adjusted Overall
+is surfaced; latents shown for audit.*
 
-**Overall** = 0.30·2 + 0.20·5 + 0.15·4 + 0.15·2 + 0.10·3 + 0.05·3 + 0.05·3
-= 0.60 + 1.00 + 0.60 + 0.30 + 0.30 + 0.15 + 0.15 = **3.10 (poor band)**.
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 5 | ×0.45 (Tier 2; ROR-Low, no cap) | **2** | 0.60 |
+| Prop-Firm Compliance | 20% | 7 | Gate-B min(7, 5) | **5** | 1.00 |
+| Risk Management | 15% | 5 | min(Gate-B 4, ctrl-evidence 5) | **4** | 0.60 |
+| Challenge-Passing | 15% | 5 | ×0.45 | **2** | 0.30 |
+| Consistency | 10% | 5 | ×0.60 | **3** | 0.30 |
+| Transparency | 5% | 5 | ×0.60 | **3** | 0.15 |
+| Profitability | 5% | 5 | ×0.60 | **3** | 0.15 |
+| **Overall** | | | | | **3.1** |
+
+*Band: **poor** (<4.0). Overall = 0.30·2 + 0.20·5 + 0.15·4 + 0.15·2 + 0.10·3 + 0.05·3 + 0.05·3 = 3.10.*
 
 ## Deployment Verdict
-**WATCHLIST.** Binding criterion: **real-money but caveated (Tier 2A) — single small $1,000 vendor-hosted
+🟡 **WATCHLIST.** Binding criterion: **real-money but caveated (Tier 2A) — single small $1,000 vendor-hosted
 account; 8.94% max DD leaves insufficient headroom vs prop limits; lacks an adequately-capitalized
 ≥6-month independently-verified record and any funded-account evidence.** Fails Deployable gates 2, 3, 4,
 7, 8. ROR is estimable only at **ROR-Low**. This is the **first archive entry to clear the Tier-2A/Watchlist
@@ -188,6 +210,31 @@ from the archive's gold EAs (XAU Master, Mad Turtle, Gold Reaper).
 - Signal-selling operation with many $999/mo signals → survivorship-marketing risk.
 - Curve-fit "23,322%" backtest in affiliate marketing.
 - Closed source → Gate B; commercial EA → shared-strategy/copy-trade detection risk; Alpha/Goat barred.
+
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+**Ihor Otkydach** (MQL5 seller profile `fibomen2`, listed Slovakia, MQL5 rating ~30,750 — a prolific,
+**identifiable and accountable** high-reputation seller). Runs a **stable of $999/month copy signals**
+(One Man Army M15, "Scalper Investor M15 Reverse", "Swing Master Incubator", "Double Shot") — i.e. a
+signal-selling operation, which raises a **survivorship concern** (many launched signals; only winners
+get marketed). Price **$599** one-time on MQL5 (group-buy/cracked copies circulate ~$239 — discovery
+noise, not evidence).
+
+## MT5 Compatibility & Dependencies
+MT5 only. 17 major FX pairs, M15. Min recommended deposit **$500**; live signal runs **1:500 leverage**
+on a small ($1,000) real account. Hedging-account behavior not documented as required (single trade per
+pair). No public VPS/broker constraint beyond standard.
+
+## Recommended Risk Settings (50k / 100k / 200k)
+**Non-actionable from public data for a funded account.** The only sizing reference is a $1,000/1:500
+account; restating per-trade risk to firm leverage and DD rules is an assumption, not a measurement.
+Any deployment would need to cut size hard to keep worst-case clustered DD well under the firm's daily
+and overall limits — and even then the 8.94% historical DD leaves too little headroom.
+
+## Cost & Licensing
+$599 one-time (MQL5); copy-signal $999/mo. Group-buy/cracked copies (~$239) are discovery noise only.
 
 ## Source Links
 - https://www.mql5.com/en/market/product/152522 — 2026-06-23 — MQL5 vendor listing — affiliate(vendor)
@@ -206,8 +253,15 @@ from the archive's gold EAs (XAU Master, Mad Turtle, Gold Reaper).
   fragile high-win-rate edge are the survival risks. Net = **Watchlist** (first in archive), Overall 3.1.
 - **ASSUMPTIONS (flagged):** mechanism is as vendor-described (Medium confidence; unaudited); the calm
   9-month window has not yet sampled a shock; deposit-scaling to funded sizing is an assumption.
+- **Re-evaluation 2026-06-24 (v2.6 framework):** all seven dimensions, Overall (3.1), and the Watchlist
+  verdict re-confirmed unchanged — the 2026-06-23 pass already used the current (v2.3) scoring engine, and
+  v2.4–v2.6 introduced no scoring/gate change. Judgment-call note: Consistency and Profitability latents
+  sit at the 4–6/7–9 boundary; a more generous reading (latent 6 each) would lift Overall to ~3.2–3.3,
+  still poor band / Watchlist — held conservative per the skeptic's-bias mandate.
 
 ## Future Research Needed
 - Operator to inspect the **trade-by-trade** signal history (login) to confirm no order-stacking and to
   measure intraday/daily DD; obtain a **second, larger, longer** real-money or funded-account record with
   DD headroom (the only path off Watchlist). Watch the vendor's other signals for survivorship.
+
+</details>
