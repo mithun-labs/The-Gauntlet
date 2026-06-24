@@ -1,9 +1,9 @@
-[Rankings](rankings/) · [Latest pass](daily/2026-06-23.md) · [Rulebooks](rulebooks/)
+[Rankings](rankings/) · [Latest pass](daily/2026-06-24.md) · [Rulebooks](rulebooks/)
 
 # The Gauntlet — EA Vetting Index
 *Adversarial vetting of MT5 EAs for prop-firm challenges and funded-account survival.*
 
-> **State of the database:** ✅ 0 Deployable · 🟡 1 Watchlist · ⛔ 9 Avoid · 🚫 5 Excluded (15 total).
+> **State of the database:** ✅ 0 Deployable · 🟡 2 Watchlist · ⛔ 9 Avoid · 🚫 8 Excluded (19 total).
 > Best candidate: [[one-man-army-mt5]] — 🟡 Watchlist, Overall 3.1 (poor). ◉ real-money (Tier 2A) but
 > low-headroom and unproven — a candidate to chase evidence on, **not** a recommendation.
 
@@ -17,13 +17,14 @@
 | [Challenge — 1-step](rankings/challenge-1step.md) | tighter 1-step / trailing-DD challenges | [[one-man-army-mt5]] · 3.1 |
 | [Full comparison](rankings/comparison.md) | every shortlisted EA, side by side | — |
 
-> Only one EA (`one-man-army-mt5`) currently clears the Watchlist bar, so it tops all three ranked
-> lists by default. There are **no Deployable EAs** — by design, autonomous web evidence tops out at
+> Two EAs (`one-man-army-mt5`, `gold-prop-firm-robot`) clear the Watchlist bar; One Man Army tops the
+> ranked lists on the Overall tiebreak. Both are **real-money (Tier 2A) but caveated and unproven** — not
+> recommendations. There are **no Deployable EAs** — by design, autonomous web evidence tops out at
 > Watchlist (Deployable needs operator-supplied funded-account evidence).
 
 ## Latest pass
-- [2026-06-23](daily/2026-06-23.md) — first archive Watchlist (One Man Army, Tier-2A real-money signal); 2 Gate-A exclusions (DowGold, HFT PropFirm EA).
-- Rulebook freshness: 3 primaries fresh (<72h) · FundedNext STALE (primary 503, 5th run — provisional) · re-check backlog: 0
+- [2026-06-24](daily/2026-06-24.md) — operator-supplied cracked-site list: 3 Gate-A exclusions (FundedEA, HFT Robot, PROP FIRM EA V2) + 1 new Watchlist (Gold Prop Firm Robot, Tier-2A real signal).
+- Rulebook freshness: 3 primaries fresh (<72h) · FundedNext STALE (primary 503, 6th run — provisional) · re-check backlog: 0
 - ⚠️ No blockers (no `NEEDS_ATTENTION.md`).
 
 ## How to read a verdict

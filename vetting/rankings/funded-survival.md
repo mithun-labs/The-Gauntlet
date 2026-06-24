@@ -8,7 +8,7 @@
 | # | EA | Verdict | Score | Overall | Survival | Risk | Consistency | Legality | Note |
 |--:|----|:-------:|:-----:|:-------:|:--------:|:----:|:-----------:|----------|------|
 | 1 | [[one-man-army-mt5]] | 🟡 | **2.65** | 3.1 | 2 | 4 | 3 | FN⚠️ FP✅ 5%✅ TFT✅ | No funded evidence; fragile 90%-win edge, 8.94% DD with no headroom |
+| 2 | [[gold-prop-firm-robot]] | 🟡 | **2.5** | 3.0 | 2 | 4 | 2 | FN⚠️ FP✅ 5%✅ TFT✅ | XAUUSD breakout, real 6.41% DD; thin edge (PF 1.20) with 80% of growth in a few days |
 
-[[one-man-army-mt5]] leads only because it is the **sole** qualifying EA. Its low funded-survival composite
-(2.65) reflects **no funded-account evidence, a single $1,000 vendor account, and an 8.94% DD with no
-headroom** — survival through repeated payout is **unproven**, not supported. There are **no Deployable EAs**.
+Both are **Watchlist, not recommended** — real-money (Tier 2A) but caveated, with no funded-account
+evidence and unproven survival. There are **no Deployable EAs**.
