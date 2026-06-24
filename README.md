@@ -328,21 +328,6 @@ Changes are content (rules, data, the regression suite), not application code.
 
 ---
 
-## Repository Assessment
-
-A health check from the audit behind this README. The repository is internally consistent; the items below are minor or by-design.
-
-| Finding | Status | Recommendation |
-|---|---|---|
-| `gauntlet_regression.py` docstring labelled **v2.4** while the manual is **v2.6** | Stale label only — scoring is unchanged since v2.3 and the suite passes 7/7 | Bump the docstring version label for consistency. |
-| **No automated CI** (`.github` absent) | By design — validation is enforced by the agent at commit time, and the regression suite is run manually | Optionally add a CI job running `gauntlet_regression.py` on push. |
-| **FundedNext rulebook STALE** (primary site returned 503 across recent runs) | Documented — verdicts against it are provisional and capped at `Conditional` | Operator review of the primary-firm set, as the rulebook flags. |
-| `deployable/` empty and `outcomes/` ledger empty | Expected — autonomous ceiling is Watchlist; outcomes need operator-supplied realized results | Populate `outcomes/` as real challenge/funded results become available. |
-| **Historical daily reports** predate the v2.5/v2.6 presentation standard | Intentional — kept as immutable audit records | Leave as-is; new reports follow the current standard. |
-| **8 pending candidates** remain in `queue.jsonl` | Expected backlog | Drained on subsequent vetting passes. |
-
----
-
 ## Disclaimer
 
 The Gauntlet is for **research and educational purposes only**. It does **not** provide financial, investment, or trading advice. All conclusions are inferences from **publicly available evidence** and are evidence-quality judgments, not endorsements — EAs recorded here are candidates to scrutinize, never instructions to deploy capital. The agent cannot verify live or funded results and cannot detect doctored evidence. **Users are solely responsible for their own trading and investment decisions.**
