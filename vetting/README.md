@@ -3,7 +3,7 @@
 # The Gauntlet — EA Vetting Index
 *Adversarial vetting of MT5 EAs for prop-firm challenges and funded-account survival.*
 
-> **State of the database:** ✅ 0 Deployable · 🟡 2 Watchlist · ⛔ 9 Avoid · 🚫 8 Excluded (19 total).
+> **State of the database:** ✅ 0 Deployable · 🟡 2 Watchlist · ⛔ 11 Avoid · 🚫 10 Excluded (23 total).
 > Best candidate: [[one-man-army-mt5]] — 🟡 Watchlist, Overall 3.1 (poor). ◉ real-money (Tier 2A) but
 > low-headroom and unproven — a candidate to chase evidence on, **not** a recommendation.
 
