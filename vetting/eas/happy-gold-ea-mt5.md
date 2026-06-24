@@ -1,13 +1,27 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # Happy Gold EA (MT5)
+*Commercial closed-source XAUUSD single-trade gold scalper with a hard stop loss; all performance is vendor-displayed and uninspectable (Myfxbook 403) — AVOID.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | ⛔ **AVOID** |
+| **Overall** | **1.9 / 10** · poor |
+| **Mechanism** | single-trade pending-order breakout-scalp (hard SL) · confidence Medium · Gate B: verifiable (publicly inferable) |
+| **Evidence** | ○ best_tier **T3** · demo (vendor widgets, 2 real/2 demo claimed, uninspectable) · ~1,837 live days claimed · forexstore.com/happy-gold |
+| **Risk of ruin** | NON-ESTIMABLE |
+| **Legality** | FN ⚠️ · FP ⚠️ · 5% ⚠️ · TFT ⚠️ (all Conditional) |
+| **Verified perf** | 8.81%/mo (vendor-displayed) [T3] · max DD ~26% (claimed) [T3] · ~1,837 live days claimed (uninspectable) |
+| **Vendor** | HappyForex / ForexStore — brand-identifiable, specific developer not clearly accountable |
+
+> **Bottom line — binding criterion:** headline return+DD evidence Tier 3 (no independent verification) AND ROR NON-ESTIMABLE with best_tier ≤ TIER2; reinforced by ~26% claimed max DD (prop-incompatible), broker/latency-dependent edge.
+
+---
+## Profile
 
 ## Overview
 Commercial, closed-source MT5 Expert Advisor for **XAUUSD** marketed for retail and prop-firm use, sold via ForexStore and the HappyForex / "forexfunny" vendor ecosystem (€489, discounted from €699; min deposit $100). Marketed as a single-trade gold scalper with a hard stop loss and no martingale/grid. This run could **not** inspect any trade-level record (Myfxbook 403), so all performance figures are vendor-displayed widgets or affiliate-review observations.
-
-## Vendor / Developer
-HappyForex ecosystem (sold through ForexStore; also distributed via "forexfunny" Gumroad and numerous cracked/nulled sites — eafxstore, cheapforexea, ecomforex — "FREE DOWNLOAD" listings, a piracy signal not an evidence signal). The HappyForex brand has a long ForexPeaceArmy review history including **refund-denial complaints after blown accounts** (10-in-1 pack). Vendor is brand-identifiable but the specific developer is not clearly accountable. **Mild red flag** (refund-dispute history; heavy cracked-site distribution).
-
-## MT5 Compatibility & Dependencies
-XAUUSD only; M15 / M30 / H1 / H4. Uses pending stop orders. Independent test reports results are **dramatically broker- and latency-dependent** (profitable on Eightcap, losing on BlackBull Markets; a single trade made "$207 on 0.16 lots vs $32 on 0.54 lots" depending on VPS latency) — implies a low-latency ECN/raw-spread broker + fast VPS are effectively required.
 
 ## Strategy Mechanism
 **Publicly inferable:** pending **buy-stop orders above recent highs** (breakout-scalp via modified ZigZag), **one open trade at a time**, **hard stop loss** (vendor: −24 pips; affiliate test observed ~$2.40 SL with $10 TP, ~1:4 R:R), trailing stop + break-even. **No grid/martingale/averaging observed** in independent testing — each trade independent → **survives Gate A**. Vendor strategy descriptor is literally "scalp/swing/**gridnews**" and a separate **"GridNews" variant** exists; the news component and the GridNews mode are a standing risk but are not the assessed standard single-trade configuration.
@@ -17,6 +31,9 @@ XAUUSD only; M15 / M30 / H1 / H4. Uses pending stop orders. Independent test rep
 
 ## Recommended Instruments
 XAUUSD (gold) only.
+
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
 
 ## Evidence Matrix
 
@@ -33,12 +50,35 @@ XAUUSD (gold) only.
 - affiliate_source_count: **2** (algotradingspace affiliate review; bestforexeas/eatested affiliate-style reviews surfaced).
 - **Best evidence found:** Tier 3 — vendor-displayed Myfxbook widgets (claimed verified real accounts, ~5-year history) that could **not** be inspected (403). No inspectable evidence above Tier 3.
 
+## Mechanism Inference Confidence
+**Medium.** Multiple independent observations agree on single-trade + hard-SL pending-order scalping; but hold-time / trades-per-day are unconfirmed (tick-scalping/HFT cannot be ruled in or out without trade-level data), and the "gridnews"/news element is undocumented in behavior.
+
 ## Unverified Claims
 - All performance numbers (17,474% gain, 8.81%/mo, 25.95% max DD, 1,837 live days) — vendor widgets, uninspectable.
 - "Verified by Myfxbook and FXBlue" — unverifiable firsthand (403).
 - "Prop firm ready" / challenge-passing — no Tier-0 funded evidence.
 - "No martingale / no grid" — corroborated by an affiliate review but not by inspectable trade history; the "gridnews"/news component behavior is undocumented.
 - Hold time / trades-per-day (HFT/tick-scalping status) — unknown.
+
+## Evidence & Performance
+
+| Metric | Value | Tier | Source |
+|--------|-------|:----:|--------|
+| Average Monthly Return | 8.81% (vendor-displayed) | TIER3 | forexstore.com/happy-gold |
+| Maximum Drawdown | 25.95% (vendor-displayed); separate live claim 25.95% over 243d (+3,839%) | TIER3 | forexstore.com / search |
+| Win Rate | ~30–40% (affiliate review, approximate) | TIER4 | algotradingspace |
+| Profit Factor | NOT REPORTED (one forum user: "expected payoff 0.5 max" on long Dukascopy test) | TIER3 | search/FF snippet |
+| Track Length | claimed 1,837 live days (~5 yr) — uninspectable | TIER3 | forexstore.com |
+| Real vs Demo | claimed 2 real + 2 demo Myfxbook accounts — uninspectable | TIER3 | forexstore.com |
+
+## Risk-of-Ruin Analysis
+**NON-ESTIMABLE.** No inspectable Tier 0/1 trade-level history (Myfxbook 403). ROR, daily-DD violation probability, and max-DD violation probability cannot be computed from vendor widgets, affiliate observations, or backtests. Indicatively, a claimed ~26% max DD and reported multi-day losing streaks are incompatible with ~10% firm max-DD and ~5% daily-DD limits at the displayed settings — but this is indicative only (DD-definition mismatch).
+
+## Backtest Assessment
+Vendor cites "99.90% optimization accuracy" backtesting — a near-meaningless marketing figure (curve-fit tell), not a multi-regime real-tick walk-forward report. No public OOS/walk-forward, cost/slippage modeling, or shock-regime testing is inspectable. Near-worthless as evidence; the broker/latency dependence observed live further undermines any backtest's transferability.
+
+---
+## Eligibility & compliance
 
 ## Eligibility Gates
 - **Gate A — PASS (survives).** Core mechanism is single-trade pending-order breakout-scalp with a hard per-trade stop; no grid/martingale/averaging observed in independent testing. (Risk flags: latency-sensitive scalping and an optional "GridNews"/news mode that, if used, would raise news-straddle/grid concerns — but the assessed standard config is not banned.)
@@ -62,31 +102,11 @@ XAUUSD (gold) only.
 ## Mechanical Rule-Respect
 Hard per-trade stop loss is **vendor-documented and observed in an affiliate test** (≈$2.40 / 24 pips). **No** documented hard equity-stop or daily-loss-stop. Independent reports of the EA **failing to exit trades and losing heavily over 3–4 days** undercut confidence that the per-trade stop reliably bounds risk in volatile/news conditions.
 
-## Evidence & Performance
-
-| Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | 8.81% (vendor-displayed) | TIER3 | forexstore.com/happy-gold |
-| Maximum Drawdown | 25.95% (vendor-displayed); separate live claim 25.95% over 243d (+3,839%) | TIER3 | forexstore.com / search |
-| Win Rate | ~30–40% (affiliate review, approximate) | TIER4 | algotradingspace |
-| Profit Factor | NOT REPORTED (one forum user: "expected payoff 0.5 max" on long Dukascopy test) | TIER3 | search/FF snippet |
-| Track Length | claimed 1,837 live days (~5 yr) — uninspectable | TIER3 | forexstore.com |
-| Real vs Demo | claimed 2 real + 2 demo Myfxbook accounts — uninspectable | TIER3 | forexstore.com |
-
-## Backtest Assessment
-Vendor cites "99.90% optimization accuracy" backtesting — a near-meaningless marketing figure (curve-fit tell), not a multi-regime real-tick walk-forward report. No public OOS/walk-forward, cost/slippage modeling, or shock-regime testing is inspectable. Near-worthless as evidence; the broker/latency dependence observed live further undermines any backtest's transferability.
-
-## Risk-of-Ruin Analysis
-**NON-ESTIMABLE.** No inspectable Tier 0/1 trade-level history (Myfxbook 403). ROR, daily-DD violation probability, and max-DD violation probability cannot be computed from vendor widgets, affiliate observations, or backtests. Indicatively, a claimed ~26% max DD and reported multi-day losing streaks are incompatible with ~10% firm max-DD and ~5% daily-DD limits at the displayed settings — but this is indicative only (DD-definition mismatch).
-
-## Recommended Risk Settings
-**Non-actionable.** Public data does not support a defensible 50k/100k/200k sizing; the edge is broker/latency-dependent and no inspectable trade distribution exists.
-
-## Cost & Licensing
-€489 (from €699); 2- or 5-license tiers; 30-day money-back guarantee advertised — but the vendor brand has documented refund-denial complaints (ForexPeaceArmy). Heavy cracked/nulled distribution.
-
 ## Community Sentiment
 Mixed-to-negative on the independent side: ForexPeaceArmy refund-denial-after-blowup history for the HappyForex brand; a user reporting the EA "crashed a few times and didn't exit some trades which lost a lot on 3–4 days"; another citing very low expected payoff (~0.5) on long historical ticks. Positive coverage is concentrated in affiliate review sites (commission links, VIP-club upsells) — discounted accordingly.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** the gaudy multi-thousand-percent vendor curve is the survivor of compounding on a latency-favorable broker/VPS; the realistic per-trade expectancy is small/marginal ("expected payoff 0.5"), and the displayed equity is not inspectable.
@@ -97,15 +117,18 @@ Mixed-to-negative on the independent side: ForexPeaceArmy refund-denial-after-bl
 ## Scores
 Evidence tier governing multiplied dimensions: **TIER3**. ROR **NON-ESTIMABLE** → Survival multiplier = min(A=0.25, 0.20) = **0.20**. Mechanism inferable → no Gate-B ceiling. Risk control-evidence: vendor-documented + weak affiliate observation → Risk ≤ 5.
 
-| Dimension | Latent | × Multiplier / Ceiling | Adjusted |
-|---|---:|---|---:|
-| Funded-Account Survival (30%) | 2 | × 0.20 (ROR cap) = 0.4 → clamp | **1** |
-| Prop-Firm Compliance (20%) | 3 | not multiplied (Conditional all firms) | **3** |
-| Risk Management (15%) | 4 | min(4, ceiling 5) | **4** |
-| Challenge-Passing (15%) | 4 | × 0.25 (A, Tier3) = 1.0 | **1** |
-| Consistency (10%) | 3 | × 0.30 (B, Tier3) = 0.9 → clamp | **1** |
-| Transparency (5%) | 3 | × 0.30 (B, Tier3) = 0.9 → clamp | **1** |
-| Profitability (5%) | 3 | × 0.30 (B, Tier3) = 0.9 → clamp | **1** |
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 2 | × 0.20 (ROR cap) = 0.4 → clamp | **1** | 0.30 |
+| Prop-Firm Compliance | 20% | 3 | not multiplied (Conditional all firms) | **3** | 0.60 |
+| Risk Management | 15% | 4 | min(4, ceiling 5) | **4** | 0.60 |
+| Challenge-Passing | 15% | 4 | × 0.25 (A, Tier3) = 1.0 | **1** | 0.15 |
+| Consistency | 10% | 3 | × 0.30 (B, Tier3) = 0.9 → clamp | **1** | 0.10 |
+| Transparency | 5% | 3 | × 0.30 (B, Tier3) = 0.9 → clamp | **1** | 0.05 |
+| Profitability | 5% | 3 | × 0.30 (B, Tier3) = 0.9 → clamp | **1** | 0.05 |
+| **Overall** | | | | | **1.9** |
+
+*Band: poor. Surface only the adjusted Overall; latents shown for audit.*
 
 Overall = 0.30·1 + 0.20·3 + 0.15·4 + 0.15·1 + 0.10·1 + 0.05·1 + 0.05·1
 = 0.30 + 0.60 + 0.60 + 0.15 + 0.10 + 0.05 + 0.05 = **1.85 → 1.9 (poor)**.
@@ -124,6 +147,21 @@ Same family/segment as other gold scalpers; mechanism distinct from [[the-gold-r
 - Reports of failure to exit trades during adverse multi-day stretches.
 - Heavy cracked/nulled distribution (malware risk on those builds; not used as evidence).
 
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+HappyForex ecosystem (sold through ForexStore; also distributed via "forexfunny" Gumroad and numerous cracked/nulled sites — eafxstore, cheapforexea, ecomforex — "FREE DOWNLOAD" listings, a piracy signal not an evidence signal). The HappyForex brand has a long ForexPeaceArmy review history including **refund-denial complaints after blown accounts** (10-in-1 pack). Vendor is brand-identifiable but the specific developer is not clearly accountable. **Mild red flag** (refund-dispute history; heavy cracked-site distribution).
+
+## MT5 Compatibility & Dependencies
+XAUUSD only; M15 / M30 / H1 / H4. Uses pending stop orders. Independent test reports results are **dramatically broker- and latency-dependent** (profitable on Eightcap, losing on BlackBull Markets; a single trade made "$207 on 0.16 lots vs $32 on 0.54 lots" depending on VPS latency) — implies a low-latency ECN/raw-spread broker + fast VPS are effectively required.
+
+## Recommended Risk Settings
+**Non-actionable.** Public data does not support a defensible 50k/100k/200k sizing; the edge is broker/latency-dependent and no inspectable trade distribution exists.
+
+## Cost & Licensing
+€489 (from €699); 2- or 5-license tiers; 30-day money-back guarantee advertised — but the vendor brand has documented refund-denial complaints (ForexPeaceArmy). Heavy cracked/nulled distribution.
+
 ## Source Links
 - https://forexstore.com/happy-gold — 2026-06-19 — vendor page (mechanism, perf widgets) — affiliate: vendor
 - https://algotradingspace.com/happy-gold-ea-review — 2026-06-19 — independent test review — affiliate: **yes**
@@ -140,3 +178,5 @@ Same family/segment as other gold scalpers; mechanism distinct from [[the-gold-r
 - If Myfxbook/FXBlue egress is allow-listed, inspect the claimed verified real accounts (trade-level, hold-time, true DD under firm definitions) — could move HFT/tick-scalping question and possibly lift toward Watchlist if a clean ≥6-month real record at prop settings exists.
 - Confirm hold-time/trades-per-day vs The 5%ers tick-scalping screen.
 - Operator: only Tier-0 funded-account evidence could ever lift this past Watchlist.
+
+</details>

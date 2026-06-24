@@ -1,13 +1,27 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # The Gold Reaper MT5
+*XAUUSD-only multi-timeframe breakout EA from an accountable vendor, with real risk controls but prop-incompatible ~42% live drawdown and uninspectable evidence — AVOID.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | ⛔ **AVOID** |
+| **Overall** | **2.5 / 10** · poor |
+| **Mechanism** | Multi-timeframe breakout (~9 internal strategies), per-trade SL+TP+trailing · confidence Medium · Gate B: publicly described + independently corroborated (partial black box) |
+| **Evidence** | ◉ best_tier **T2** · real (per references) but uninspectable this run · track length NOT REPORTED (Myfxbook 403) · NYCServers review |
+| **Risk of ruin** | NON-ESTIMABLE |
+| **Legality** | FN ⚠️ · FP ⚠️ · 5% ⚠️ · TFT ⚠️ (all Conditional) |
+| **Verified perf** | conflicting ~18.31%/mo aggressive; +14.98% total [T3] · max DD ~42% [T2] · track NOT REPORTED |
+| **Vendor** | Profalgo Limited — Wim Schrynemakers (identifiable) |
+
+> **Bottom line — binding criterion:** ROR NON-ESTIMABLE and best_tier ≤ TIER2; reinforced by ~42% live max DD (prop-incompatible) and commercial-EA policy limits; prop-preset has no inspectable verified live track.
+
+---
+## Profile
 
 ## Overview
 XAUUSD-only multi-timeframe **breakout** EA (H1) running ~9 internal breakout strategies, with a hard stop loss + take profit + trailing on every trade and an NFP news filter. Marketed "PROP FIRM READY" with downloadable prop setfiles. Survives Gate A (no grid/martingale, corroborated independently), but the inspectable evidence does not support survival of a funded account, and a commercial fully-automated third-party EA runs into firm EA-policy limits.
-
-## Vendor / Developer
-**Profalgo Limited — Wim Schrynemakers**, an identifiable, accountable developer (publishing EAs since ~2005, established MQL5 author profile). Not anonymous — a positive on accountability.
-
-## MT5 Compatibility & Dependencies (publicly documented)
-MT5; XAUUSD (gold) only; H1; hedging not required; NFP/news filter; VPS recommended; recommended deposit $600 min, developer suggests $2,500–$3,000 for conservative risk. Price $849 (rentals $399–$599).
 
 ## Strategy Mechanism
 Publicly described + independently corroborated: multi-timeframe **breakout** around support/resistance, "9 different breakout strategies simultaneously," each trade carries a predefined **stop loss**, take profit, and trailing logic; a drawdown-aware lot engine scales size to a configurable max-DD setting. Vendor and an independent review both state **"No grid / No martingale / No hedging."** Closed source — exact entry logic and max simultaneous positions are not public (the "9 internal strategies" are a partial black box), but the no-grid/per-trade-SL claim is corroborated beyond the vendor. → **Survives Gate A.**
@@ -17,6 +31,9 @@ Publicly described + independently corroborated: multi-timeframe **breakout** ar
 
 ## Recommended Instruments
 XAUUSD only.
+
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
 
 ## Evidence Matrix
 
@@ -35,6 +52,26 @@ source_count = 3 fetched (MQL5 vendor listing; NYCServers review; MQL5 top-list 
 - That the EA "passes" prop challenges — no Tier-0 funded evidence; Tier 4.
 - That the prop-preset achieves low DD live — the inspectable/reported verified records reflect higher-risk settings (~42% DD); the prop-preset's live survival is unproven.
 - Exact max simultaneous positions and internal entry logic — not public.
+
+## Evidence & Performance
+
+| Metric | Value | Tier | Source |
+|--------|-------|------|--------|
+| Average Monthly Return | conflicting (one account ~18.31%/mo aggressive; another +14.98% total) | TIER3 | NYCServers review / search leads |
+| Maximum Drawdown | ~41.66% live (one report -60%; backtest ~12%) | TIER3 | NYCServers review |
+| Win Rate | ~72% | TIER3 | NYCServers review |
+| Profit Factor | ~1.08 | TIER3 | NYCServers review |
+| Track Length | NOT REPORTED (uninspectable — Myfxbook 403) | — | — |
+| Real vs Demo | Real (per references) but uninspectable this run | TIER3 | search/review |
+
+## Risk-of-Ruin Analysis
+**NON-ESTIMABLE.** ROR is estimable only from public **Tier 0/1 trade-level** history. The verified Myfxbook trade history could not be fetched (403), figures conflict across multiple third-party accounts/settings, and none is attributable to the prop-preset at default settings. No Tier 0/1 trade-level distribution is available → ROR NON-ESTIMABLE (a negative finding for Survival). Indicatively, a ~42% live max DD vs a ~6–10% firm max-DD limit implies near-certain limit violation at the aggressive settings, while the low-risk prop-preset has no inspectable live record.
+
+## Backtest Assessment
+Public claim only; backtest DD (~12%) is far below live DD (~42%), a classic backtest-vs-live optimism gap. Cannot confirm real-tick data, modeled costs, or multi-regime/OOS testing from a fetched primary report this run → treat as near-worthless for an all-weather/prop-survival claim.
+
+---
+## Eligibility & compliance
 
 ## Eligibility Gates
 - **Gate A (banned mechanism):** PASS — breakout with hard per-trade SL; no grid/martingale/hedging, independently corroborated.
@@ -56,31 +93,11 @@ source_count = 3 fetched (MQL5 vendor listing; NYCServers review; MQL5 top-list 
 ## Mechanical Rule-Respect
 Hard per-trade **stop loss + take profit + trailing** are vendor-documented and independently referenced; a configurable max-DD lot engine and NFP news filter are documented. However, **a hard account-level daily-loss / equity stop is NOT documented** — drawdown is managed via lot scaling, and the live ~42% DD shows the controls do not cap account drawdown to prop-relevant levels.
 
-## Evidence & Performance
-
-| Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | conflicting (one account ~18.31%/mo aggressive; another +14.98% total) | TIER3 | NYCServers review / search leads |
-| Maximum Drawdown | ~41.66% live (one report -60%; backtest ~12%) | TIER3 | NYCServers review |
-| Win Rate | ~72% | TIER3 | NYCServers review |
-| Profit Factor | ~1.08 | TIER3 | NYCServers review |
-| Track Length | NOT REPORTED (uninspectable — Myfxbook 403) | — | — |
-| Real vs Demo | Real (per references) but uninspectable this run | TIER3 | search/review |
-
-## Backtest Assessment
-Public claim only; backtest DD (~12%) is far below live DD (~42%), a classic backtest-vs-live optimism gap. Cannot confirm real-tick data, modeled costs, or multi-regime/OOS testing from a fetched primary report this run → treat as near-worthless for an all-weather/prop-survival claim.
-
-## Risk-of-Ruin Analysis
-**NON-ESTIMABLE.** ROR is estimable only from public **Tier 0/1 trade-level** history. The verified Myfxbook trade history could not be fetched (403), figures conflict across multiple third-party accounts/settings, and none is attributable to the prop-preset at default settings. No Tier 0/1 trade-level distribution is available → ROR NON-ESTIMABLE (a negative finding for Survival). Indicatively, a ~42% live max DD vs a ~6–10% firm max-DD limit implies near-certain limit violation at the aggressive settings, while the low-risk prop-preset has no inspectable live record.
-
-## Recommended Risk Settings (50k / 100k / 200k)
-**Non-actionable.** Inspectable public data is insufficient and conflicting to size risk responsibly; the prop-preset's live behavior is unverified. Sizing would be fabrication.
-
-## Cost & Licensing
-$849 one-time (MQL5); rentals $399–$599; standard MQL5 license/activation limits; prop setfiles provided by vendor.
-
 ## Community Sentiment
 Independent (affiliate-flagged) coverage is mixed-to-cautionary: legitimate breakout mechanism and accountable developer, but "substantial," "30–40%," and up to "-60%" live drawdowns; live performance materially below backtest. Multiple third-party Myfxbook accounts at different risk presets show wide DD dispersion. Negative-case search ("blown account / drawdown / losing") returned substantive DD-risk reports — recorded.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** a genuine breakout EA whose edge is thin (PF ~1.08) and whose drawdown is large (~42% live); the high MQL5 rating and "prop ready" label reflect marketing and calm-period results, not funded-account survival.
@@ -88,21 +105,24 @@ Independent (affiliate-flagged) coverage is mixed-to-cautionary: legitimate brea
 3. **Variance case:** could pass an evaluation in a calm breakout-friendly stretch, then surrender it during a choppy/news regime where 9 simultaneous breakout strategies cluster losses — passing and surviving are different problems.
 4. **Evidence fragility:** essentially everything inspectable this run is Tier 3 (affiliate review) or Tier 4 (prop "passing" claims). The single piece of evidence that would most change the verdict — an inspectable, ≥6-month, real-money Myfxbook record of the **prop-preset at default settings** with trade-level history — I do not have (Myfxbook 403).
 
-## Scores (latent × multiplier/ceiling = adjusted)
+## Scores
+
 best_tier = **TIER2** (a verified real account demonstrably exists per multiple independent references, but is uninspectable, attribution-ambiguous, and conflicting — caveated, so capped at Tier 2, not Tier 1). Multiplier A(Tier2)=0.45; Multiplier B(Tier2)=0.60; **ROR NON-ESTIMABLE → Survival multiplier = min(0.45, 0.20) = 0.20.**
 
-| Dimension | Latent | Mult/Ceiling | Adjusted |
-|---|---:|---|---:|
-| Funded-Account Survival (30%) | 3 | ×0.20 (ROR cap) = 0.6 → round | 1 |
-| Prop-Firm Compliance (20%) | 4 | mechanism-based, no Gate-B ceiling | 4 |
-| Risk Management (15%) | 4 | control-evidence ceiling ≤5 (vendor-documented) | 4 |
-| Challenge-Passing (15%) | 4 | ×0.45 = 1.8 → round | 2 |
-| Consistency (10%) | 3 | ×0.60 = 1.8 → round | 2 |
-| Transparency (5%) | 5 | ×0.60 = 3.0 | 3 |
-| Profitability (5%) | 4 | ×0.60 = 2.4 → round | 2 |
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 3 | ×0.20 (ROR cap) = 0.6 → round | 1 | 0.30 |
+| Prop-Firm Compliance | 20% | 4 | mechanism-based, no Gate-B ceiling | 4 | 0.80 |
+| Risk Management | 15% | 4 | control-evidence ceiling ≤5 (vendor-documented) | 4 | 0.60 |
+| Challenge-Passing | 15% | 4 | ×0.45 = 1.8 → round | 2 | 0.30 |
+| Consistency | 10% | 3 | ×0.60 = 1.8 → round | 2 | 0.20 |
+| Transparency | 5% | 5 | ×0.60 = 3.0 | 3 | 0.15 |
+| Profitability | 5% | 4 | ×0.60 = 2.4 → round | 2 | 0.10 |
+| **Overall** | | | | | **2.5** |
 
-Overall = 0.30·1 + 0.20·4 + 0.15·4 + 0.15·2 + 0.10·2 + 0.05·3 + 0.05·2
-= 0.30 + 0.80 + 0.60 + 0.30 + 0.20 + 0.15 + 0.10 = **2.45 → 2.5** (half-up, one decimal). **Band: poor (<4.0).**
+Overall = 0.30·1 + 0.20·4 + 0.15·4 + 0.15·2 + 0.10·2 + 0.05·3 + 0.05·2 = 0.30 + 0.80 + 0.60 + 0.30 + 0.20 + 0.15 + 0.10 = **2.45 → 2.5** (half-up, one decimal).
+
+*Band: poor (<4.0). Surface only the adjusted Overall; latents shown for audit.*
 
 ## Deployment Verdict
 **AVOID.** Binding criterion: **ROR NON-ESTIMABLE and best_tier ≤ TIER2** (deterministic Avoid trigger), reinforced by an independently-reported ~42% live max drawdown that is incompatible with all three firms' max-DD limits, and by a commercial fully-automated EA conflicting with Funding Pips' standard-program EA policy. This is nonetheless the **strongest candidate of the pass** (accountable vendor, real risk controls, genuine verified records exist) — a candidate to **re-vet** if an inspectable ≥6-month real-money verified record of the prop-preset at default settings becomes available.
@@ -115,6 +135,21 @@ Other XAUUSD breakout/scalper EAs (e.g. Goldwave, TwisterPro Scalper) — to be 
 - Thin edge (PF ~1.08).
 - Verified records uninspectable this run (Myfxbook 403); attribution to default/prop settings unclear.
 - "Prop firm ready" marketing without any Tier-0 funded-account proof.
+
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+**Profalgo Limited — Wim Schrynemakers**, an identifiable, accountable developer (publishing EAs since ~2005, established MQL5 author profile). Not anonymous — a positive on accountability.
+
+## MT5 Compatibility & Dependencies (publicly documented)
+MT5; XAUUSD (gold) only; H1; hedging not required; NFP/news filter; VPS recommended; recommended deposit $600 min, developer suggests $2,500–$3,000 for conservative risk. Price $849 (rentals $399–$599).
+
+## Recommended Risk Settings (50k / 100k / 200k)
+**Non-actionable.** Inspectable public data is insufficient and conflicting to size risk responsibly; the prop-preset's live behavior is unverified. Sizing would be fabrication.
+
+## Cost & Licensing
+$849 one-time (MQL5); rentals $399–$599; standard MQL5 license/activation limits; prop setfiles provided by vendor.
 
 ## Source Links
 | URL | Retrieved | Affiliate? |
@@ -130,3 +165,5 @@ Other XAUUSD breakout/scalper EAs (e.g. Goldwave, TwisterPro Scalper) — to be 
 
 ## Future Research Needed
 Operator to supply (or a future run to fetch when Myfxbook is reachable) an inspectable ≥6-month real-money Myfxbook/FXBlue record of **the prop-preset at default settings** with public trade-level history, to re-estimate ROR and reconsider Watchlist; and a primary FundedNext rulebook to firm up the FundedNext legality verdict.
+
+</details>

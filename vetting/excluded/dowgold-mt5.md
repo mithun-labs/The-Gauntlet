@@ -1,4 +1,9 @@
+[← Index](../README.md) · [Rankings](../rankings/) · [Rulebooks](../rulebooks/)
+
 # DowGold Hedging Scalper EA (MT5) — EXCLUDED (Gate A)
+*A cloud-licensed XAUUSD/US30 "hedging scalper" — Excluded at Gate A for grid / recovery-averaging + hedging baskets.*
+
+> 🚫 **EXCLUDED at Gate A** — core mechanism is grid / recovery-averaging + hedging baskets (adds positions against an open loss, manages hedged baskets). Never scored.
 
 **Verdict: EXCLUDED at Gate A — core mechanism is grid / recovery-averaging + hedging baskets.** Never scored.
 

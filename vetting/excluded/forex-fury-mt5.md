@@ -1,4 +1,9 @@
+[← Index](../README.md) · [Rankings](../rankings/) · [Rulebooks](../rulebooks/)
+
 # Forex Fury (MT5) — EXCLUDED (Gate A)
+*A range-scalping basket EA that trades without a default stop loss — Excluded at Gate A for optional grid cost-averaging + martingale on a no-SL basket.*
+
+> 🚫 **EXCLUDED at Gate A** — optional grid (cost-averaging into losers) and optional martingale, run on a no-default-stop-loss basket; optional-banned-mode rule applies. Never scored.
 
 **Verdict:** Excluded at Gate A — banned mechanisms present: optional **grid (cost-averaging into losers)** and optional **martingale**, run on a **no-default-stop-loss basket** ("the system closes the entire grid"). The assessed public evidence cannot be shown to use a hard-disabled configuration, so the optional-banned-mode rule applies.
 **Mechanism Inference Confidence:** Medium (no source code; mechanism reconstructed from multiple independent reviews + community reports, which agree on the no-SL basket and the optional cost-averaging/martingale features). **Gate A exclusion confidence: High.**

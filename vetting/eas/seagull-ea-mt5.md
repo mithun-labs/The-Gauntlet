@@ -1,4 +1,24 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # Seagull EA (MT5)
+*Closed-source AUDCAD trend-add EA by TheDailyFX, "free" via a Pepperstone CPA deal, with all performance evidence uninspectable (403/empty) — Avoid, Tier-3 and NON-ESTIMABLE ROR.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | ⛔ **AVOID** |
+| **Overall** | **2.1 / 10** · poor |
+| **Mechanism** | multi-position trend-add (pyramiding) on a mean-reverting cross · confidence Low · Gate B: black box |
+| **Evidence** | ○ best_tier **T3** · claimed real-money · ~5 years claimed · vendor Myfxbook (uninspectable, 403) |
+| **Risk of ruin** | NON-ESTIMABLE |
+| **Legality** | FN ✅ · FP ⚠️ · 5% ⚠️ · TFT ⚠️ |
+| **Verified perf** | NOT REPORTED [T3] · max DD ~20.5% (claimed) [T3] · ~5 years claimed |
+| **Vendor** | TheDailyFX — identifiable |
+
+> **Bottom line — binding criterion:** headline return+DD evidence Tier 3 (no inspectable independent verification — vendor/Myfxbook/FXStreet all 403/empty) AND ROR NON-ESTIMABLE with best_tier ≤ TIER2; reinforced by ~20.5% claimed max DD.
+
+---
+## Profile
 
 ## Overview
 Seagull EA is a closed-source, fully-automated MT5 Expert Advisor by **TheDailyFX** (thedailyfx.uk),
@@ -15,22 +35,6 @@ max drawdown, per a Myfxbook summary surfaced in search).
 > block seen across all prior runs). The profile below is reconstructed from **WebSearch summary leads**,
 > which per HARD RULE 2 are **leads, not fetched sources.** No trade-level history could be inspected.
 > This caps the evidence at **Tier 3** and is itself a core reason for the Avoid verdict.
-
-## Vendor / Developer
-**TheDailyFX** (thedailyfx.uk; also thedailyfx.com), a UK-styled automated-trading vendor that says it
-was **founded in 2015** with a team of "75+ years collective" trading experience; contact
-`info@thedailyfx.uk`. **Semi-accountable** — a named brand with a website and contact, but no named
-individual developer and no regulatory identity stated. The business model is a **broker
-introducing-broker (IB) / CPA partnership with Pepperstone**, not EA sales: the EA is "free" because the
-vendor earns commission on the client's trading volume/spreads. **This is a red flag** — vendor revenue
-scales with *trade volume*, not with the EA being *profitable for the user.*
-
-## MT5 Compatibility & Dependencies (publicly documented only)
-- Platform: MT5. Pair: **AUDCAD** (formerly NZDCAD). Timeframes: **M1 / M15 / M30**.
-- Distribution tied to a **Pepperstone** live account (raw-spread/Razor account implied by a scalping
-  cross strategy); edge is therefore **broker- and spread-specific** to Pepperstone's execution.
-- Recommended deposit ladder is a *broker-deposit* gate ($1,000 / $5,000), not a documented EA capital
-  requirement; no documented VPS/GMT requirement surfaced.
 
 ## Strategy Mechanism (publicly documented / inferable; Gate B status)
 **FACTS (vendor-stated, via search leads):** "follow the major trend and/or the divergence of higher
@@ -61,6 +65,9 @@ or trade-level data — so no benefit of the doubt is extended on risk.
 ## Recommended Instruments
 AUDCAD (vendor-default; formerly NZDCAD). No other instruments documented.
 
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
+
 ## Evidence Matrix
 
 | Claim | Source URL | Source Type | Independence | Evidence Tier | Retrieved Date | Confidence | Notes |
@@ -81,6 +88,14 @@ AUDCAD (vendor-default; formerly NZDCAD). No other instruments documented.
   could **not be inspected** (403). **No inspectable evidence above Tier 3.** No independent corroboration
   of performance; the FXStreet post is a vendor-submitted/sponsored placement, not journalism.
 
+## Mechanism Inference Confidence
+**Low.** The vendor's self-description (adds-to-trend, ~24h hold, no grid/martingale) is the only
+mechanism source; it could not be corroborated by any independent teardown or by inspecting the trade
+history (all pages 403/empty). The trend-following label vs. the AUDCAD/NZDCAD-M1 reversion design is an
+unresolved contradiction. Whether the "limited positions" can ever scale against an adverse excursion
+(which would flip it to Gate-A martingale/grid) **cannot be confirmed or ruled out** without a teardown
+or trade-level data — so no benefit of the doubt is extended on risk.
+
 ## Unverified Claims
 - The +595.65% gain / 20.51% max DD and the "verified live since 2021 / no over-optimization" claims —
   all rest on an uninspectable vendor Myfxbook account.
@@ -90,6 +105,32 @@ AUDCAD (vendor-default; formerly NZDCAD). No other instruments documented.
   itself prop-incompatible at full risk.
 - Whether the "add limited positions in the same direction" logic can ever average **against** an adverse
   move (which would be Gate-A martingale/grid) — unverifiable from public sources.
+
+## Evidence & Performance
+| Metric | Value | Tier | Source |
+|--------|-------|------|--------|
+| Average Monthly Return | NOT REPORTED (≈ implied from +595.65% over ~5yr, not stated per-month) | TIER3 | vendor Myfxbook (uninspectable) |
+| Maximum Drawdown | ~20.51% (claimed) | TIER3 | vendor Myfxbook summary (uninspectable) |
+| Win Rate | NOT REPORTED | — | — |
+| Profit Factor | NOT REPORTED | — | — |
+| Track Length | ~5 years claimed (since early 2021) | TIER3 | vendor Myfxbook summary (uninspectable) |
+| Real vs Demo | Claimed real-money | TIER3 | vendor Myfxbook summary (uninspectable) |
+
+## Risk-of-Ruin Analysis
+**NON-ESTIMABLE.** No inspectable Tier 0/1 trade-level history (Myfxbook 403). ROR cannot be computed
+from a headline gain/DD pair or a vendor backtest. **DD-definition mismatch caveat:** the ~20.51%
+Myfxbook DD uses Myfxbook's own method and is not restatable under any firm's daily/overall rule without
+trade-level data. Per the ROR cap, Survival multiplier is reduced to min(A, 0.20). NON-ESTIMABLE ROR
+**bars any Deployable verdict.**
+
+## Backtest Assessment
+Vendor claims a "Tickdata backtest from 2006" with "no over-optimization." **Near-worthless as evidence:**
+not reproduced, not inspected, costs/slippage/multi-regime/OOS unverified, and a backtest from 2006 on a
+pair whose behaviour the vendor admits *changed after 2016* (tighter range / stronger mean reversion) is a
+regime-mismatch red flag. Public backtest = claim, not proof.
+
+---
+## Eligibility & compliance
 
 ## Eligibility Gates
 - **Gate A — PASS (survives).** On the vendor's own description it adds to *winners* (pyramiding into
@@ -132,41 +173,6 @@ AUDCAD (vendor-default; formerly NZDCAD). No other instruments documented.
 max-position cap. "Dynamic risk protection" is marketing with no inspectable specifics; no per-trade hard
 SL is documented for a multi-position system.
 
-## Evidence & Performance
-| Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | NOT REPORTED (≈ implied from +595.65% over ~5yr, not stated per-month) | TIER3 | vendor Myfxbook (uninspectable) |
-| Maximum Drawdown | ~20.51% (claimed) | TIER3 | vendor Myfxbook summary (uninspectable) |
-| Win Rate | NOT REPORTED | — | — |
-| Profit Factor | NOT REPORTED | — | — |
-| Track Length | ~5 years claimed (since early 2021) | TIER3 | vendor Myfxbook summary (uninspectable) |
-| Real vs Demo | Claimed real-money | TIER3 | vendor Myfxbook summary (uninspectable) |
-
-## Backtest Assessment
-Vendor claims a "Tickdata backtest from 2006" with "no over-optimization." **Near-worthless as evidence:**
-not reproduced, not inspected, costs/slippage/multi-regime/OOS unverified, and a backtest from 2006 on a
-pair whose behaviour the vendor admits *changed after 2016* (tighter range / stronger mean reversion) is a
-regime-mismatch red flag. Public backtest = claim, not proof.
-
-## Risk-of-Ruin Analysis
-**NON-ESTIMABLE.** No inspectable Tier 0/1 trade-level history (Myfxbook 403). ROR cannot be computed
-from a headline gain/DD pair or a vendor backtest. **DD-definition mismatch caveat:** the ~20.51%
-Myfxbook DD uses Myfxbook's own method and is not restatable under any firm's daily/overall rule without
-trade-level data. Per the ROR cap, Survival multiplier is reduced to min(A, 0.20). NON-ESTIMABLE ROR
-**bars any Deployable verdict.**
-
-## Recommended Risk Settings (50k / 100k / 200k)
-**Non-actionable.** Public data does not support sizing: no per-trade SL, no trade-level distribution, no
-inspectable equity curve. Any sizing recommendation would be fabricated. A ~20.5%-DD multi-position
-strategy cannot be safely fitted under a 5%-daily / 10%-overall envelope without trade-level data that
-does not exist publicly.
-
-## Cost & Licensing
-**"Free" via Pepperstone IB/CPA** — 50% off at a $1,000 Pepperstone deposit, 100% free at a $5,000
-deposit. No standalone license sale surfaced. The CPA model is the core commercial red flag: the vendor
-is paid on the user's **trading volume/spreads**, aligning vendor incentives with *activity*, not user
-profitability — and tying the user to one broker.
-
 ## Community Sentiment
 **Independent sentiment is thin and uninspectable.** The mandatory negative-case search (`scam`, `blown
 account`, `refund`, `losing`) surfaced **no Seagull-specific** complaints — but also no inspectable
@@ -174,6 +180,9 @@ independent praise; the visible positive quotes ("no martingale gambling… long
 amazing") are on the vendor's own Myfxbook review page (403). Absence of complaints on a low-profile,
 free-via-broker EA is weak signal, not exoneration. cheaperforex's 2026 listicle (fetched) does **not**
 list Seagull among its top 10 — i.e. it lacks the independent third-party coverage its marketing implies.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** a genuine but modest mean-reversion-on-a-cross edge that is
@@ -191,23 +200,27 @@ list Seagull among its top 10 — i.e. it lacks the independent third-party cove
    an **inspectable, independent, trade-level funded or ≥6-month verified record showing a real per-trade
    hard stop and DD restated under a firm's rule** — does not exist publicly, and I do not have it.
 
-## Scores (latent × multiplier/ceiling = adjusted)
+## Scores
+
 best_tier = **TIER3**; ROR = **NON-ESTIMABLE** → Survival multiplier = min(MultA_T3 0.25, 0.20) = 0.20.
 Multiplier A (Tier 3) = 0.25; Multiplier B (Tier 3) = 0.30. Gate B: Compliance ≤ 5, Risk ≤ 4. Risk
 control-evidence ceiling: controls claimed without documentation → Risk ≤ 3 (lowest applies).
 
-| Dimension | Latent | Mult/Ceiling | Adjusted |
-|---|---:|---|---:|
-| Funded-Account Survival (30%) | 2 | ×0.20 (ROR cap) = 0.40 → clamp | 1 |
-| Prop-Firm Compliance (20%) | 5 | min(5, GateB 5) | 5 |
-| Risk Management (15%) | 3 | min(3, ctrl-ceiling 3, GateB 4) | 3 |
-| Challenge-Passing (15%) | 2 | ×0.25 = 0.50 → round-half-up | 1 |
-| Consistency (10%) | 3 | ×0.30 = 0.90 → round | 1 |
-| Transparency (5%) | 3 | ×0.30 = 0.90 → round | 1 |
-| Profitability (5%) | 3 | ×0.30 = 0.90 → round | 1 |
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 2 | ×0.20 (ROR cap) = 0.40 → clamp | 1 | 0.30 |
+| Prop-Firm Compliance | 20% | 5 | min(5, GateB 5) | 5 | 1.00 |
+| Risk Management | 15% | 3 | min(3, ctrl-ceiling 3, GateB 4) | 3 | 0.45 |
+| Challenge-Passing | 15% | 2 | ×0.25 = 0.50 → round-half-up | 1 | 0.15 |
+| Consistency | 10% | 3 | ×0.30 = 0.90 → round | 1 | 0.10 |
+| Transparency | 5% | 3 | ×0.30 = 0.90 → round | 1 | 0.05 |
+| Profitability | 5% | 3 | ×0.30 = 0.90 → round | 1 | 0.05 |
+| **Overall** | | | | | **2.1** |
 
 **Overall** = 0.30·1 + 0.20·5 + 0.15·3 + 0.15·1 + 0.10·1 + 0.05·1 + 0.05·1
 = 0.30 + 1.00 + 0.45 + 0.15 + 0.10 + 0.05 + 0.05 = **2.10 → 2.1 (poor).**
+
+*Band: poor. Surface only the adjusted Overall; latents shown for audit.*
 
 ## Deployment Verdict
 **AVOID · Overall 2.1 (poor).**
@@ -230,6 +243,37 @@ with $5k deposit"** distribution model that rewards trade volume over user profi
 - Marketing/design contradiction: "trend-following" on AUDCAD/NZDCAD M1 (mean-reverting crosses).
 - Multi-position "adds in the same direction" with no documented hard stop loss.
 - ~20.5% max DD is prop-incompatible; FXStreet "review" is a sponsored vendor placement.
+
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+**TheDailyFX** (thedailyfx.uk; also thedailyfx.com), a UK-styled automated-trading vendor that says it
+was **founded in 2015** with a team of "75+ years collective" trading experience; contact
+`info@thedailyfx.uk`. **Semi-accountable** — a named brand with a website and contact, but no named
+individual developer and no regulatory identity stated. The business model is a **broker
+introducing-broker (IB) / CPA partnership with Pepperstone**, not EA sales: the EA is "free" because the
+vendor earns commission on the client's trading volume/spreads. **This is a red flag** — vendor revenue
+scales with *trade volume*, not with the EA being *profitable for the user.*
+
+## MT5 Compatibility & Dependencies (publicly documented only)
+- Platform: MT5. Pair: **AUDCAD** (formerly NZDCAD). Timeframes: **M1 / M15 / M30**.
+- Distribution tied to a **Pepperstone** live account (raw-spread/Razor account implied by a scalping
+  cross strategy); edge is therefore **broker- and spread-specific** to Pepperstone's execution.
+- Recommended deposit ladder is a *broker-deposit* gate ($1,000 / $5,000), not a documented EA capital
+  requirement; no documented VPS/GMT requirement surfaced.
+
+## Recommended Risk Settings (50k / 100k / 200k)
+**Non-actionable.** Public data does not support sizing: no per-trade SL, no trade-level distribution, no
+inspectable equity curve. Any sizing recommendation would be fabricated. A ~20.5%-DD multi-position
+strategy cannot be safely fitted under a 5%-daily / 10%-overall envelope without trade-level data that
+does not exist publicly.
+
+## Cost & Licensing
+**"Free" via Pepperstone IB/CPA** — 50% off at a $1,000 Pepperstone deposit, 100% free at a $5,000
+deposit. No standalone license sale surfaced. The CPA model is the core commercial red flag: the vendor
+is paid on the user's **trading volume/spreads**, aligning vendor incentives with *activity*, not user
+profitability — and tying the user to one broker.
 
 ## Source Links
 - https://www.myfxbook.com/members/TheDailyFX/seagull-ea-mt5/11305553 — 2026-06-22 — vendor Myfxbook (403, uninspectable) — affiliate(vendor)
@@ -257,3 +301,5 @@ with $5k deposit"** distribution model that rewards trade volume over user profi
   lift this from Avoid toward Watchlist; evidence of averaging-down would move it to Excluded.
 - Operator could supply funded-account statements to test the Deployable path (gate 8) — unlikely given the
   prop-incompatible DD and broker-CPA dependence.
+
+</details>

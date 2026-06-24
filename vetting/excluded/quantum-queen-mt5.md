@@ -1,4 +1,9 @@
+[← Index](../README.md) · [Rankings](../rankings/) · [Rulebooks](../rulebooks/)
+
 # Quantum Queen MT5 — EXCLUDED (Gate A)
+*A XAUUSD-only grid EA with no stop loss on individual trades — Excluded at Gate A for grid / recovery averaging.*
+
+> 🚫 **EXCLUDED at Gate A** — banned core mechanism: grid / recovery averaging with no individual stop loss (SL=0.00 on every order). Never scored.
 
 **Verdict:** Excluded at Gate A — banned core mechanism (grid / recovery averaging with no individual stop loss).
 **Mechanism Inference Confidence:** High (vendor's own page confirms a grid system; independent reviews confirm SL=0.00 on every order and catastrophic grid blow-ups).

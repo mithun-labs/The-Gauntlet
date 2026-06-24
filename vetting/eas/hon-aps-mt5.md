@@ -1,4 +1,24 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # Hon-APS — Advanced Pattern Scanner (MT5)
+*Fully open-source pattern-breakout EA with code-verifiable risk controls but zero track record of any kind — Avoid (unproven), pending a real-money record.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | ⛔ **AVOID** |
+| **Overall** | **2.6 / 10** · poor |
+| **Mechanism** | classical chart-pattern breakouts + L2 order-flow · confidence High · Gate B: verifiable (open source) |
+| **Evidence** | ○ best_tier **T4** · no track record · mql5.com/en/code/71521 |
+| **Risk of ruin** | NON-ESTIMABLE |
+| **Legality** | FN ⚠️ · FP ⚠️ · 5% ⚠️ · TFT ⚠️ (all Conditional) |
+| **Verified perf** | NOT REPORTED (no live record / signal / backtest) |
+| **Vendor** | Christopher Adie (Adiec7) — identifiable |
+
+> **Bottom line — binding criterion:** **no verified performance evidence of any kind** (brand-new 2026-04-06 open-source code; no live record, no MQL5 signal, no published backtest) → best_tier TIER4 + ROR NON-ESTIMABLE (deterministic Avoid).
+
+---
+## Profile
 
 ## Overview
 Hon-APS is a **fully open-source** MT5 Expert Advisor by **Christopher Adie ("Adiec7")**, published on the
@@ -15,16 +35,6 @@ and a **macro-news filter**. It is explicitly "designed for prop-firm viability 
 > Open source solves the *transparency and legality* problem; it does **not** solve the *evidence* problem.
 > With zero verified performance, best_tier is TIER4 and ROR is NON-ESTIMABLE → **Avoid (unproven)**, not
 > because it's bad, but because nothing about its real behavior is known yet.
-
-## Vendor / Developer
-**Christopher Adie (Adiec7)** — named, identifiable MQL5 Code Base author. Open-source/free (not a commercial
-product); no vendor performance marketing. Accountable and transparent, but new/low-track-record as a publisher.
-
-## MT5 Compatibility & Dependencies (publicly documented only)
-- MT5; **H1/H4**; major FX pairs + indices.
-- **Requires Level-2 Order Book (`MarketBookGet`)** for its absorption/imbalance edge, with a **tick-volume
-  fallback** if DOM is unavailable. **Practical caveat:** reliable L2 DOM is uncommon on retail/prop *spot-FX*
-  feeds, so on a prop server the order-flow edge likely degrades to the tick-volume fallback — a transferability risk.
 
 ## Strategy Mechanism (publicly documented / inferable; Gate B status)
 **FACTS (open-source code page, fetched):** identifies classical chart patterns; on breakout "reads the Level
@@ -45,6 +55,9 @@ established by direct code inspection rather than inference from marketing.
 ## Recommended Instruments
 Major FX pairs + indices, H1/H4 (per code defaults).
 
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
+
 ## Evidence Matrix
 
 | Claim | Source URL | Source Type | Independence | Evidence Tier | Retrieved Date | Confidence | Notes |
@@ -62,10 +75,37 @@ Major FX pairs + indices, H1/H4 (per code defaults).
   confidence) — but **no performance evidence of any tier**. Best_tier for the return/DD pair = **TIER4
   (absent)**.
 
+## Mechanism Inference Confidence
+**High** — the full source code is public and readable. This is the only archive EA whose mechanism is
+established by direct code inspection rather than inference from marketing.
+
 ## Unverified Claims
 - "Designed for prop-firm viability / capital preservation" — design intent; **no live or backtest proof.**
 - That the L2 order-flow edge functions on a real/prop feed — unproven; DOM often unavailable on spot FX.
 - Any return, drawdown, win rate, or survivability — **entirely unknown** (no track record).
+
+## Evidence & Performance
+| Metric | Value | Tier | Source |
+|--------|-------|:----:|--------|
+| Average Monthly Return | NOT REPORTED | — | no track record |
+| Maximum Drawdown | NOT REPORTED (hard daily/weekly limits coded, but unproven live) | — | code only |
+| Win Rate | NOT REPORTED | — | — |
+| Profit Factor | NOT REPORTED | — | — |
+| Track Length | None (published 2026-04-06; no live record) | — | — |
+| Real vs Demo | N/A (no account) | — | — |
+
+## Risk-of-Ruin Analysis
+**NON-ESTIMABLE.** No trade-level history exists (the EA has never been shown trading). The coded daily/weekly
+DD limits and Kelly sizing are encouraging *by design*, but ROR requires realized Tier 0/1 trade data, which
+does not exist. NON-ESTIMABLE ROR **bars Deployable.**
+
+## Backtest Assessment
+**None provided.** No backtest report, real-tick study, or out-of-sample data is published on the code page.
+Without it, even in-sample behavior is unknown. (A pattern + L2-DOM strategy is also hard to backtest faithfully
+because historical DOM data is rarely available — another reason results are absent.)
+
+---
+## Eligibility & compliance
 
 ## Eligibility Gates
 - **Gate A — PASS (survives, verifiable).** Pattern breakout + ATR trailing SL + R-based partials; no
@@ -96,38 +136,12 @@ Major FX pairs + indices, H1/H4 (per code defaults).
 partial exits, and **hard daily/weekly drawdown limits** are implemented in the open source. They are
 **proven to exist** but **not proven to hold in live trading** (no track record).
 
-## Evidence & Performance
-| Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | NOT REPORTED | — | no track record |
-| Maximum Drawdown | NOT REPORTED (hard daily/weekly limits coded, but unproven live) | — | code only |
-| Win Rate | NOT REPORTED | — | — |
-| Profit Factor | NOT REPORTED | — | — |
-| Track Length | None (published 2026-04-06; no live record) | — | — |
-| Real vs Demo | N/A (no account) | — | — |
-
-## Backtest Assessment
-**None provided.** No backtest report, real-tick study, or out-of-sample data is published on the code page.
-Without it, even in-sample behavior is unknown. (A pattern + L2-DOM strategy is also hard to backtest faithfully
-because historical DOM data is rarely available — another reason results are absent.)
-
-## Risk-of-Ruin Analysis
-**NON-ESTIMABLE.** No trade-level history exists (the EA has never been shown trading). The coded daily/weekly
-DD limits and Kelly sizing are encouraging *by design*, but ROR requires realized Tier 0/1 trade data, which
-does not exist. NON-ESTIMABLE ROR **bars Deployable.**
-
-## Recommended Risk Settings (50k / 100k / 200k)
-**Non-actionable from public data** — no realized distribution to size against. The coded `MaxDailyLoss` /
-`MaxWeeklyLoss` could *in principle* be set to a firm's limits, but with no live evidence that the EA respects
-them under stress, this cannot be recommended for funded capital.
-
-## Cost & Licensing
-**Free / open-source** (MQL5 Code Base). No license cost; full source available. (This is also what makes it
-the rare EA able to satisfy Alpha Capital's source-code-submission requirement.)
-
 ## Community Sentiment
 **None yet** — too new (2026-04-06). No independent reviews, no forum teardowns, no user track records. The
 absence of complaints is purely a function of newness, not validation.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** a thoughtfully-built but **unproven** breakout system whose pattern +
@@ -142,24 +156,28 @@ absence of complaints is purely a function of newness, not validation.
    thing that would change the verdict is a **forward/live track record** (≥6 months, real money, inspectable),
    which only forward-testing or the operator can generate — code inspection alone cannot.
 
-## Scores (latent × multiplier/ceiling = adjusted)
+## Scores
+
 best_tier = **TIER4** (no performance evidence); ROR = **NON-ESTIMABLE** → Survival multiplier =
 min(MultA_T4 0.12, 0.20) = 0.12. Multiplier A (Tier 4) = 0.12; Multiplier B (Tier 4) = 0.15. **No Gate-B
 ceiling** (open source). **No Risk control-evidence cap** (controls are code-verifiable = independently
 demonstrated to *exist*), though latent reflects that they are unproven *live*.
 
-| Dimension | Latent | Mult/Ceiling | Adjusted |
-|---|---:|---|---:|
-| Funded-Account Survival (30%) | 2 | ×0.12 (ROR cap→0.12) = 0.24 → clamp | 1 |
-| Prop-Firm Compliance (20%) | 5 | no Gate-B cap (Conditional all firms: uniqueness/shared) | 5 |
-| Risk Management (15%) | 6 | no cap (controls code-verifiable, unproven live) | 6 |
-| Challenge-Passing (15%) | 1 | ×0.12 = 0.12 → clamp | 1 |
-| Consistency (10%) | 1 | ×0.15 = 0.15 → clamp | 1 |
-| Transparency of Results (5%) | 1 | ×0.15 = 0.15 → clamp | 1 |
-| Profitability (5%) | 1 | ×0.15 = 0.15 → clamp | 1 |
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 2 | ×0.12 (ROR cap→0.12) = 0.24 → clamp | 1 | 0.30 |
+| Prop-Firm Compliance | 20% | 5 | no Gate-B cap (Conditional all firms: uniqueness/shared) | 5 | 1.00 |
+| Risk Management | 15% | 6 | no cap (controls code-verifiable, unproven live) | 6 | 0.90 |
+| Challenge-Passing | 15% | 1 | ×0.12 = 0.12 → clamp | 1 | 0.15 |
+| Consistency | 10% | 1 | ×0.15 = 0.15 → clamp | 1 | 0.10 |
+| Transparency | 5% | 1 | ×0.15 = 0.15 → clamp | 1 | 0.05 |
+| Profitability | 5% | 1 | ×0.15 = 0.15 → clamp | 1 | 0.05 |
+| **Overall** | | | | | **2.6** |
 
-**Overall** = 0.30·1 + 0.20·5 + 0.15·6 + 0.15·1 + 0.10·1 + 0.05·1 + 0.05·1
-= 0.30 + 1.00 + 0.90 + 0.15 + 0.10 + 0.05 + 0.05 = **2.55 → 2.6 (poor).**
+*Band: poor. Surface only the adjusted Overall; latents shown for audit.*
+
+> **Overall** = 0.30·1 + 0.20·5 + 0.15·6 + 0.15·1 + 0.10·1 + 0.05·1 + 0.05·1
+> = 0.30 + 1.00 + 0.90 + 0.15 + 0.10 + 0.05 + 0.05 = **2.55 → 2.6 (poor).**
 
 > Note: Transparency-of-**results** scores 1 (no verified results), even though Transparency-of-**logic** is
 > the best in the archive (open source) — the dimension measures inspectable *evidence/results*, captured
@@ -185,6 +203,28 @@ generate; web research cannot).
 - Shared open-source code can trip strategy-uniqueness/shared-EA rules at primaries.
 - Pattern-recognition + Kelly sizing can be fragile/aggressive if misconfigured; unproven under stress.
 
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+**Christopher Adie (Adiec7)** — named, identifiable MQL5 Code Base author. Open-source/free (not a commercial
+product); no vendor performance marketing. Accountable and transparent, but new/low-track-record as a publisher.
+
+## MT5 Compatibility & Dependencies (publicly documented only)
+- MT5; **H1/H4**; major FX pairs + indices.
+- **Requires Level-2 Order Book (`MarketBookGet`)** for its absorption/imbalance edge, with a **tick-volume
+  fallback** if DOM is unavailable. **Practical caveat:** reliable L2 DOM is uncommon on retail/prop *spot-FX*
+  feeds, so on a prop server the order-flow edge likely degrades to the tick-volume fallback — a transferability risk.
+
+## Recommended Risk Settings (50k / 100k / 200k)
+**Non-actionable from public data** — no realized distribution to size against. The coded `MaxDailyLoss` /
+`MaxWeeklyLoss` could *in principle* be set to a firm's limits, but with no live evidence that the EA respects
+them under stress, this cannot be recommended for funded capital.
+
+## Cost & Licensing
+**Free / open-source** (MQL5 Code Base). No license cost; full source available. (This is also what makes it
+the rare EA able to satisfy Alpha Capital's source-code-submission requirement.)
+
 ## Source Links
 - https://www.mql5.com/en/code/71521 — 2026-06-23 — open-source code page (fetched) — not affiliate
 - https://mql.robotfx.org/2026/04/metatrader-5-expert-advisor-hon-aps.html — 2026-06-23 — mirror/listing — mixed
@@ -205,3 +245,5 @@ generate; web research cannot).
   inspectable record; if it shows ≤~6% DD with a real edge, this is a genuine Watchlist candidate (its
   mechanism/legality already clear). Self-modify parameters to address strategy-uniqueness before any funded use.
 - If an independent live/Myfxbook record surfaces, re-vet immediately (mechanism already verified).
+
+</details>

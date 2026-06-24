@@ -1,4 +1,24 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # Mad Turtle EA (MT5)
+*High-reputation ONNX-ML gold EA with the cleanest described mechanism in the archive — but its own two verified real-money signals show catastrophic 68–83% drawdowns, one net losing: a decisive AVOID.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | ⛔ **AVOID** |
+| **Overall** | **2.1 / 10** · poor |
+| **Mechanism** | ONNX ML, single position, hard SL, no grid/martingale · confidence Medium · Gate B: verifiable |
+| **Evidence** | ◉ best_tier **T2** · real-money · ~11mo (WT) / ~8.5mo (ICM) · two vendor MQL5 live signals |
+| **Risk of ruin** | NON-ESTIMABLE |
+| **Legality** | FN ✅ · FP ⚠️ · 5% ⚠️ · TFT ⚠️ |
+| **Verified perf** | Weltrade −67.91% / ICM −42.10% (recent) [T2] · max DD 68.13% / 83.31% [T2] · ~11mo (WT) / ~8.5mo (ICM) |
+| **Vendor** | Gennady Sergienko (ats_cis) — identifiable |
+
+> **Bottom line — binding criterion:** two verified real-money MQL5 signals (≥6mo) show catastrophic 68.13% and 83.31% max drawdowns — one net LOSING (−6.23%, PF 0.99) — flatly contradicting the safe/low-DD/single-position marketing.
+
+---
+## Profile
 
 ## Overview
 Mad Turtle is a premium ($1,800 buy / $399 6-mo rental) machine-learning MT5 EA by **Gennady Sergienko
@@ -15,16 +35,6 @@ mechanism in the archive. **Yet its two own verified real-money MQL5 signals sho
 >   monthly −42.10%, 740 trades, 59.86% win.
 >   MQL5 banners on both: "*A large drawdown may occur on the account again.*" The affiliate-cited "46%
 >   gain / 9.5% DD over 7 weeks" was a cherry-picked early snapshot of an account that later drew down 68–83%.
-
-## Vendor / Developer
-**Gennady Sergienko (ats_cis)** — named, accountable, 8+ years on MQL5; other products (Nesco EA, Trader
-Station). **The strongest vendor reputation in the archive** — which is exactly why the negative real-money
-result matters: reputation and clean marketing did not produce prop-survivable behavior.
-
-## MT5 Compatibility & Dependencies (publicly documented only)
-- Platform: MT5 only. Instrument: **XAUUSD** only. Timeframe: any (H1/M15), models trained on **H4**.
-- Min deposit $500; ECN/low-spread gold broker; VPS recommended. Verified signals ran on Weltrade (1:500)
-  and IC Markets.
 
 ## Strategy Mechanism (publicly documented / inferable; Gate B status)
 **FACTS (vendor MQL5 listing, fetched):** "Real machine learning using ONNX"; "models trained for a full
@@ -50,6 +60,9 @@ captured in mechanism confidence and the survival/risk scores.
 ## Recommended Instruments
 XAUUSD only.
 
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
+
 ## Evidence Matrix
 
 | Claim | Source URL | Source Type | Independence | Evidence Tier | Retrieved Date | Confidence | Notes |
@@ -67,10 +80,40 @@ XAUUSD only.
 - **Best evidence found:** **Tier 2** — two fetchable **real-money ≥6-month MQL5 signals** (the strongest
   inspectable evidence in the archive). Decisively negative: 68% and 83% DD, one net losing.
 
+## Mechanism Inference Confidence
+**Medium.** Single-position + wide hard SL + no grid/martingale is corroborated by the vendor listing and
+the signals' behavior. The neural net itself is opaque, but the *risk-relevant* structure is observable
+(no averaging-down; account risk driven by wide directional stops) → **no Gate-B ceiling**; the opacity is
+captured in mechanism confidence and the survival/risk scores.
+
 ## Unverified Claims
 - "Safe / low drawdown / capital preservation" — **contradicted** by both real signals.
 - "9.5% max DD" — a 7-week cherry-pick; the same strategy's real accounts reached 68–83% DD.
 - ML "predicts direction" edge — PF 0.99–1.12 over ≥6 months indicates a marginal-to-negative real edge.
+
+## Evidence & Performance
+| Metric | Value | Tier | Source |
+|--------|-------|:----:|--------|
+| Average Monthly Return | Weltrade −67.91% / ICM −42.10% (recent); curves now declining | TIER2 | MQL5 signals |
+| Maximum Drawdown | **83.31%** (Weltrade) / **68.13%** (ICM) | TIER2 | MQL5 signals (fetched) |
+| Win Rate | 64.48% (WT) / 59.86% (ICM) | TIER2 | MQL5 signals |
+| Profit Factor | 0.99 (WT, losing) / 1.12 (ICM) | TIER2 | MQL5 signals |
+| Track Length | ~11mo (WT) / ~8.5mo (ICM), real money | TIER2 | MQL5 signals |
+| Real vs Demo | **Real** (Weltrade 1:500; IC Markets) | TIER2 | MQL5 signals |
+
+## Risk-of-Ruin Analysis
+**NON-ESTIMABLE** as a formal ROR (only aggregate signal stats fetchable, not trade-level). Qualitatively
+unambiguous: **68–83% realized DD ⇒ daily/overall-DD violation probability ≈ 1** on any primary firm; PF ≈ 1.0
+means no durable edge to offset variance. DD-definition mismatch caveat applies but is dwarfed by a 7× gap.
+NON-ESTIMABLE ROR **bars Deployable.**
+
+## Backtest Assessment
+Not the basis of the case; the two real signals are. The gap between marketing/early-snapshot DD (~9.5%) and
+realized DD (68–83%) is the textbook **ML overfit / out-of-sample decay** signature. Backtests treated as
+near-worthless against the live result.
+
+---
+## Eligibility & compliance
 
 ## Eligibility Gates
 - **Gate A — PASS (survives).** Single position, hard SL, no grid/martingale/averaging, swing holds
@@ -98,38 +141,13 @@ XAUUSD only.
 single-position, but the **stops are wide and the account-level DD reached 68–83%**, so the controls do not
 bound risk to anything near prop levels. No daily-loss-stop/equity-stop documented.
 
-## Evidence & Performance
-| Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | Weltrade −67.91% / ICM −42.10% (recent); curves now declining | TIER2 | MQL5 signals |
-| Maximum Drawdown | **83.31%** (Weltrade) / **68.13%** (ICM) | TIER2 | MQL5 signals (fetched) |
-| Win Rate | 64.48% (WT) / 59.86% (ICM) | TIER2 | MQL5 signals |
-| Profit Factor | 0.99 (WT, losing) / 1.12 (ICM) | TIER2 | MQL5 signals |
-| Track Length | ~11mo (WT) / ~8.5mo (ICM), real money | TIER2 | MQL5 signals |
-| Real vs Demo | **Real** (Weltrade 1:500; IC Markets) | TIER2 | MQL5 signals |
-
-## Backtest Assessment
-Not the basis of the case; the two real signals are. The gap between marketing/early-snapshot DD (~9.5%) and
-realized DD (68–83%) is the textbook **ML overfit / out-of-sample decay** signature. Backtests treated as
-near-worthless against the live result.
-
-## Risk-of-Ruin Analysis
-**NON-ESTIMABLE** as a formal ROR (only aggregate signal stats fetchable, not trade-level). Qualitatively
-unambiguous: **68–83% realized DD ⇒ daily/overall-DD violation probability ≈ 1** on any primary firm; PF ≈ 1.0
-means no durable edge to offset variance. DD-definition mismatch caveat applies but is dwarfed by a 7× gap.
-NON-ESTIMABLE ROR **bars Deployable.**
-
-## Recommended Risk Settings (50k / 100k / 200k)
-**Non-actionable.** Two real configs produced 68–83% DD and one net loss; no sizing makes that prop-viable.
-
-## Cost & Licensing
-$1,800 buy / $399 6-month rental (MQL5); 91 reviews, **4.34/5**. Also on group-buy sites (malware caveat,
-negative signal only). Premium price for a strategy whose real accounts are down/deeply drawn-down.
-
 ## Community Sentiment
 MQL5 4.34/5 (91 reviews) — good on paper, but the **signals are the real verdict**. A signal reviewer
 questioned the "buy orders with 4000-point SL" viability. No scam allegations; the issue is performance/risk,
 not fraud. The affiliate "review" is a VPS-promo with a cherry-picked snapshot.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** a real ML edge that was strong in training/early live (the 7-week
@@ -142,20 +160,24 @@ not fraud. The affiliate "review" is a VPS-promo with a cherry-picked snapshot.
    thing that could change the verdict is a *new* real account holding ≤~6% DD over ≥6 months, which would
    contradict everything currently on record.
 
-## Scores (latent × multiplier/ceiling = adjusted)
+## Scores
+
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 2 | ×0.20 (ROR cap) = 0.40 → clamp | 1 | 0.30 |
+| Prop-Firm Compliance | 20% | 5 | not multiplied (Permitted ≥1, Conditional rest) | 5 | 1.00 |
+| Risk Management | 15% | 2 | controls contradicted (68–83% real DD) | 2 | 0.30 |
+| Challenge-Passing | 15% | 1 | ×0.45 = 0.45 → round | 1 | 0.15 |
+| Consistency | 10% | 1 | ×0.60 = 0.60 → round | 1 | 0.10 |
+| Transparency | 5% | 6 | ×0.60 = 3.6 → round | 4 | 0.20 |
+| Profitability | 5% | 2 | ×0.60 = 1.2 → round | 1 | 0.05 |
+| **Overall** | | | | | **2.1** |
+
+*Band: poor. Surface only the adjusted Overall; latents shown for audit.*
+
 best_tier = **TIER2**; ROR = **NON-ESTIMABLE** → Survival multiplier = min(MultA_T2 0.45, 0.20) = 0.20.
 Multiplier A (Tier 2) = 0.45; Multiplier B (Tier 2) = 0.60. No Gate-B ceiling. Risk controls contradicted
 by 68–83% real DD → anchored low.
-
-| Dimension | Latent | Mult/Ceiling | Adjusted |
-|---|---:|---|---:|
-| Funded-Account Survival (30%) | 2 | ×0.20 (ROR cap) = 0.40 → clamp | 1 |
-| Prop-Firm Compliance (20%) | 5 | not multiplied (Permitted ≥1, Conditional rest) | 5 |
-| Risk Management (15%) | 2 | controls contradicted (68–83% real DD) | 2 |
-| Challenge-Passing (15%) | 1 | ×0.45 = 0.45 → round | 1 |
-| Consistency (10%) | 1 | ×0.60 = 0.60 → round | 1 |
-| Transparency (5%) | 6 | ×0.60 = 3.6 → round | 4 |
-| Profitability (5%) | 2 | ×0.60 = 1.2 → round | 1 |
 
 **Overall** = 0.30·1 + 0.20·5 + 0.15·2 + 0.15·1 + 0.10·1 + 0.05·4 + 0.05·1
 = 0.30 + 1.00 + 0.30 + 0.15 + 0.10 + 0.20 + 0.05 = **2.10 → 2.1 (poor).**
@@ -179,6 +201,26 @@ legality — the most important lesson of this pass.
 - Marketing/snapshot DD (~9.5%) is ~8× below realized DD — out-of-sample ML decay.
 - Wide ~4000-point directional stops; premium $1,800 price; recent monthly returns deeply negative.
 
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+**Gennady Sergienko (ats_cis)** — named, accountable, 8+ years on MQL5; other products (Nesco EA, Trader
+Station). **The strongest vendor reputation in the archive** — which is exactly why the negative real-money
+result matters: reputation and clean marketing did not produce prop-survivable behavior.
+
+## MT5 Compatibility & Dependencies (publicly documented only)
+- Platform: MT5 only. Instrument: **XAUUSD** only. Timeframe: any (H1/M15), models trained on **H4**.
+- Min deposit $500; ECN/low-spread gold broker; VPS recommended. Verified signals ran on Weltrade (1:500)
+  and IC Markets.
+
+## Recommended Risk Settings (50k / 100k / 200k)
+**Non-actionable.** Two real configs produced 68–83% DD and one net loss; no sizing makes that prop-viable.
+
+## Cost & Licensing
+$1,800 buy / $399 6-month rental (MQL5); 91 reviews, **4.34/5**. Also on group-buy sites (malware caveat,
+negative signal only). Premium price for a strategy whose real accounts are down/deeply drawn-down.
+
 ## Source Links
 - https://www.mql5.com/en/market/product/144803 — 2026-06-23 — vendor MQL5 listing (fetched) — affiliate(vendor)
 - https://www.mql5.com/en/signals/2323073 — 2026-06-23 — REAL signal, Weltrade ~11mo (fetched) — platform-hosted
@@ -200,3 +242,5 @@ legality — the most important lesson of this pass.
   current ≥6-month evidence is strongly negative.
 - If signal trade-level history becomes inspectable, compute a formal ROR and confirm the directional-bias
   hypothesis.
+
+</details>

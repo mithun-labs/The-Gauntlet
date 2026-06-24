@@ -1,15 +1,27 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # AI Gold Sniper MT5
+*Closed-source commercial XAUUSD "AI" gold EA with a legal single-entry SL/TP mechanism but only Tier-3 vendor signal evidence and an implausible 100% win rate contradicted by blown-account reports — Avoid, Overall 2.3.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | ⛔ **AVOID** |
+| **Overall** | **2.3 / 10** · poor |
+| **Mechanism** | Single-entry, fixed-lot, hard SL/TP gold EA · confidence Medium · Gate B: verifiable (publicly described + independently corroborated) |
+| **Evidence** | ○ best_tier **T3** · demo/uninspectable · ~21–35wk vendor signal · mql5 vendor signal |
+| **Risk of ruin** | NON-ESTIMABLE |
+| **Legality** | FN ✅ · FP ⚠️ · 5% ⚠️ · TFT ✅ |
+| **Verified perf** | NOT REPORTED (signal gains 233%/21wk, 542%/35wk cumulative vendor claims) [T3] · max DD 3.1% / 8.69% [T3] · ~21–35wk vendor signal |
+| **Vendor** | Ho Tuan Thang (TuanThang) — identifiable |
+
+> **Bottom line — binding criterion:** headline return+DD evidence is **Tier 3 (no independent verification)** AND **ROR NON-ESTIMABLE with best_tier ≤ Tier 2**; reinforced by an implausible 100%-win signal contradicted by independent blown-account reports.
+
+---
+## Profile
 
 ## Overview
 A closed-source, fully-automated commercial MQL5-Market EA for **XAUUSD only (H1)**, marketed as "GPT-4o / AI-powered." Vendor positions it as a single-trade, hard-SL gold strategy with "no grid, no martingale" and a news filter. Survives Gate A (mechanism legal and independently corroborated as single-entry SL/TP), but the headline performance rests entirely on **vendor MQL5 signal claims (Tier 3)** featuring an implausible **100% win rate**, directly contradicted by independent user reports of large stop-loss losses and a wiped-out author signal. **Verdict: Avoid (Overall 2.3).**
-
-## Vendor / Developer
-**Ho Tuan Thang (MQL5 user "TuanThang").** Identifiable and accountable — an established MQL5 seller with multiple gold EAs and a 14,000–15,000-member MQL5 channel; reviewers praise responsive support. Not anonymous (a positive vs. much of the field), but operates a stable of similarly-marketed AI/gold EAs (rebrand/portfolio risk — see Similar EAs).
-
-## MT5 Compatibility & Dependencies (publicly documented only)
-- Platform: MT5 (MQL5 Market product 133197). Symbol **XAUUSD only**, timeframe **H1**.
-- Broker: "True ECN brokers with low latency and tight spreads" recommended.
-- Min deposit $300 @ 0.01 lot; recommended $500. Max positions: **one trade at a time** (vendor).
 
 ## Strategy Mechanism (publicly documented / inferable; Gate A/B status)
 Vendor describes "multi-timeframe technical signals, price action data, and market volatility analysis," balancing momentum and trend, with a **news filter** to avoid high-impact events. Independent review (unlockea) reconstructs it as **"single-entry, fixed-lot trades with SL & TP"** — i.e. one position at a time, hard stop and target, fixed 0.01 lot. Vendor states verbatim **"There is no Grid, and no Martingale"** and **"The EA strictly uses a Stop Loss for every single trade."**
@@ -21,6 +33,9 @@ Vendor describes "multi-timeframe technical signals, price action data, and mark
 
 ## Recommended Instruments
 XAUUSD (Gold) only, H1.
+
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
 
 ## Evidence Matrix
 
@@ -41,6 +56,26 @@ XAUUSD (Gold) only, H1.
 - "Prop-friendly" — no Tier-0 funded-account evidence.
 - Backtest "2003–2024, 99.9% modeling quality" — vendor claim; tick-data source/costs/OOS unstated; not reproducible by this agent.
 
+## Evidence & Performance
+
+| Metric | Value | Tier | Source |
+|--------|-------|:----:|--------|
+| Average Monthly Return | NOT REPORTED (signal gains 233%/21wk, 542%/35wk are cumulative vendor claims) | TIER3 | mql5 vendor signal |
+| Maximum Drawdown | 3.1% / 8.69% (vendor signal); $16.01 / 1.52–6.29% (vendor) | TIER3 | mql5 vendor / unlockea |
+| Win Rate | "100%" (claimed; implausible) | TIER3 | mql5 vendor |
+| Profit Factor | NOT REPORTED | — | — |
+| Track Length | ~21–35 weeks (vendor signal); no inspectable independent record | TIER3 | mql5 vendor |
+| Real vs Demo | Claimed live (IC Markets) but uninspectable; "live monitoring coming soon" | TIER3 | mql5 vendor |
+
+## Risk-of-Ruin Analysis
+**NON-ESTIMABLE.** No public Tier 0/1 trade-level history (no Myfxbook/FXBlue verified real-money page; MQL5 signal is Tier 3 and was not inspectable at trade level). Per CLAUDE.md, ROR is not manufactured from vendor signal summaries, the 100%-win claim, or backtests. The independent reports of large stop-loss losses and a wiped-out signal indicate the true ROR is materially non-zero, but it cannot be quantified from inspectable public data. **Daily-DD violation prob / max-DD violation prob: indicative-only**, non-quantifiable; the small-TP/large-SL profile makes a cluster of losses capable of tripping a 5%/10% prop limit. DD-definition mismatch caveat applies (vendor DD ≠ firm daily/overall DD).
+
+## Backtest Assessment
+Vendor claims 2003–2024 backtest at "99.9% modeling quality." Real-tick-data source, spread/commission/slippage/swap modeling, multi-regime coverage, and OOS/walk-forward are **unstated**; not reproducible here. A high modeling-quality figure does not establish real-tick or cost-realistic testing → treat as a near-worthless claim for an all-weather conclusion.
+
+---
+## Eligibility & compliance
+
 ## Eligibility Gates
 - **Gate A — PASS.** Single-entry, fixed-lot, hard SL, news-avoiding filter; no grid/martingale/averaging or tick-scalp signature.
 - **Gate B — does not bind.** Mechanism publicly described + independently corroborated (clear inference). Closed source noted as a confirmation limit, not a black box.
@@ -60,29 +95,6 @@ XAUUSD (Gold) only, H1.
 ## Mechanical Rule-Respect
 Hard per-trade stop loss is **vendor-documented and independently described** (single-entry SL/TP), but **not independently demonstrated to hold under stress** — and is contradicted by user reports of large realized stop-loss losses and a wiped-out author signal. No documented hard daily-loss stop or equity stop. Max positions = 1 (vendor).
 
-## Evidence & Performance
-
-| Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | NOT REPORTED (signal gains 233%/21wk, 542%/35wk are cumulative vendor claims) | TIER3 | mql5 vendor signal |
-| Maximum Drawdown | 3.1% / 8.69% (vendor signal); $16.01 / 1.52–6.29% (vendor) | TIER3 | mql5 vendor / unlockea |
-| Win Rate | "100%" (claimed; implausible) | TIER3 | mql5 vendor |
-| Profit Factor | NOT REPORTED | — | — |
-| Track Length | ~21–35 weeks (vendor signal); no inspectable independent record | TIER3 | mql5 vendor |
-| Real vs Demo | Claimed live (IC Markets) but uninspectable; "live monitoring coming soon" | TIER3 | mql5 vendor |
-
-## Backtest Assessment
-Vendor claims 2003–2024 backtest at "99.9% modeling quality." Real-tick-data source, spread/commission/slippage/swap modeling, multi-regime coverage, and OOS/walk-forward are **unstated**; not reproducible here. A high modeling-quality figure does not establish real-tick or cost-realistic testing → treat as a near-worthless claim for an all-weather conclusion.
-
-## Risk-of-Ruin Analysis
-**NON-ESTIMABLE.** No public Tier 0/1 trade-level history (no Myfxbook/FXBlue verified real-money page; MQL5 signal is Tier 3 and was not inspectable at trade level). Per CLAUDE.md, ROR is not manufactured from vendor signal summaries, the 100%-win claim, or backtests. The independent reports of large stop-loss losses and a wiped-out signal indicate the true ROR is materially non-zero, but it cannot be quantified from inspectable public data. **Daily-DD violation prob / max-DD violation prob: indicative-only**, non-quantifiable; the small-TP/large-SL profile makes a cluster of losses capable of tripping a 5%/10% prop limit. DD-definition mismatch caveat applies (vendor DD ≠ firm daily/overall DD).
-
-## Recommended Risk Settings (50k / 100k / 200k)
-**Non-actionable.** Sizing cannot be derived from verified public trade-level data; the only figures are vendor signal claims with an implausible win rate. Any 50k/100k/200k recommendation would be fabrication.
-
-## Cost & Licensing
-$499 (MQL5 Market), one-time with updates; rentals/activations per MQL5 terms. Affiliate group-buy/"cracked" copies circulate (eafxstore, cheaperforex, forexcracked) — low-trust, malware-risk, never positive evidence.
-
 ## Community Sentiment (independent only; criticism)
 - MQL5 rating **3.78/5 (109 reviews)** — mediocre for a $499 EA.
 - "Bot lost my money. Sorry but this is not good."
@@ -91,6 +103,9 @@ $499 (MQL5 Market), one-time with updates; rentals/activations per MQL5 terms. A
 - "The author's signal on a real account was wiped out." (directly contradicts the 100%-win marketing.)
 - Recent (Apr–May 2026) reviews report accounts eroded by consecutive stop-loss hits in volatile conditions.
 - Positive reviews exist but skew toward setup/support praise and short calm-period results.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** the 100%-win/low-DD signal is a **short calm-window, small-TP record** where no loser has yet hit its (large) stop — survivorship within the vendor's stable of accounts/EAs. A perfect win rate over dozens of trades is a hallmark of unrealized-loss accounting or cherry-picked windows, not a durable edge.
@@ -101,19 +116,22 @@ $499 (MQL5 Market), one-time with updates; rentals/activations per MQL5 terms. A
 ## Scores
 Evidence: **best_tier = TIER3**. Multiplier A (Survival, Challenge) = 0.25; Multiplier B (Profitability, Consistency, Transparency) = 0.30. **ROR NON-ESTIMABLE → Survival multiplier = min(0.25, 0.20) = 0.20.** Risk control-evidence ceiling = vendor-documented → Risk ≤ 5. Gate B does not bind (mechanism inferable).
 
-| Dimension | Latent | × Mult / Ceiling | Adjusted |
-|---|---:|---|---:|
-| Funded-Account Survival | 2 | × 0.20 (ROR cap) = 0.40 → round → clamp | 1 |
-| Prop-Firm Compliance | 5 | min(5, no Gate-B) | 5 |
-| Risk Management | 4 | min(4, ceiling 5) | 4 |
-| Challenge-Passing | 3 | × 0.25 = 0.75 → round → clamp | 1 |
-| Consistency | 2 | × 0.30 = 0.60 → round → clamp | 1 |
-| Transparency | 3 | × 0.30 = 0.90 → round → clamp | 1 |
-| Profitability | 2 | × 0.30 = 0.60 → round → clamp | 1 |
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 2 | × 0.20 (ROR cap) = 0.40 → round → clamp | 1 | 0.30 |
+| Prop-Firm Compliance | 20% | 5 | min(5, no Gate-B) | 5 | 1.00 |
+| Risk Management | 15% | 4 | min(4, ceiling 5) | 4 | 0.60 |
+| Challenge-Passing | 15% | 3 | × 0.25 = 0.75 → round → clamp | 1 | 0.15 |
+| Consistency | 10% | 2 | × 0.30 = 0.60 → round → clamp | 1 | 0.10 |
+| Transparency | 5% | 3 | × 0.30 = 0.90 → round → clamp | 1 | 0.05 |
+| Profitability | 5% | 2 | × 0.30 = 0.60 → round → clamp | 1 | 0.05 |
+| **Overall** | | | | | **2.3** |
 
 **Overall** = 0.30·1 + 0.20·5 + 0.15·4 + 0.15·1 + 0.10·1 + 0.05·1 + 0.05·1
 = 0.30 + 1.00 + 0.60 + 0.15 + 0.10 + 0.05 + 0.05 = **2.25 → 2.3 (poor)**.
 (Latent is for ordering among unproven EAs only; the headline is the adjusted Overall.)
+
+*Band: poor. Surface only the adjusted Overall; latents shown for audit.*
 
 ## Deployment Verdict
 **AVOID — Overall 2.3 (poor).**
@@ -130,6 +148,23 @@ Same vendor (Ho Tuan Thang / TuanThang) ships a stable of gold EAs — **AI Gold
 - Closed-source commercial automated EA — Conditional/Prohibited product type at Funding Pips and The 5%ers; Prohibited at both reference firms.
 - "AI / GPT-4o" branding unverifiable.
 
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+**Ho Tuan Thang (MQL5 user "TuanThang").** Identifiable and accountable — an established MQL5 seller with multiple gold EAs and a 14,000–15,000-member MQL5 channel; reviewers praise responsive support. Not anonymous (a positive vs. much of the field), but operates a stable of similarly-marketed AI/gold EAs (rebrand/portfolio risk — see Similar EAs).
+
+## MT5 Compatibility & Dependencies (publicly documented only)
+- Platform: MT5 (MQL5 Market product 133197). Symbol **XAUUSD only**, timeframe **H1**.
+- Broker: "True ECN brokers with low latency and tight spreads" recommended.
+- Min deposit $300 @ 0.01 lot; recommended $500. Max positions: **one trade at a time** (vendor).
+
+## Recommended Risk Settings (50k / 100k / 200k)
+**Non-actionable.** Sizing cannot be derived from verified public trade-level data; the only figures are vendor signal claims with an implausible win rate. Any 50k/100k/200k recommendation would be fabrication.
+
+## Cost & Licensing
+$499 (MQL5 Market), one-time with updates; rentals/activations per MQL5 terms. Affiliate group-buy/"cracked" copies circulate (eafxstore, cheaperforex, forexcracked) — low-trust, malware-risk, never positive evidence.
+
 ## Source Links (with retrieval date + affiliate flag)
 | URL | Retrieved | Used For | Affiliate? |
 |-----|-----------|----------|-----------|
@@ -145,3 +180,5 @@ Same vendor (Ho Tuan Thang / TuanThang) ships a stable of gold EAs — **AI Gold
 ## Future Research Needed
 - Operator to supply (or locate) an **inspectable ≥6-month verified real-money trade-level record** (Myfxbook/FXBlue or funded statements) before this could rise above Avoid; absent that, Tier-3/NON-ESTIMABLE caps it.
 - If FundedNext primary numerics and Funding Pips/5ers EA-policy edge cases are later primary-confirmed, re-check the per-firm verdicts (currently rulebook v1; FundedNext numerics provisional).
+
+</details>

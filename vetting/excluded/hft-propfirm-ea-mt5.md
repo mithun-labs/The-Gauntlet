@@ -1,4 +1,9 @@
+[← Index](../README.md) · [Rankings](../rankings/) · [Rulebooks](../rulebooks/)
+
 # HFT PropFirm EA / "Green Man" (MT5) — EXCLUDED (Gate A)
+*An HFT EA built only to pass HFT-permitting prop-firm evaluations — Excluded at Gate A for HFT latency / quote-feed exploitation (tick-scalping).*
+
+> 🚫 **EXCLUDED at Gate A** — core mechanism is HFT latency / quote-feed exploitation (tick-scalping class). Never scored.
 
 **Verdict: EXCLUDED at Gate A — core mechanism is HFT latency / quote-feed exploitation (tick-scalping
 class).** Never scored. Reinforced by Gate C (prohibited at all four primaries) and by **zero

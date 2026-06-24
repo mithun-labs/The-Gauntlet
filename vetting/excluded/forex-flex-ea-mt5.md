@@ -1,4 +1,9 @@
+[← Index](../README.md) · [Rankings](../rankings/) · [Rulebooks](../rulebooks/)
+
 # Forex Flex EA — EXCLUDED (Gate A)
+*A "virtual trades" MT4/MT5 EA marketed to pass prop challenges — Excluded at Gate A for grid + martingale basket recovery.*
+
+> 🚫 **EXCLUDED at Gate A** — core mechanism is grid + martingale / basket recovery with no per-trade hard stop. Never scored.
 
 **Verdict: EXCLUDED at Gate A — core mechanism is grid + martingale basket recovery.** Never scored.
 

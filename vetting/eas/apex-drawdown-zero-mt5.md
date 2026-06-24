@@ -1,4 +1,24 @@
+[← Index](../README.md) · [Funded-survival](../rankings/funded-survival.md) · [Comparison](../rankings/comparison.md)
+
 # Apex Drawdown Zero EA (MT5)
+*Closed-source XAUUSD Asian-session breakout scalper whose implausible "0.39% DD / +106%" track rests on uninspectable Tier-3 evidence — AVOID.*
+
+## At a Glance
+| | |
+|---|---|
+| **Verdict** | ⛔ **AVOID** |
+| **Overall** | **2.3 / 10** · poor |
+| **Mechanism** | XAUUSD M15 Asian-session range-breakout scalper · confidence Low · Gate B: black box |
+| **Evidence** | ○ best_tier **T3** · claimed real-money (UNCONFIRMED) · "18+ months live" (claimed; new 2026 EA) · vendor Myfxbook (uninspectable) |
+| **Risk of ruin** | NON-ESTIMABLE |
+| **Legality** | FN ✅ · FP ⚠️ · 5% ⚠️ · TFT ✅ |
+| **Verified perf** | ~+4.1%/mo implied [T3] · max DD 0.39% [T3] (claimed — implausible) · "18+ months live" (claimed) |
+| **Vendor** | Tshivhidzo Moss Mbedzi — identifiable |
+
+> **Bottom line — binding criterion:** headline return+DD evidence is **Tier 3** (no inspectable independent verification — Myfxbook 403, the "independent" review returned an empty body) **AND** ROR **NON-ESTIMABLE** with best_tier ≤ Tier 2; reinforced by an internally-implausible 0.39%-DD / 106%-gain claim.
+
+---
+## Profile
 
 ## Overview
 Apex Drawdown Zero is a closed-source (.ex5) MT5 Expert Advisor by **Tshivhidzo Moss Mbedzi**, marketed as
@@ -17,17 +37,6 @@ phased price increases; also circulating via group-buy sites.
 > claim therefore signals **curve-fit/demo presented as "live," or an undisclosed recovery/loss-management
 > mode** — neither of which can be ruled out without trade-level data. Both factors cap evidence at
 > **Tier 3** and drive the Avoid verdict.
-
-## Vendor / Developer
-**Tshivhidzo Moss Mbedzi** — a named, identifiable MQL5 author (accountable). Distribution is direct sale
-(~$697, "price rises as allocation fills" urgency marketing) plus **group-buy / pirated-adjacent listings**
-(eafxstore, ecomforex) and heavy **vendor-authored MQL5 blog promotion** ("Unlock Consistent Profits…",
-"Set Manual: 1000 USD Monthly Growth"). The marketing ecosystem is vendor- and affiliate-saturated.
-
-## MT5 Compatibility & Dependencies (publicly documented only)
-- Platform: MT5 only; supplied as **.ex5** (closed binary). Instrument: **XAUUSD** only. Timeframe: **M15**.
-- Operates in a fixed window — **Asian session 02:00–06:00 server time** (server-time/GMT-offset dependent).
-- Automatic lot sizing by fixed risk-per-trade. No documented VPS/broker requirement surfaced.
 
 ## Strategy Mechanism (publicly documented / inferable; Gate B status)
 **FACTS (vendor + review-site stated, via search leads):** range-breakout scalp; during 02:00–06:00 it
@@ -52,6 +61,9 @@ itself evidence the public picture may be incomplete (a possible hidden loss-man
 ## Recommended Instruments
 XAUUSD (only). M15, Asian session.
 
+---
+## Evidence  *(the basis for every score below — read before the verdict)*
+
 ## Evidence Matrix
 
 | Claim | Source URL | Source Type | Independence | Evidence Tier | Retrieved Date | Confidence | Notes |
@@ -71,12 +83,41 @@ XAUUSD (only). M15, Asian session.
   and **internally implausible**. **No inspectable evidence above Tier 3;** no independent real-money
   corroboration; the most "independent"-looking review returned an empty body.
 
+## Mechanism Inference Confidence
+**Low.** Multiple sources agree on the breakout-with-fixed-SL story, but the headline metrics directly
+contradict it, so I cannot be confident the disclosed mechanism is the *complete* one. The contradiction is
+itself evidence the public picture may be incomplete (a possible hidden loss-management/recovery mode).
+
 ## Unverified Claims
 - +106.69% / 0.39% max DD / PF 3.56 / recovery 5.89 / $242,287 net / "18+ months live verified Myfxbook" —
   all uninspectable and internally implausible.
 - "Fixed stop loss on every trade" and "no martingale/grid/averaging" — vendor/review assertions; not
   independently demonstrated (no teardown, .ex5 closed); the near-zero DD undermines the SL claim.
 - "Perfect for FTMO/prop firm accounts" — no Tier-0 funded evidence.
+
+## Evidence & Performance
+| Metric | Value | Tier | Source |
+|--------|-------|------|--------|
+| Average Monthly Return | ~+4.1%/mo implied (not stated; 106.69% over 18mo) | TIER3 | vendor Myfxbook (uninspectable) |
+| Maximum Drawdown | 0.39% (claimed — implausible) | TIER3 | vendor Myfxbook summary (uninspectable) |
+| Win Rate | NOT REPORTED | — | — |
+| Profit Factor | 3.56 (claimed) | TIER3 | vendor Myfxbook summary (uninspectable) |
+| Track Length | "18+ months live" (claimed; new 2026 EA) | TIER3 | vendor/aggregator (uninspectable) |
+| Real vs Demo | Claimed real-money "live" — UNCONFIRMED (likely demo/curve-fit) | TIER3 | vendor (uninspectable) |
+
+## Risk-of-Ruin Analysis
+**NON-ESTIMABLE.** No inspectable Tier 0/1 trade-level history (Myfxbook 403). ROR cannot be computed from a
+headline gain/DD pair, and the 0.39% DD is not trustworthy input. **DD-definition mismatch caveat:** even
+the reported DD uses Myfxbook's method and is not restatable under a firm's daily/overall rule without
+trade-level data. ROR cap reduces Survival multiplier to min(A, 0.20). NON-ESTIMABLE ROR **bars Deployable.**
+
+## Backtest Assessment
+Vendor promotes strong backtest/live numbers but none are reproducible or inspected; given gold's volatile
+regimes (2024–2026 shifts), a 0.39% DD is consistent with **over-optimization to a calm window**. Public
+backtest = claim, not proof; here it is a **red flag**, not support.
+
+---
+## Eligibility & compliance
 
 ## Eligibility Gates
 - **Gate A — PASS (survives, on the disclosed mechanism).** Breakout + fixed SL + ≤1 trade/day + explicit
@@ -117,41 +158,14 @@ but is **not independently demonstrated** (closed .ex5, no teardown), and the ne
 inconsistent with hard stops actually being hit — so the control is treated as **claimed/contradicted, not
 established.** No documented daily-loss stop or max-position cap beyond ≤1 trade/day.
 
-## Evidence & Performance
-| Metric | Value | Tier | Source |
-|--------|-------|------|--------|
-| Average Monthly Return | ~+4.1%/mo implied (not stated; 106.69% over 18mo) | TIER3 | vendor Myfxbook (uninspectable) |
-| Maximum Drawdown | 0.39% (claimed — implausible) | TIER3 | vendor Myfxbook summary (uninspectable) |
-| Win Rate | NOT REPORTED | — | — |
-| Profit Factor | 3.56 (claimed) | TIER3 | vendor Myfxbook summary (uninspectable) |
-| Track Length | "18+ months live" (claimed; new 2026 EA) | TIER3 | vendor/aggregator (uninspectable) |
-| Real vs Demo | Claimed real-money "live" — UNCONFIRMED (likely demo/curve-fit) | TIER3 | vendor (uninspectable) |
-
-## Backtest Assessment
-Vendor promotes strong backtest/live numbers but none are reproducible or inspected; given gold's volatile
-regimes (2024–2026 shifts), a 0.39% DD is consistent with **over-optimization to a calm window**. Public
-backtest = claim, not proof; here it is a **red flag**, not support.
-
-## Risk-of-Ruin Analysis
-**NON-ESTIMABLE.** No inspectable Tier 0/1 trade-level history (Myfxbook 403). ROR cannot be computed from a
-headline gain/DD pair, and the 0.39% DD is not trustworthy input. **DD-definition mismatch caveat:** even
-the reported DD uses Myfxbook's method and is not restatable under a firm's daily/overall rule without
-trade-level data. ROR cap reduces Survival multiplier to min(A, 0.20). NON-ESTIMABLE ROR **bars Deployable.**
-
-## Recommended Risk Settings (50k / 100k / 200k)
-**Non-actionable.** No inspectable trade-level data; the disclosed SL/risk-% cannot be trusted given the DD
-contradiction. Any sizing recommendation would be fabricated.
-
-## Cost & Licensing
-~$697 one-time with phased price increases ("allocation filling" urgency); closed **.ex5**. Also circulating
-on **group-buy / pirated-adjacent** sites (eafxstore, ecomforex) — discovery/negative signal only, never
-positive evidence, and a malware caveat applies to those builds (treat ≤ weakest community tier).
-
 ## Community Sentiment
 **Thin / new EA.** The mandatory negative-case search (`scam`, `blown account`, `curve fit`, `demo`)
 surfaced **no** specific complaints — but Apex is a **2026-vintage EA** with little independent track, so
 the absence reflects youth, not vindication. No inspectable independent real-money corroboration exists; the
 visible praise is vendor blogs and affiliate listicles.
+
+---
+## Verdict
 
 ## Why This Will Probably Fail
 1. **Most likely benign explanation:** the "0.39% DD / +106%" curve is an **optimized backtest or a calm-
@@ -167,22 +181,25 @@ visible praise is vendor blogs and affiliate listicles.
    independent, trade-level real-money record whose DD survives scrutiny and shows real stops being hit** —
    does not exist publicly, and I do not have it.
 
-## Scores (latent × multiplier/ceiling = adjusted)
+## Scores
+
 best_tier = **TIER3**; ROR = **NON-ESTIMABLE** → Survival multiplier = min(MultA_T3 0.25, 0.20) = 0.20.
 Multiplier A (Tier 3) = 0.25; Multiplier B (Tier 3) = 0.30. Gate B: Compliance ≤ 5, Risk ≤ 4. Risk
 control-evidence: vendor-documented SL but contradicted by the DD → treat as vendor-documented (≤5); Gate B
 Risk ceiling 4 binds (lowest).
 
-| Dimension | Latent | Mult/Ceiling | Adjusted |
-|---|---:|---|---:|
-| Funded-Account Survival (30%) | 2 | ×0.20 (ROR cap) = 0.40 → clamp | 1 |
-| Prop-Firm Compliance (20%) | 6 | min(6, GateB 5) | 5 |
-| Risk Management (15%) | 4 | min(4, GateB 4, ctrl 5) | 4 |
-| Challenge-Passing (15%) | 3 | ×0.25 = 0.75 → round-half-up | 1 |
-| Consistency (10%) | 3 | ×0.30 = 0.90 → round | 1 |
-| Transparency (5%) | 3 | ×0.30 = 0.90 → round | 1 |
-| Profitability (5%) | 3 | ×0.30 = 0.90 → round | 1 |
+| Dimension | Weight | Latent | × Mult / Ceiling | Adjusted | Contribution |
+|-----------|:------:|:------:|:----------------:|:--------:|:------------:|
+| Funded-Account Survival | 30% | 2 | ×0.20 (ROR cap) = 0.40 → clamp | 1 | 0.30 |
+| Prop-Firm Compliance | 20% | 6 | min(6, GateB 5) | 5 | 1.00 |
+| Risk Management | 15% | 4 | min(4, GateB 4, ctrl 5) | 4 | 0.60 |
+| Challenge-Passing | 15% | 3 | ×0.25 = 0.75 → round-half-up | 1 | 0.15 |
+| Consistency | 10% | 3 | ×0.30 = 0.90 → round | 1 | 0.10 |
+| Transparency | 5% | 3 | ×0.30 = 0.90 → round | 1 | 0.05 |
+| Profitability | 5% | 3 | ×0.30 = 0.90 → round | 1 | 0.05 |
+| **Overall** | | | | | **2.3** |
 
+*Band: poor. Surface only the adjusted Overall; latents shown for audit.*
 **Overall** = 0.30·1 + 0.20·5 + 0.15·4 + 0.15·1 + 0.10·1 + 0.05·1 + 0.05·1
 = 0.30 + 1.00 + 0.60 + 0.15 + 0.10 + 0.05 + 0.05 = 2.25 → **2.3 (poor)** (half-up one-decimal: 2.25→2.3).
 
@@ -210,6 +227,29 @@ undisclosed-recovery signal), group-buy/urgency marketing, and a short, recent g
 - Circulates on group-buy/pirated-adjacent sites (malware caveat; negative signal only).
 - New (2026) EA → short real regime regardless of the "18 months" claim.
 
+<details>
+<summary><strong>Appendix — full audit trail</strong> (vendor, compatibility, sizing, cost, sources, notes)</summary>
+
+## Vendor / Developer
+**Tshivhidzo Moss Mbedzi** — a named, identifiable MQL5 author (accountable). Distribution is direct sale
+(~$697, "price rises as allocation fills" urgency marketing) plus **group-buy / pirated-adjacent listings**
+(eafxstore, ecomforex) and heavy **vendor-authored MQL5 blog promotion** ("Unlock Consistent Profits…",
+"Set Manual: 1000 USD Monthly Growth"). The marketing ecosystem is vendor- and affiliate-saturated.
+
+## MT5 Compatibility & Dependencies (publicly documented only)
+- Platform: MT5 only; supplied as **.ex5** (closed binary). Instrument: **XAUUSD** only. Timeframe: **M15**.
+- Operates in a fixed window — **Asian session 02:00–06:00 server time** (server-time/GMT-offset dependent).
+- Automatic lot sizing by fixed risk-per-trade. No documented VPS/broker requirement surfaced.
+
+## Recommended Risk Settings (50k / 100k / 200k)
+**Non-actionable.** No inspectable trade-level data; the disclosed SL/risk-% cannot be trusted given the DD
+contradiction. Any sizing recommendation would be fabricated.
+
+## Cost & Licensing
+~$697 one-time with phased price increases ("allocation filling" urgency); closed **.ex5**. Also circulating
+on **group-buy / pirated-adjacent** sites (eafxstore, ecomforex) — discovery/negative signal only, never
+positive evidence, and a malware caveat applies to those builds (treat ≤ weakest community tier).
+
 ## Source Links
 - https://theforexgeek.com/apex-drawdown-zero-ea-mt5-review/ — 2026-06-22 — review (empty body) — unknown
 - https://www.mql5.com/en/blogs/post/768792 — 2026-06-22 — vendor MQL5 promo blog (via search) — affiliate(vendor)
@@ -235,3 +275,5 @@ undisclosed-recovery signal), group-buy/urgency marketing, and a short, recent g
   Watchlist; confirmation of demo/curve-fit or averaging would push it to Avoid(confirmed)/Excluded.
 - Operator could supply funded-account statements to test Deployable gate 8 (unlikely to be warranted given
   the evidence-integrity concern).
+
+</details>
