@@ -1,8 +1,8 @@
 # Rulebook — The 5%ers
 - **Source:** https://help.the5ers.com/what-are-the-general-rules-for-the-high-stakes-program/ · https://help.the5ers.com/what-is-the-drawdown-rule-for-high-stakes/ · https://help.the5ers.com/what-is-the-leverage-in-the-high-stakes-program/ · https://www.eafunded.com/firms/the5ers (secondary, EA-policy corroboration)
-- **Retrieved:** 2026-06-22 18:33 UTC (re-confirmed; previously 2026-06-19 10:50 UTC)
+- **Retrieved:** 2026-06-29 15:50 UTC (re-confirmed; previously 2026-06-22 18:33 UTC / 2026-06-19 10:50 UTC)
 - **Rulebook version (agent-assigned):** v1
-- **Change note:** initial — The 5%ers added as a PRIMARY target firm in CLAUDE.md v2.2; rulebook created this run before any vetting/re-check that gates on it. **2026-06-22 freshness refresh:** High Stakes drawdown rules re-fetched from primary help center (help.the5ers.com) — 5% daily DD (highest of prior-day closing equity/balance, 00:00 server reset, trailing) and 10% absolute/static max DD from initial balance UNCHANGED. No version bump.
+- **Change note:** initial — The 5%ers added as a PRIMARY target firm in CLAUDE.md v2.2; rulebook created this run before any vetting/re-check that gates on it. **2026-06-22 freshness refresh:** High Stakes drawdown rules re-fetched from primary help center (help.the5ers.com) — 5% daily DD (highest of prior-day closing equity/balance, 00:00 server reset, trailing) and 10% absolute/static max DD from initial balance UNCHANGED. No version bump. **2026-06-29 freshness refresh:** EA-policy article (`/can-i-use-an-ea-expert-advisor-...`) and High-Stakes drawdown article re-fetched from primary (help.the5ers.com) — EA permitted but tick-scalping / HFT / latency-/reverse-/hedge-arbitrage / emulators / copy-trades / stealth-SL prohibited; 5% daily (prior-day close equity/balance, highest, 00:00 server) and 10% absolute-from-initial DD all UNCHANGED. No version bump.
 
 ## Programs Offered
 - **High Stakes** (flagship, 2-step evaluation): New and Classic variants. Account sizes 2.5K, 5K, 10K, 25K, 50K, 100K. Unlimited completion time.
