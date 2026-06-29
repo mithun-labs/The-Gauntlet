@@ -1,9 +1,9 @@
-[Rankings](rankings/) · [Latest pass](daily/2026-06-24.md) · [Rulebooks](rulebooks/)
+[Rankings](rankings/) · [Latest pass](daily/2026-06-29.md) · [Rulebooks](rulebooks/)
 
 # The Gauntlet — EA Vetting Index
 *Adversarial vetting of MT5 EAs for prop-firm challenges and funded-account survival.*
 
-> **State of the database:** ✅ 0 Deployable · 🟡 2 Watchlist · ⛔ 11 Avoid · 🚫 10 Excluded (23 total).
+> **State of the database:** ✅ 0 Deployable · 🟡 2 Watchlist · ⛔ 12 Avoid · 🚫 10 Excluded (24 total).
 > Best candidate: [[one-man-army-mt5]] — 🟡 Watchlist, Overall 3.1 (poor). ◉ real-money (Tier 2A) but
 > low-headroom and unproven — a candidate to chase evidence on, **not** a recommendation.
 
@@ -23,9 +23,9 @@
 > Watchlist (Deployable needs operator-supplied funded-account evidence).
 
 ## Latest pass
-- [2026-06-24](daily/2026-06-24.md) — operator-supplied cracked-site list: 3 Gate-A exclusions (FundedEA, HFT Robot, PROP FIRM EA V2) + 1 new Watchlist (Gold Prop Firm Robot, Tier-2A real signal).
-- Rulebook freshness: 3 primaries fresh (<72h) · FundedNext STALE (primary 503, 6th run — provisional) · re-check backlog: 0
-- ⚠️ No blockers (no `NEEDS_ATTENTION.md`).
+- [2026-06-29](daily/2026-06-29.md) — rulebook freshness refresh (all 4 primaries were stale) + 1 EA: **Dark Algo** ⛔ Avoid (own REAL signal proves a 52.63% max DD, ~5× a 10% prop limit).
+- Rulebook freshness: 2 primaries re-confirmed from primary (5%ers, TFT — unchanged) · FundedNext STALE (503, 7th run) · Funding Pips STALE (Zendesk-walled 403) — both escalated · re-check backlog: 0
+- ⚠️ No blockers (no `NEEDS_ATTENTION.md`). Completed work is on web branch `claude/lucid-gauss-e010en` pending operator merge to `main`.
 
 ## How to read a verdict
 **Verdict** — ✅ Deployable: clears every gate including operator-supplied funded evidence (rare).

@@ -16,7 +16,7 @@
 {"slug": "gold-oneshot-ea-mt5", "state": "pending", "added": "2026-06-23", "updated": "2026-06-23", "discovery_source": "FundedNext name-banned EA list"}
 {"slug": "the-prop-pilot-ea", "state": "pending", "added": "2026-06-23", "updated": "2026-06-23", "discovery_source": "FundedNext name-banned EA list"}
 {"slug": "propea", "state": "pending", "added": "2026-06-23", "updated": "2026-06-23", "discovery_source": "FundedNext name-banned EA list"}
-{"slug": "dark-algo-ea", "state": "pending", "added": "2026-06-23", "updated": "2026-06-23", "discovery_source": "broad discovery: algotradingspace forex EA"}
+{"slug": "dark-algo-ea", "state": "completed", "added": "2026-06-23", "updated": "2026-06-29", "discovery_source": "broad discovery: algotradingspace forex EA"}
 {"slug": "xaubot-prop-firm-ea", "state": "pending", "added": "2026-06-23", "updated": "2026-06-23", "discovery_source": "broad discovery: xaubot.com prop firm EA MT4/MT5"}
 {"slug": "hon-aps-mt5", "state": "completed", "added": "2026-06-23", "updated": "2026-06-23", "discovery_source": "open-source discovery: MQL5 Code Base 71521 (open-source prop-firm-designed pattern/order-flow EA)"}
 {"slug": "chiroptera-ea", "state": "pending", "added": "2026-06-23", "updated": "2026-06-23", "discovery_source": "open-source discovery: non-martingale/grid 28-pair night EA"}
