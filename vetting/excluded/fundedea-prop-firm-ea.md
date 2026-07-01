@@ -60,8 +60,39 @@ A "hands-free prop-firm pass" EA that hides a grid/martingale recovery behind 60
 "optional" hedge, sold/cracked widely with winners-only marketing and refund disputes — the canonical
 disguised-grid profile a single bad sequence can blow.
 
+## 2026-06-29 Re-confirmation (operator-requested fresh vetting pass)
+Re-vetted end-to-end on operator request. **Verdict UNCHANGED: Excluded at Gate A (grid + martingale-style
+recovery), High confidence.** Duplicate-detection: same product + same core mechanism as the 2026-06-24
+entry → this is a **re-confirmation of the existing exclusion**, not a new EA (no duplicate index row created).
+
+**What the fresh pass found (2026-06-29):**
+- **Mechanism re-confirmed** via convergent independent leads: multiple sources again describe FundedEA
+  entering on pending orders and, when trades move negative, **"a grid-like strategy … that could resemble
+  a martingale approach"** with an adjustable/optional hedge and 60+ inputs across 5 indicators; The Forex
+  Geek and FPA discussion again characterize it as a **"100% GRID, martingale EA"** that "won't pass prop
+  firm challenges." Adding orders into an open loss is the Gate A banned mechanism regardless of framing.
+- **NEW red flag — rebrand/evasion:** independent reports allege the vendor **created a sister/bogus site
+  `propfirmea.co`** and repeatedly **changes its name** to merge profiles, dodge disputes, and get negative
+  Trustpilot reviews removed via the "fake review" loophole; the Telegram channel shows winners only. This is
+  a rebrand signal (mechanism-first fingerprint unchanged) and a heightened operator-durability / payout-
+  dispute risk. Treat `propfirmea.co` as a probable FundedEA alias; do not vet as a novel EA on name alone.
+- **Conflicting marketing claim (recorded, rejected):** one promotional source claims FundedEA has "proper
+  stop losses" and "avoids martingale/grid." Per HARD RULE 6 (worse reading) and the convergent independent
+  grid/martingale evidence + blown-account reports, this vendor-side claim does **not** overturn the Gate A
+  exclusion. No inspectable real-money track record was found (ROR remains NON-ESTIMABLE, best_tier TIER4).
+- **Fetch access (2026-06-29):** `fundedea.com` returned **HTTP 503**; ForexPeaceArmy review/threads returned
+  **HTTP 403**; The Forex Geek review page rendered empty to the fetch tool. So the independent mechanism
+  statements remain **fetched-as-leads** (per HARD RULE 2), consistent with 2026-06-24 — the exclusion rests
+  on the previously-fetched cracked-site listing (discovery/negative signal) + convergent independent leads,
+  now re-confirmed and reinforced by the rebrand finding. Per-firm legality unchanged (Prohibited at all four
+  primaries; rulebooks 5%ers/TFT re-confirmed v1 on 2026-06-29, FundedNext/Funding Pips carried v1).
+
 ## Source Links
-- https://fundedea.com/ — 2026-06-24 — vendor page (fetched; tagline only, no mechanism/SL docs) — affiliate(vendor)
+- https://theforexgeek.com/fundedea-review/ — 2026-06-29 — independent review ("100% GRID, martingale"; rendered empty to fetch tool → lead) — independent (lead)
+- https://www.forexpeacearmy.com/forex-reviews/22368/fundedea-review — 2026-06-29 — FPA review (HTTP 403 → lead) — independent (lead)
+- https://www.forexpeacearmy.com/community/threads/fundedea-martingale-and-doesnt-want-to-honor-guarantee.81044/ — 2026-06-29 — FPA "Martingale" thread (HTTP 403 → lead) — independent (lead)
+- WebSearch (FundedEA grid/martingale; propfirmea.co rebrand; ~$6k blown account; refund/Trustpilot disputes) — 2026-06-29 — independent leads (mandatory negative case, re-run)
+- https://fundedea.com/ — 2026-06-24 — vendor page (fetched; tagline only, no mechanism/SL docs; 2026-06-29 → HTTP 503) — affiliate(vendor)
 - https://www.forexcracked.com/forex-ea/fundedea-prop-firm-ea-free-download/ — 2026-06-24 — cracked-site listing (fetched; grid/martingale + hedge, BTC/XAUUSD/US30) — pirate (negative/discovery only, Tier 4)
 - WebSearch (FundedEA grid/martingale; The Forex Geek "100% grid and martingale"; FPA "Martingale" thread; ~$6k blown account; refund disputes) — 2026-06-24 — independent leads (mandatory negative case)
 
